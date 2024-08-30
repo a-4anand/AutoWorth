@@ -4,4 +4,8 @@ from django.shortcuts import render
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'pricepredict/index.html')
+
+def index2(request):
+    return render(request, 'pricepredict/main/index-2.html')
+

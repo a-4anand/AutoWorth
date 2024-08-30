@@ -1,0 +1,332 @@
+
+.coming-soon .btn-theme {
+    background: #2048bb;
+}
+
+.login-1 .btn-md:hover{
+    background: #1d40a5;
+}
+
+.form-inline a:hover{
+    color: #2048bb;
+}
+
+.form-inline .btn:hover{
+    color: #1d40a5;
+}
+
+
+.login-1 .btn-md {
+    background: #2048bb;
+}
+
+.coming-soon .btn-theme:hover {
+    background: #1d40a5;
+}
+
+.pages-404 .btn {
+    background: #2048bb;
+}
+
+.pages-404 .btn:hover{
+    background: #1d40a5;
+    color: #fff;
+}
+
+
+.overview .btn-border:hover{
+    border: solid 2px #1d40a5;
+    background: #1d40a5;
+}
+
+.checkbox-theme input[type="checkbox"]:checked + label::before {
+    background-color: #2048bb;
+    border-color: #2048bb;
+}
+
+.car-box ul li i{
+    color: #2048bb;
+}
+
+.modal-right-content .btns-black{
+    background: #2048bb!important;
+    border: solid 1px#2048bb!important;
+    color: #fff!important;
+}
+
+#page_scroller {
+    background: #2048bb;
+}
+
+.setting-button {
+    background: #2048bb;
+}
+
+.overview .btn-border{
+    color: #2048bb;
+    border: solid 2px #2048bb;
+}
+
+.overview .btn-border:hover{
+    border: solid 2px #1d40a5;
+    background: #1d40a5;
+}
+
+.btn-color{
+    background: #2048bb;
+}
+
+.btn-color:hover{
+    background: #1d40a5;
+}
+
+.btn-border{
+    color: #2048bb;
+    border: solid 1px #2048bb;
+}
+
+.btn-border:hover{
+    color: #fff;
+    border: solid 1px #1d40a5;
+    background: #1d40a5;
+}
+
+.megamenu-area .dropdown-item:hover {
+    color: #2048bb;
+}
+
+.main-header .navbar-expand-lg .navbar-nav .active .nav-link{
+    color: #2048bb !important;
+    border-bottom: solid 2px #2048bb;
+}
+
+.main-header .navbar-expand-lg .navbar-nav .nav-link:hover{
+    border-bottom: solid 2px #2048bb;
+    color: #2048bb !important;
+}
+
+.main-header .dropdown-menu a:hover {
+    color: #2048bb;
+}
+
+.sub-banner .breadcrumbs li a:hover {
+    color: #2048bb;
+}
+
+.blog-banner .breadcrumbs li a:hover {
+    color: #2048bb;
+}
+
+.option-bar h4 {
+    color: #2048bb;
+}
+
+.option-bar .heading-icon {
+    background: #2048bb;
+}
+
+.option-bar h4 {
+    color: #2048bb;
+}
+
+.option-bar .heading-icon .icon-design {
+    color: #2048bb;
+}
+
+.change-view-btn {
+    color: #2048bb;
+    border: solid 1px #2048bb;
+}
+
+.active-view-btn {
+    background: #2048bb;
+    border: solid 1px #2048bb;
+}
+
+.change-view-btn:hover {
+    border: solid 1px #2048bb;
+    background: #2048bb;
+}
+
+.overlay-link:hover{
+    background: #2048bb;
+    border: 2px solid #2048bb;
+}
+
+.car-box .detail .title a{
+    color: #2048bb;
+}
+
+.car-box-2 .detail h4{
+    color: #2048bb;
+}
+
+.car-box-3 h5{
+    color: #2048bb;
+}
+
+.car-box-5 .detail .title a {
+    color: #2048bb;
+}
+
+.services-info i{
+    color: #2048bb;
+}
+
+.services-info-2 i{
+    color: #2048bb;
+}
+
+.services-info-3 i{
+    color: #2048bb;
+}
+
+.services-info-3 h5 {
+    color: #2048bb;
+}
+
+.services-info-6 .btn-read-more{
+    color: #2048bb;
+}
+
+.modal-left-content .control{
+    background: #2048bb;
+}
+
+.modal-right-content .price {
+    color: #2048bb;
+}
+
+.testimonial .carousel-indicators .active {
+    background-color: #2048bb;
+}
+
+.carousel-indicators .active {
+    background-color: #2048bb;
+}
+
+.pricing.featured .listing-badges .featured {
+    background: #2048bb;
+}
+
+.pricing-3 .featured{
+    color: #2048bb;
+}
+
+.blog-grid-box .date-box {
+    background: #2048bb;
+}
+
+.pages-404 .error404 span {
+    color: #2048bb;
+}
+
+.pagination > li > .active {
+    background: #2048bb;
+}
+
+.pagination > li > a:hover{
+    background: #2048bb;
+}
+
+.tags ul li a:hover{
+    border: solid 1px #2048bb;
+    background: #2048bb;
+}
+
+.latest-tweet p a{
+    color: #2048bb;
+}
+
+.shop-box .shop-details h4{
+    color: #2048bb;
+}
+
+.form-check a{
+    color: #2048bb;
+}
+
+.form-check a:hover{
+    color: #1d40a5;
+}
+
+.about-text ul li i {
+    color: #2048bb;
+}
+
+.login-1 .info h1 a {
+    color: #2048bb;
+}
+
+.amenities-box li i {
+    color: #2048bb;
+}
+
+.features-opions ul li i {
+    color: #2048bb;
+}
+
+.helping-center i{
+    color: #2048bb;
+}
+
+.coming-soon-inner h1 span{
+    color: #2048bb;
+}
+
+.filteriz-navigation li:hover {
+    color: #2048bb;
+    border-bottom: 1px solid #2048bb;
+}
+
+li.active.btn.filtr-button.filtr {
+    color: #2048bb;
+    border-bottom: 1px solid #2048bb !important;
+}
+
+.view-all ul li a:hover{
+    background: #2048bb;
+}
+
+.brand-box-2 h5 a{
+    color: #2048bb;
+}
+
+.search-area-3 {
+    border-top: 3px solid #2048bb;
+}
+
+/** MEDIA **/
+@media (max-width: 992px) {
+    .main-header .navbar-expand-lg .navbar-nav .active .nav-link{
+        color: #2048bb !important;
+    }
+
+    .main-header .navbar-expand-lg .navbar-nav .nav-link:hover {
+        color: #2048bb !important;
+    }
+
+    .navbar-light .navbar-toggler {
+        color: #2048bb;
+    }
+}
+
+.min-value {
+    color: #2048bb;
+}
+
+.max-value {
+    color: #2048bb;
+}
+
+.range-slider .ui-slider .ui-slider-handle {
+    background: #2048bb;
+}
+
+.range-slider .ui-slider .ui-slider-handle {
+    border: 2px solid #2048bb;
+}
+
+.range-slider .ui-widget-header {
+    background-color: #2048bb;
+}

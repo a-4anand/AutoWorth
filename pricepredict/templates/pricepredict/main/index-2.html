@@ -1,0 +1,995 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WLMZXT6');</script>
+    <!-- End Google Tag Manager -->
+    <title>Car Shop - Car Dealer HTML Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- External CSS libraries -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/magnific-popup.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/jquery.selectBox.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/rangeslider.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/animate.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
+
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Google fonts -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7COswald:200,300,400,500,600%7CRoboto:100,300,400,400i,500,700">
+
+    <!-- Custom Stylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
+
+</head>
+<body id="top">
+
+<div class="page_loader"></div>
+
+<!-- main header start -->
+<header class="main-header main-header-two" id="main-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-lg navbar-light rounded">
+                    <a class="navbar-brand logos" href="index.html">
+                        <img src="{% static 'assets2/img/logos/logo-white.png' %}" alt="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown active">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Index
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="index.html">Index 1</a></li>
+                                    <li><a class="dropdown-item" href="index-2.html">Index 2</a></li>
+                                    <li><a class="dropdown-item" href="index-3.html">Index 3</a></li>
+                                    <li><a class="dropdown-item" href="index-4.html">Index 4</a></li>
+                                    <li><a class="dropdown-item" href="index-5.html">Index 5</a></li>
+                                    <li><a class="dropdown-item" href="index-6.html">Index 6 (Video)</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Car Listing
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">List Layout</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="car-list-rightside.html">Right Sidebar</a></li>
+                                            <li><a class="dropdown-item" href="car-list-leftside.html">Left Sidebar</a></li>
+                                            <li><a class="dropdown-item" href="car-list-fullwidth.html">Fullwidth</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Grid Layout</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="car-grid-rightside.html">Right Sidebar</a></li>
+                                            <li><a class="dropdown-item" href="car-grid-leftside.html">Left Sidebar</a></li>
+                                            <li><a class="dropdown-item" href="car-grid-fullwidth.html">Fullwidth</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Car Details</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="car-details.html">Car Details 1</a></li>
+                                            <li><a class="dropdown-item" href="car-details-2.html">Car Details 2</a></li>
+                                            <li><a class="dropdown-item" href="car-details-3.html">Car Details 3</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown megamenu-li">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                <div class="dropdown-menu megamenu" aria-labelledby="dropdown01">
+                                    <div class="megamenu-area">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="megamenu-section">
+                                                    <h6 class="megamenu-title">Pages</h6>
+                                                    <a class="dropdown-item" href="car-comparison.html">Car Comparison</a>
+                                                    <a class="dropdown-item" href="search-brand.html">Car Brands</a>
+                                                    <a class="dropdown-item" href="car-list-rightside.html">Car List</a>
+                                                    <a class="dropdown-item" href="car-grid-rightside.html">Car Grid</a>
+                                                    <a class="dropdown-item" href="services-1.html">Services 1</a>
+                                                    <a class="dropdown-item" href="services-2.html">Services 2</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="megamenu-section">
+                                                    <h6 class="megamenu-title">Pages</h6>
+                                                    <a class="dropdown-item" href="team-1.html">Team 1</a>
+                                                    <a class="dropdown-item" href="team-2.html">Team 2</a>
+                                                    <a class="dropdown-item" href="team-3.html">Team 3</a>
+                                                    <a class="dropdown-item" href="about-1.html">About 1</a>
+                                                    <a class="dropdown-item" href="about-2.html">About 2</a>
+                                                    <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="megamenu-section">
+                                                    <h6 class="megamenu-title">Pages</h6>
+                                                    <a class="dropdown-item" href="gallery-3column.html">Gallery 3 column</a>
+                                                    <a class="dropdown-item" href="gallery-4column.html">Gallery 4 column</a>
+                                                    <a class="dropdown-item" href="pricing-tables-1.html">Pricing Tables 1</a>
+                                                    <a class="dropdown-item" href="pricing-tables-2.html">Pricing Tables 2</a>
+                                                    <a class="dropdown-item" href="faq-1.html">Faq 1</a>
+                                                    <a class="dropdown-item" href="faq-2.html">Faq 2</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 col-lg-3">
+                                                <div class="megamenu-section">
+                                                    <h6 class="megamenu-title">Pages</h6>
+                                                    <a class="dropdown-item" href="contact-1.html">Contact 1</a>
+                                                    <a class="dropdown-item" href="contact-2.html">Contact 2</a>
+                                                    <a class="dropdown-item" href="404.html">404</a>
+                                                    <a class="dropdown-item" href="login.html">Login</a>
+                                                    <a class="dropdown-item" href="signup.html">Register</a>
+                                                    <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Blog
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                    <li><a class="dropdown-item" href="blog-columns-2col.html">2 Columns</a></li>
+                                    <li><a class="dropdown-item" href="blog-columns-3col.html">3 Columns</a></li>
+                                    <li><a class="dropdown-item" href="blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Shop
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                    <li><a class="dropdown-item" href="shop-list.html">Shop List</a></li>
+                                    <li><a class="dropdown-item" href="shop-cart.html">Shop Cart</a></li>
+                                    <li><a class="dropdown-item" href="shop-checkout.html">Shop Checkout</a></li>
+                                    <li><a class="dropdown-item" href="shop-single.html">Shop Single</a></li>
+                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                    <li><a class="dropdown-item" href="signup.html">Register</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact-1.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--main header end -->
+<!-- Banner start -->
+<div class="banner" id="banner">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner banner-max-height banner-opt">
+            <div class="carousel-item active">
+                <img class="d-block w-100 h-100" src="assets/img/banner/img-3.jpg" alt="banner-slider-2">
+                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
+                    <div class="carousel-content container">
+                        <div id="typed-strings">
+                            <p>Welcome to CAR SHOP</p>
+                        </div>
+                        <h1 class="typed-text">&nbsp;<span id="typed"></span></h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatae autem aperiam neque quaerat molestias.</p>
+                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100 h-100" src="assets/img/banner/img-4.jpg" alt="banner-slider-2">
+                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
+                    <div class="carousel-content container">
+                        <div id="typed-strings2">
+                            <p>Find Your Dream Car</p>
+                        </div>
+                        <h1 class="typed-text">&nbsp;<span id="typed2"></span></h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatae autem aperiam neque quaerat molestias.</p>
+                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
+                        <a href="#" class="btn btn-md btn-border" data-animation="animated fadeInUp delay-05s">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100 h-100" src="assets2/img/banner/img-2.jpg" alt="banner-slider-2">
+                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
+                    <div class="carousel-content container">
+                        <div id="typed-strings3">
+                            <p>Best Place For Sell Car</p>
+                        </div>
+                        <h1 class="typed-text">&nbsp;<span id="typed3"></span></h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatae autem aperiam neque quaerat molestias.</p>
+                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
+                        <a href="#" class="btn btn-md btn-border" data-animation="animated fadeInUp delay-05s">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="slider-mover-left" aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="slider-mover-right" aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+        </a>
+    </div>
+</div>
+<!-- banner end -->
+
+<!-- Featured car start -->
+<div class="featured-car content-area-2">
+    <div class="container">
+        <div class="main-title">
+            <h1>Featured Car</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInLeft delay-04s">
+                <div class="card car-box-2">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-5.jpg" alt="car-5" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-5.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-7.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-4.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">Fiat Punto Red</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp delay-04s">
+                <div class="card car-box-2">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-8.jpg" alt="car-8" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-8.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-7.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-3.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">Lamborghini</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp delay-04s">
+                <div class="card car-box-2">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-3.jpg" alt="car-3" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-3.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-7.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-8.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">Toyota Prius</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInRight delay-04s">
+                <div class="card car-box-2">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-6.jpg" alt="car-1" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-6.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-7.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-8.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">BMW</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured car end -->
+
+<!-- Services start -->
+<div class="services content-area-20">
+    <div class="container">
+        <div class="main-title">
+            <h1>Services</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 wow fadeInLeft delay-04s">
+                <div class="service-info">
+                    <i class="fa fa-car"></i>
+                    <h5>Air Conditioning</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis laborum, harum aliquam voluptas.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp delay-04s">
+                <div class="service-info">
+                    <i class="fa fa-key"></i>
+                    <h5>Engine Diagnostics</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis laborum, harum aliquam voluptas.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInRight delay-04s">
+                <div class="service-info">
+                    <i class="fa fa-life-ring"></i>
+                    <h5>Oil Changes</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis laborum, harum aliquam voluptas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services end -->
+
+<!-- Recent cars start -->
+<div class="recent-cars content-area">
+    <div class="container">
+        <div class="main-title">
+            <h1>Recent Cars</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInLeft delay-04s">
+                <div class="card car-box">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-4.jpg" alt="car-4" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-4.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-5.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-8.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">Fiat Punto Red</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp delay-04s">
+                <div class="card car-box">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-3.jpg" alt="car-3" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-3.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-5.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-4.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">Toyota Prius</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp delay-04s">
+                <div class="card car-box">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-7.jpg" alt="car-7" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-7.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-5.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-8.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">BMW 5 Series</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInRight delay-04s">
+                <div class="card car-box">
+                    <div class="car-thumbnail">
+                        <a href="car-details.html" class="car-img">
+                            <img src="assets2/img/car-6.jpg" alt="car-1" class="img-fluid">
+                        </a>
+                        <div class="car-overlay">
+                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
+                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
+                            <div class="car-magnify-gallery">
+                                <a href="assets2/img/car-6.jpg" class="overlay-link"><i class="fa fa-expand"></i></a>
+                                <a href="assets2/img/car-5.jpg" class="hidden"></a>
+                                <a href="assets2/img/car-8.jpg" class="hidden"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail">
+                        <h5 class="title"><a href="car-details.html">Fiat Punto</a></h5>
+                        <h4 class="price">$567.99</h4>
+                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Recent cars end -->
+
+<!-- Testimonial 2 start -->
+<div class="testimonial-2 overview-bgi" style="background-image: url({% static 'img/testimonial-car-2.jpg' %})">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-2 col-lg-8">
+                <div class="testimonial-inner">
+                    <header class="testimonia-header">
+                        <h1>Our Testimonial</h1>
+                    </header>
+                    <div id="carouselExampleIndicators7" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="avatar">
+                                            <img src="{% static 'img/avatar/avatar-2.jpg' %}" alt="avatar-2" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.
+                                        </p>
+                                        <div class="author-name">
+                                            Emma Connor
+                                        </div>
+                                        <ul class="rating">
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star-half-full"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="avatar">
+                                            <img src="{% static 'assets2/img/avatar/avatar.jpg' %}" alt="avatar" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.
+                                        </p>
+                                        <div class="author-name">
+                                            Martin Smith
+                                        </div>
+                                        <ul class="rating">
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star-half-full"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                        <div class="avatar">
+                                            <img src="{% static 'img/avatar/avatar-3.jpg' %}" alt="avatar-3" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae.
+                                        </p>
+                                        <div class="author-name">
+                                            John Antony
+                                        </div>
+                                        <ul class="rating">
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star-half-full"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators7" role="button" data-slide="prev">
+                            <span class="slider-mover-left" aria-hidden="true">
+                                <i class="fa fa-angle-left"></i>
+                            </span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators7" role="button" data-slide="next">
+                            <span class="slider-mover-right" aria-hidden="true">
+                                <i class="fa fa-angle-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial 2 end -->
+
+<!-- Latest news start -->
+<div class="latest-news content-area-2">
+    <div class="container">
+        <div class="main-title">
+            <h1>Latest News</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 wow fadeInLeft delay-04s">
+                <div class="blog-grid-box">
+                    <img class="blog-theme img-fluid" src="{% static 'img/car-7.jpg' %}" alt="car-7">
+                    <div class="detail">
+                        <div class="date-box">
+                            <h5>03</h5>
+                            <h5>May</h5>
+                        </div>
+                        <h3>
+                            <a href="blog-single-sidebar-right.html">Hyundai Santa</a>
+                        </h3>
+                        <div class="post-meta">
+                            <span><a href="#"><i class="fa fa-user"></i>John Antony</a></span>
+                            <span><a href="#"><i class="fa fa-commenting-o"></i>24 Comment</a></span>
+                        </div>
+                        <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp delay-04s d-none d-xl-block d-lg-block">
+                <div class="blog-grid-box">
+                    <img class="blog-theme img-fluid" src="{% static 'img/car-5.jpg' %}" alt="car-5">
+                    <div class="detail">
+                        <div class="date-box">
+                            <h5>03</h5>
+                            <h5>May</h5>
+                        </div>
+                        <h3>
+                            <a href="blog-single-sidebar-right.html">Fiat Punto Red</a>
+                        </h3>
+                        <div class="post-meta">
+                            <span><a href="#"><i class="fa fa-user"></i>John Antony</a></span>
+                            <span><a href="#"><i class="fa fa-commenting-o"></i>24 Comment</a></span>
+                        </div>
+                        <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInRight delay-04s">
+                <div class="blog-grid-box">
+                    <img class="blog-theme img-fluid" src="{% static 'assets2/img/car-8.jpg' %}" alt="car-8">
+                    <div class="detail">
+                        <div class="date-box">
+                            <h5>03</h5>
+                            <h5>May</h5>
+                        </div>
+                        <h3>
+                            <a href="blog-single-sidebar-right.html">Jaguar F Pace s</a>
+                        </h3>
+                        <div class="post-meta">
+                            <span><a href="#"><i class="fa fa-user"></i>John Antony</a></span>
+                            <span><a href="#"><i class="fa fa-commenting-o"></i>24 Comment</a></span>
+                        </div>
+                        <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Latest news end -->
+
+<!-- Our Partner area end -->
+<div class="our-partner">
+    <div class="container">
+        <div class="main-title">
+            <h1>Our Partners</h1>
+        </div>
+    </div>
+    <div class="partner-inner partner-container">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-1.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-2.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-3.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-4.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-5.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-1.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-2.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#"><img src="{% static 'assets2/img/brand/partner-3.png' %}" alt="brand" class="img-fluid"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Partner area end -->
+<!-- Footer start -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="row">
+            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
+                <div class="footer-item">
+                    <h4>Contact Us</h4>
+
+                    <ul class="contact-info">
+                        <li>
+                            Address: 20/F Green Road, Dhanmondi, Dhaka
+                        </li>
+                        <li>
+                            Email: <a href="mailto:themevessel.us@gmail.com">themevessel.us@gmail.com</a>
+                        </li>
+                        <li>
+                            Phone: <a href="tel:+0477-85x6-552">+0477 85X6 552</a>
+                        </li>
+                        <li>
+                            Fax: +0477 85X6 552
+                        </li>
+                    </ul>
+
+                    <ul class="social-list clearfix">
+                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-item">
+                    <h4>
+                        Useful Links
+                    </h4>
+                    <ul class="links">
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>About us</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>Service</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>Car Listing</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>Car Grid</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>Blog</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-angle-right"></i>Car Details</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer-item clearfix">
+                    <h4>
+                        Gallery
+                    </h4>
+
+                    <ul class="gallery">
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-1.jpg' %}" alt="sub-car-1">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-5.jpg' %}" alt="sub-car-5">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-3.jpg' %}" alt="sub-car-3">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-6.jpg' %}" alt="sub-car-6">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-7.jpg' %}" alt="sub-car-7">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-4.jpg' %}" alt="sub-car-4">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-2.jpg' %}" alt="sub-car-2">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{% static 'assets2/img/sub-car/sub-car-8.jpg' %}" alt="sub-car-8">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                <div class="footer-item clearfix">
+                    <h4>Subscribe</h4>
+                    <div class="Subscribe-box">
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+                        <form action="#" method="GET">
+                            <p>
+                                <input type="text" class="form-contact" name="email" placeholder="Enter Address">
+                            </p>
+                            <p>
+                                <button type="submit" name="submitNewsletter" class="btn btn-block btn-color">
+                                    Subscribe
+                                </button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-12">
+                <p class="copy">&copy;  2022 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer end -->
+
+<!-- Full Page Search -->
+<div id="full-page-search">
+    <button type="button" class="close">×</button>
+    <form action="#">
+        <input type="search" value="" placeholder="type keyword(s) here" />
+        <button type="button" class="btn btn-sm btn-color">Search</button>
+    </form>
+</div>
+
+<!-- Car Video Modal -->
+<div class="modal car-modal fade" id="carModal" tabindex="-1" role="dialog" aria-labelledby="carModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="carModalLabel">
+                    Fiat Punto Red
+                </h5>
+                <p>
+                    123 Kathal St. Tampa City,
+                </p>
+                <span class="ratings">
+                    <i class="fa fa-star s1 active" data-score="1"></i>
+                    <i class="fa fa-star s2 active" data-score="2"></i>
+                    <i class="fa fa-star s3 active" data-score="3"></i>
+                    <i class="fa fa-star s4 active" data-score="4"></i>
+                    <i class="fa fa-star s5 active" data-score="5"></i>
+                </span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-5 modal-left">
+                        <div class="modal-left-content">
+                            <div id="modalCarousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <iframe class="modalIframe" src="https://www.youtube.com/embed/WoNAt9bQZtY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static 'img/car-1.jpg' %}" alt="Hyundai Santa">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{% static 'img/car-3.jpg' %}" alt="Lamborghini">
+                                    </div>
+                                </div>
+                                <a class="control control-prev" href="#modalCarousel" role="button" data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a class="control control-next" href="#modalCarousel" role="button" data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+
+                            <div class="features"><h3>Features</h3>
+                                <ul class="bullets">
+                                    <li>Cruise Control</li>
+                                    <li>Airbags</li>
+                                    <li>Air Conditioning</li>
+                                    <li>Alarm System</li>
+                                    <li>Audio Interface</li>
+                                    <li>CDR Audio</li>
+                                    <li>Seat Heating</li>
+                                    <li>ParkAssist</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 modal-right">
+                        <div class="modal-right-content bg-white">
+                            <strong class="price">
+                                $178,000
+                            </strong>
+                            <section>
+                                <h3>Description</h3>
+                                <p>
+                                    Curabitur odio nibh, luctus non pulvinar a, ultricies ac diam. Donec neque
+                                    massa, viverra interdum eros ut, imperdiet pellentesque mauris. Proin sit amet scelerisque
+                                    risus. Donec semper semper erat ut mollis. Curabitur suscipit, justo eu dignissim lacinia, ante
+                                    sapien pharetra duin consectetur eros augue sed ex. Donec a odio rutrum, hendrerit sapien vitae,
+                                    euismod arcu.
+                                </p>
+                            </section>
+                            <section>
+                                <h3>Overview</h3>
+                                <dl>
+                                    <dt>Model</dt>
+                                    <dd>Maxima</dd>
+                                    <dt>Condition</dt>
+                                    <dd>Brand New</dd>
+                                    <dt>Year</dt>
+                                    <dd>2017</dd>
+                                    <dt>Mileage</dt>
+                                    <dd>37,000 mi</dd>
+                                </dl>
+                            </section>
+                            <a href="car-details.html" class="btn btns-black">Show Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- External JS libraries -->
+<script src="{% static 'assets2/js/jquery-2.2.0.min.js' %}"></script>
+<script src="{% static 'assets2/js/popper.min.js' %}"></script>
+<script src="{% static 'assets2/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.selectBox.js' %}"></script>
+<script src="{% static 'assets2/js/rangeslider.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.filterizr.js' %}"></script>
+<script src="{% static 'assets2/js/wow.min.js' %}"></script>
+<script src="{% static 'assets2/js/backstretch.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.countdown.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.scrollUp.js' %}"></script>
+<script src="{% static 'assets2/js/typed.min.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.mb.YTPlayer.js' %}"></script>
+<script src="{% static 'assets2/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
+<script src="{% static 'assets2/js/ie-emulation-modes-warning.js' %}"></script>
+<!-- Custom JS Script -->
+<script src="{% static 'assets2/js/app.js' %}"></script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+</body>
+</html>
