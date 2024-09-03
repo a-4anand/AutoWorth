@@ -1,0 +1,31 @@
+
+
+from django import forms
+
+class PredictionForm(forms.Form):
+    car_name = forms.CharField(max_length=255)
+    yr_mfr = forms.IntegerField()
+    fuel_type = forms.CharField(max_length=50)
+    kms_run = forms.IntegerField()
+    city = forms.CharField(max_length=50)
+    times_viewed = forms.IntegerField()
+    body_type = forms.CharField(max_length=50)
+    transmission = forms.CharField(max_length=50)
+    variant = forms.CharField(max_length=50)
+    assured_buy = forms.CharField(max_length=50)
+    registered_city = forms.CharField(max_length=50)
+    registered_state = forms.CharField(max_length=50)
+    is_hot = forms.IntegerField()
+    rto = forms.IntegerField()
+    source = forms.CharField(max_length=50)
+    make = forms.CharField(max_length=50)
+    car_availability = forms.CharField(max_length=50)
+    total_owners = forms.IntegerField()
+    broker_quote = forms.IntegerField()
+    car_rating = forms.FloatField()
+    ad_created_on = forms.DateField()
+    fitness_certificate = forms.CharField(max_length=50)
+    emi_starts_from = forms.IntegerField()
+    booking_down_pymnt = forms.IntegerField()
+    reserved = forms.CharField(max_length=50)
+    warranty_avail = forms.CharField(max_length=50)

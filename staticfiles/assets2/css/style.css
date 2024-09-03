@@ -1004,7 +1004,7 @@ input[type=checkbox]:checked + label:before {
 
 /** SUB BANNER **/
 .sub-banner{
-    background: rgba(0, 0, 0, 0.04) url(../img/sub-banner.png) top left repeat;
+    background: rgba(0, 0, 0, 0.04) url("{% static 'assets/img/sub-banner.png' %}") top left repeat;
     background-size: cover;
     height: 290px;
     background-position: center center;
