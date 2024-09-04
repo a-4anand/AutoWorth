@@ -244,126 +244,38 @@
     </div>
 
     <!-- Search area banner start -->
-    <div class="search-area-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div id="search-area-3" class="search-area search-area-3 d-none d-xl-block d-lg-block">
-                        <h2>Find Your Car</h2>
-                        <div class="search-area-inner">
-                            <div class="search-contents">
-                                <form method="GET">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <select class="selectpicker search-fields" name="brand">
-                                                    <option>Brand</option>
-                                                    <option>Audi</option>
-                                                    <option>BMW</option>
-                                                    <option>Honda</option>
-                                                    <option>Nissan</option>
-                                                    <option>Lamborghini</option>
-                                                    <option>Toyoto</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <select class="selectpicker search-fields" name="make">
-                                                    <option>Location</option>
-                                                    <option>United States</option>
-                                                    <option>United Kingdom</option>
-                                                    <option>American Samoa</option>
-                                                    <option>Belgium</option>
-                                                    <option>Cameroon</option>
-                                                    <option>Canada</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <select class="selectpicker search-fields" name="location">
-                                                    <option>Manufacture Year</option>
-                                                    <option>2014</option>
-                                                    <option>2015</option>
-                                                    <option>2016</option>
-                                                    <option>2017</option>
-                                                    <option>2018</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <select class="selectpicker search-fields" name="type">
-                                                    <option>Category</option>
-                                                    <option>Luxury Car</option>
-                                                    <option>Pickup Truck</option>
-                                                    <option>Pickup Truck</option>
-                                                    <option>Minivan</option>
-                                                    <option>Truck</option>
-                                                    <option>Sports Car</option>
-                                                    <option>Van</option>
-                                                    <option>Wagon</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <select class="selectpicker search-fields" name="body">
-                                                    <option>Body</option>
-                                                    <option>Suv</option>
-                                                    <option>Sedan</option>
-                                                    <option>Minivan</option>
-                                                    <option>Truck</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <select class="selectpicker search-fields" name="transiction">
-                                                    <option>Transition</option>
-                                                    <option>Automatic</option>
-                                                    <option>Manual</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <div class="form-group">
-                                                <div class="range-slider">
-                                                    <div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 ">
-                                            <div class="form-group">
-                                                <button class="search-button btn-md btn-color">Search</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Search area banner end -->
 </div>
 
 <!-- banner end -->
 
 <!-- Search area start -->
- <h1>Car Price Prediction</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Predict</button>
-    </form>
-    {% if prediction %}
-    <h2>Predicted Sale Price: {{ prediction }}</h2>
-    {% endif %}
+   <h1>Car Price Prediction</h1>
+<form method="POST" action="main/predict/">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Predict</button>
+</form>
+
+
+{% if form.errors %}
+    <ul class="errors">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if prediction is not None %}
+<h2>Predicted Sale Price: {{ prediction }}</h2>
+{% endif %}
+
+{% if prediction is not None %}
+<h2>Predicted Sale Price: {{ prediction }}</h2>
+{% endif %}
 
 <!-- Search area start -->
 
