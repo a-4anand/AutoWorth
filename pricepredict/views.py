@@ -1,5 +1,8 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+
+
+
 
 # Load the dataset
 
@@ -23,5 +26,6 @@ def register(request):
     return render(request, 'pricepredict/main/register.html')
 
 def index6(request):
+    return render(request, 'pricepredict/main/index-6.html')
 
-    return render(request, 'pricepredict/main/index6.html')
+
