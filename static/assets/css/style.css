@@ -360,7 +360,7 @@ a {
 }
 
 .banner {
-    background: rgba(0, 0, 0, 0.04) url("../img/img-4.jpg") center center no-repeat;
+    background: rgba(0, 0, 0, 0.04) url(../img/img-4.jpg) top left repeat;
     background-size: cover;
     height: 800px;
     background-position: center center;

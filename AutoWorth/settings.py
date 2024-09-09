@@ -61,11 +61,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "AutoWorth.urls"
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Correct directory
+        'DIRS': [BASE_DIR / 'templates'],  # Add the correct path here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 
 WSGI_APPLICATION = "AutoWorth.wsgi.application"

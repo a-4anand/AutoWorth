@@ -4,41 +4,51 @@
 <html lang="zxx">
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WLMZXT6');</script>
-    <!-- End Google Tag Manager -->
+   <!-- Google Tag Manager -->
+<script>
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WLMZXT6');
+</script>
+<!-- End Google Tag Manager -->
 
-    <title>Car Shop - Car Dealer HTML Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
+<title>Car Shop - Car Dealer HTML Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <!-- External CSS libraries -->
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/magnific-popup.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/jquery.selectBox.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/rangeslider.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/animate.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
+<!-- External CSS libraries -->
+<link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'assets2/css/magnific-popup.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'assets2/css/jquery.selectBox.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'assets2/css/rangeslider.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'assets2/css/animate.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
 
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
+<!-- Favicon icon -->
+<link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
 
-    <!-- Google fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7COswald:200,300,400,500,600%7CRoboto:100,300,400,400i,500,700">
+<!-- Google fonts -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7COswald:200,300,400,500,600%7CRoboto:100,300,400,400i,500,700">
 
-    <!-- Custom Stylesheet -->
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
+<!-- Custom Stylesheet -->
+<link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
+<link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
 
 </head>
 <body id="top">
 
-<div class="page_loader"></div>
+<div class="page_loader">
+
+</div>
 
 <!-- main header start -->
 <header class="main-header main-header-two" id="main-header">
@@ -250,37 +260,11 @@
 
 <!-- banner end -->
 
-<!-- Search area start -->
-   <h1>Car Price Prediction</h1>
-<form method="POST" action="main/predict/">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Predict</button>
-</form>
 
 
-{% if form.errors %}
-    <ul class="errors">
-        {% for field in form %}
-            {% for error in field.errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        {% endfor %}
-    </ul>
-{% endif %}
 
-{% if prediction is not None %}
-<h2>Predicted Sale Price: {{ prediction }}</h2>
-{% endif %}
-
-{% if prediction is not None %}
-<h2>Predicted Sale Price: {{ prediction }}</h2>
-{% endif %}
 
 <!-- Search area start -->
-
-<!-- Featured car start -->
-
 
 
 <!-- Featured car end -->
@@ -804,8 +788,6 @@
         </div>
     </div>
 </div>
-
-<!-- External JS libraries -->
 <script src="{% static 'assets2/js/jquery-2.2.0.min.js' %}"></script>
 <script src="{% static 'assets2/js/popper.min.js' %}"></script>
 <script src="{% static 'assets2/js/bootstrap.min.js' %}"></script>
@@ -827,10 +809,8 @@
 
 <!-- Google Tag Manager (noscript) -->
 <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 </body>
 </html>
