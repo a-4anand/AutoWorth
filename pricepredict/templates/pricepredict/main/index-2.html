@@ -10,7 +10,7 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WLMZXT6');</script>
     <!-- End Google Tag Manager -->
-    <title>Car Shop - Car Dealer HTML Template</title>
+    <title>AutoWorth - Car resale value predictor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <!-- External CSS libraries -->
@@ -32,6 +32,43 @@
     <!-- Custom Stylesheet -->
     <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
     <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
+    <style>
+        .news-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .news-list {
+            position: absolute;
+            width: 100%;
+        }
+
+        .news-item {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+
+        /* Auto-scroll */
+        @keyframes scrollNews {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        .news-list {
+            animation: scrollNews 15s linear infinite;
+        }
+    </style>
+
+<!--    style for news api-->
 
 </head>
 <body id="top">
@@ -191,11 +228,11 @@
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
                     <div class="carousel-content container">
                         <div id="typed-strings">
-                            <p>Welcome to CAR SHOP</p>
+                            <p>Welcome to AutoWorth</p>
                         </div>
                         <h1 class="typed-text">&nbsp;<span id="typed"></span></h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beatae autem aperiam neque quaerat molestias.</p>
-                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
+                        <p> we predict accurate resale worth of your car with help of artificial intelligence , tap on Get started Now to see featured Cars</p>
+                        <a href="#featuredCar" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
                     </div>
                 </div>
             </div>
@@ -240,109 +277,21 @@
 <!-- banner end -->
 
 <!-- Featured car start -->
-<div class="featured-car content-area-2">
-    <div class="container">
-        <div class="main-title">
-            <h1>Featured Car</h1>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInLeft delay-04s">
-                <div class="card car-box-2">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                          <img src="{% static 'assets2/img/car-5.jpg' %}" alt="Car Image" class="img-fluid">
-                        </a>
-                        <div class="car-overlay">
-                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
-                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
-                            <div class="car-magnify-gallery">
-                                <a href="{% static 'aasets2/img/car-5.jpg' %}" class="overlay-link"><i class="fa fa-expand"></i></a>
-                                <a href="{% static 'assets2/img/car-7.jpg' %}" class="hidden"></a>
-                                 <a href="{% static 'assets2/img/car-4.jpg' %}" class="hidden"></a>
 
-                            </div>
-                        </div>
+    <div class="news-container">
+        <div class="news-list">
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="news-item">
+                        <strong>{{ article.title }}</strong><br>
+                        {{ article.description }}
                     </div>
-                    <div class="detail">
-                        <h5 class="title"><a href="car-details.html">Fiat Punto Red</a></h5>
-                        <h4 class="price">$567.99</h4>
-                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp delay-04s">
-                <div class="card car-box-2">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <img src="{% static 'assets2/img/car-8.jpg' %}" alt="car-8" class="img-fluid">
-                        <div class="car-overlay">
-                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
-                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
-                            <div class="car-magnify-gallery">
-                                <a href="{% static 'assets2/img/car-8.jpg' %}" class="overlay-link"><i class="fa fa-expand"></i></a>
-                                <a href="{% static 'assets2/img/car-7.jpg' %}" class="hidden"></a>
-                                 <a href="{% static 'assets2/img/car-3.jpg' %}" class="hidden"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h5 class="title"><a href="car-details.html">Lamborghini</a></h5>
-                        <h4 class="price">$567.99</h4>
-                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp delay-04s">
-                <div class="card car-box-2">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <img src="{% static 'assets2/img/car-3.jpg' %}" alt="car-3" class="img-fluid">
-                        </a>
-                        <div class="car-overlay">
-                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
-                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
-                            <div class="car-magnify-gallery">
-                               <a href="{% static 'assets2/img/car-3.jpg' %}" class="overlay-link"><i class="fa fa-expand"></i></a>
-                               <a href="{% static 'assets2/img/car-7.jpg' %}" class="hidden"></a>
-                               <a href="{% static 'assets2/img/car-8.jpg' %}" class="hidden"></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h5 class="title"><a href="car-details.html">Toyota Prius</a></h5>
-                        <h4 class="price">$567.99</h4>
-                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInRight delay-04s">
-                <div class="card car-box-2">
-                    <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
-                            <img src="{% static 'assets2/img/car-6.jpg' %}" alt="car-1" class="img-fluid">
-                        </a>
-                        <div class="car-overlay">
-                            <a href="car-details.html" class="overlay-link"><i class="fa fa-link"></i></a>
-                            <a class="overlay-link car-video" title="Lexus GS F"><i class="fa fa-video-camera"></i></a>
-                            <div class="car-magnify-gallery">
-                                <a href="{% static 'assets2/img/car-6.jpg' %}" class="overlay-link"><i class="fa fa-expand"></i></a>
-                                <a href="{% static 'assets2/img/car-7.jpg' %}" class="hidden"></a>
-                                <a href="{% static 'assets2/img/car-8.jpg' %}" class="hidden"></a>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="detail">
-                        <h5 class="title"><a href="car-details.html">BMW</a></h5>
-                        <h4 class="price">$567.99</h4>
-                        <a href="car-details.html" class="btn btn-sm btn-border">Details</a>
-                    </div>
-                </div>
-            </div>
+                {% endfor %}
+            {% else %}
+                <div class="news-item">No news available.</div>
+            {% endif %}
         </div>
     </div>
-</div>
 <!-- Featured car end -->
 
 <!-- Services start -->
@@ -1027,6 +976,8 @@
 <script src="{% static 'assets2/js/ie-emulation-modes-warning.js' %}"></script>
 <!-- Custom JS Script -->
 <script src="{% static 'assets2/js/app.js' %}"></script>
+
+<!--script added for news api-->
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"

@@ -265,6 +265,52 @@
 
 
 <!-- Search area start -->
+<form method="POST" action="{% url 'predict_price' %}">
+    {% csrf_token %}
+    <label for="make">Make:</label>
+    <input type="text" id="make" name="make"><br>
+
+    <label for="yr_mfr">Year of Manufacture:</label>
+    <input type="number" id="yr_mfr" name="yr_mfr"><br>
+
+    <label for="fuel_type">Fuel Type:</label>
+    <input type="text" id="fuel_type" name="fuel_type"><br>
+
+    <label for="kms_run">Kilometers Run:</label>
+    <input type="number" id="kms_run" name="kms_run"><br>
+
+    <label for="body_type">Body Type:</label>
+    <input type="text" id="body_type" name="body_type"><br>
+
+    <label for="car_rating">Car Rating:</label>
+    <input type="text" id="car_rating" name="car_rating"><br>
+
+    <label for="transmission">Transmission:</label>
+    <input type="text" id="transmission" name="transmission"><br>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model"><br>
+
+    <label for="total_owners">Total Owners:</label>
+    <input type="number" id="total_owners" name="total_owners"><br>
+
+    <label for="registered_city">Registered City:</label>
+    <input type="text" id="registered_city" name="registered_city"><br>
+
+    <label for="registered_state">Registered State:</label>
+    <input type="text" id="registered_state" name="registered_state"><br>
+
+    <label for="warranty_avail">Warranty Available:</label>
+    <input type="checkbox" id="warranty_avail" name="warranty_avail"><br>
+
+    <label for="variant">Variant:</label>
+    <input type="text" id="variant" name="variant"><br>
+
+    <label for="fitness_certificate">Fitness Certificate:</label>
+    <input type="checkbox" id="fitness_certificate" name="fitness_certificate"><br>
+
+    <input type="submit" value="Predict Price">
+</form>
 
 
 <!-- Featured car end -->

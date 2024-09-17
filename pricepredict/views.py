@@ -1,6 +1,9 @@
 
+import pickle
+import pandas as pd
 from django.shortcuts import render
-
+model_path = "pricepredict/autoworthmodel.pkl"
+model = pickle.load(open(model_path, 'rb'))
 
 
 
@@ -21,11 +24,57 @@ def index3(request):
     return render(request, 'pricepredict/main/index-3.html')
 
 
-
 def register(request):
     return render(request, 'pricepredict/main/register.html')
 
 def index6(request):
     return render(request, 'pricepredict/main/index-6.html')
+
+
+def fetch_news(request):
+    api_key = 'e585602937ca4c43b23754b62f9276fa'
+    url = f'https://newsapi.org/v2/everything?q=Indian%20Automobile&apiKey={api_key}'
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        news_data = response.json()  # Get the JSON response
+        articles = news_data.get('articles', [])  # Extract the articles
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching news: {e}")
+        articles = []  # If error, return empty list
+
+    return render(request, 'your_template.html', {'articles': articles})
+
+def predict_price(request):
+    if request.method == 'POST':
+        # Retrieve the form data from the request
+        form_data = {
+            'make': request.POST.get('make'),
+            'yr_mfr': int(request.POST.get('yr_mfr')),
+            'fuel_type': request.POST.get('fuel_type'),
+            'kms_run': int(request.POST.get('kms_run')),
+            'body_type': request.POST.get('body_type'),
+            'car_rating': request.POST.get('car_rating'),
+            'transmission': request.POST.get('transmission'),
+            'model': request.POST.get('model'),
+            'total_owners': int(request.POST.get('total_owners')),
+            'registered_city': request.POST.get('registered_city'),
+            'registered_state': request.POST.get('registered_state'),
+            'warranty_avail': bool(request.POST.get('warranty_avail')),
+            'variant': request.POST.get('variant'),
+            'fitness_certificate': bool(request.POST.get('fitness_certificate')),
+        }
+
+        # Convert form data into a DataFrame to pass to the model
+        input_data = pd.DataFrame([form_data])
+        # Predict the price
+        predicted_price = model.predict(input_data)
+
+        # Render the result in the prediction page
+        return render(request, 'pricepredict/main/predict_result.html', {
+            'predicted_price': predicted_price[0],
+            'car_details': form_data
+        })
 
 

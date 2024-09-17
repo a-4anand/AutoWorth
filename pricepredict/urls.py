@@ -1,12 +1,16 @@
 from django.urls import path
 from django.urls import path
 from . import views
+from .views import fetch_news
 urlpatterns = [
     path('', views.index, name='index'),
     path('main/index-2/', views.index2, name='index2'),
     path('main/index-3/', views.index3, name='index3'),
     path('main/index-6/', views.index6, name='index6'),
     path('main/register/', views.register, name='register'),
+    path('news/', fetch_news, name='fetch_news'),
+    path('predict/', views.predict_price, name='predict_price'),
+
 
 
 ]
