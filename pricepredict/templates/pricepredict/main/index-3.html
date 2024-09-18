@@ -309,8 +309,13 @@
     <label for="fitness_certificate">Fitness Certificate:</label>
     <input type="checkbox" id="fitness_certificate" name="fitness_certificate"><br>
 
+    <!-- Submit button for predicting price -->
     <input type="submit" value="Predict Price">
+
+    <!-- Alternative action button using formaction -->
+    <button type="submit" formaction="{% url 'alternative_action' %}">Alternative Action</button>
 </form>
+
 
 
 <!-- Featured car end -->

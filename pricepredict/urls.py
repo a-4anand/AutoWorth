@@ -10,6 +10,7 @@ urlpatterns = [
     path('main/register/', views.register, name='register'),
     path('news/', fetch_news, name='fetch_news'),
     path('predict/', views.predict_price, name='predict_price'),
+    path('alternative_action/', views.alternative_action, name='alternative_action'),
 
 
 
