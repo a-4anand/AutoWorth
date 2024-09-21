@@ -310,10 +310,16 @@
     <input type="checkbox" id="fitness_certificate" name="fitness_certificate"><br>
 
     <!-- Submit button for predicting price -->
-    <input type="submit" value="Predict Price">
+    <a href="{% url 'predict_price' %}">Predict</a>
+    <input type="submit" value="Predict">
 
     <!-- Alternative action button using formaction -->
-    <button type="submit" formaction="{% url 'alternative_action' %}">Alternative Action</button>
+
+</form>
+<form method="POST" action="{% url 'alternative_action' %}">
+    {% csrf_token %}
+    <!-- alternative action fields -->
+    <button type="submit">Alternative Action</button>
 </form>
 
 

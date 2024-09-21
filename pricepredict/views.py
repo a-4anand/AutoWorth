@@ -46,10 +46,10 @@ def fetch_news(request):
 
     return render(request, 'pricepredict/main/index-3.html', {'articles': articles})
 
+
 def predict_price(request):
     if request.method == 'POST':
         try:
-            print("Form Submitted")
             form_data = {
                 'make': request.POST.get('make'),
                 'yr_mfr': int(request.POST.get('yr_mfr')),
@@ -66,14 +66,12 @@ def predict_price(request):
                 'variant': request.POST.get('variant'),
                 'fitness_certificate': bool(request.POST.get('fitness_certificate')),
             }
-            print("Form Data:", form_data)
 
             # Convert form data into a DataFrame to pass to the model
             input_data = pd.DataFrame([form_data])
 
             # Predict the price using the pre-loaded model
             predicted_price = model.predict(input_data)
-            print("Predicted Price:", predicted_price)
 
             # Render the prediction result
             return render(request, 'pricepredict/main/predict_result.html', {
@@ -82,15 +80,15 @@ def predict_price(request):
             })
 
         except Exception as e:
-            print("Error:", e)
             # Handle any exceptions during form data processing or prediction
             return HttpResponse(f"An error occurred: {str(e)}")
 
-    else:
-        print("GET Request")
-        # If the request method is GET, render the form page
-        return render(request, 'pricepredict/main/index-3.html')
+    # Fallback in case of a GET request or other issues
+    return HttpResponse("Invalid request method.")
 def alternative_action(request):
     if request.method == 'POST':
-        # Your logic for alternative action
+        # Implement the logic for the alternative action here
         return HttpResponse("Alternative action was triggered.")
+    else:
+        # If you want to handle GET requests, you can add that logic here
+        return HttpResponse("Alternative action only supports POST requests.")
