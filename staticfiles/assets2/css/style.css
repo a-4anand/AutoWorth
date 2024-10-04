@@ -80,7 +80,7 @@ ul {
 }
 
 a {
-    color: #37404d;
+    color: #b00000;
     text-decoration: none;
 }
 
@@ -3800,7 +3800,7 @@ table {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(33 9 90 / 55%);
+    background: rgba(236, 0, 0, 0.55);
 }
 
 .login-1 .info {
@@ -6525,19 +6525,5 @@ table {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*adaded later*/
 

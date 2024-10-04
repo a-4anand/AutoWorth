@@ -32,6 +32,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
+<link rel="stylesheet" type="stylesheet" href="{% static 'assets2/css/style.css' %}">
 
 <!-- Favicon icon -->
 <link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
@@ -43,7 +44,110 @@
 <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
 <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
 
+<!--    internal css-->
+
+<style>
+    .custom-form-container {
+    max-width: 1500px; /* Container width */
+    margin: auto;
+    padding: 20px;
+    background-color: #2C2C2C; /* Dark background for form */
+    color: white;
+}
+
+.custom-form-title {
+    text-align: center;
+    color: #9a0018; /* Red for title */
+    margin-bottom: 20px;
+}
+
+.custom-form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 40px; /* Gap between input columns */
+}
+
+.custom-form-input {
+    width: 100%; /* Change from 48% to 100% for full-width input */
+    padding: 12px; /* Increased padding for height */
+    border: 2px solid #9a0018; /* Red border for inputs */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #938d8d; /* Background color for inputs */
+    color: #070707; /* Text color */
+}
+
+.custom-checkbox {
+    transform: scale(1.2); /* Enlarge checkboxes */
+}
+
+.custom-submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #9a0018; /* Button background color */
+    border: none;
+    color: #f6e8e8; /* Button text color */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.custom-submit-btn:hover {
+    background-color: #9a0018; /* Slightly lighter red on hover */
+}
+
+label {
+    width: 48%; /* Maintained to align labels with inputs */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* CSS for dropdown */
+.dropdown {
+    position: relative;
+    width: 100%; /* Ensure the dropdown container is full width */
+}
+
+.custom-form-input.dropdown-input {
+    width: 100%; /* Change width to 100% for full-width dropdown input */
+    padding: 12px; /* Increased padding for height */
+    margin-top: 5px;
+    border: 2px solid #9a0018; /* Consistent border color */
+    border-radius: 5px; /* Consistent rounded corners */
+    background-color: #938d8d; /* Input background color */
+    color: #070707; /* Text color */
+}
+
+.dropdown-list {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #938d8d; /* Background color for dropdown */
+    border: 1px solid #ccc; /* Border for dropdown */
+    border-radius: 4px; /* Rounded corners */
+    max-height: 150px; /* Maximum height for dropdown */
+    overflow-y: auto; /* Allow scrolling if content is too tall */
+    width: 100%; /* Ensure dropdown is full width */
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.dropdown-list div {
+    padding: 10px; /* Increased padding for dropdown items */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.dropdown-list div:hover {
+    background-color: #9a0018; /* Change hover color to match theme */
+}
+
+.dropdown-list.show {
+    display: block; /* Show dropdown when activated */
+}
+
+</style>
+
 </head>
+
 <body id="top">
 
 <div class="page_loader">
@@ -62,130 +166,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fa fa-bars"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbar">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown active">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Index
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item" href="index.html">Index 1</a></li>
-                                    <li><a class="dropdown-item" href="index-2.html">Index 2</a></li>
-                                    <li><a class="dropdown-item" href="index-3.html">Index 3</a></li>
-                                    <li><a class="dropdown-item" href="index-4.html">Index 4</a></li>
-                                    <li><a class="dropdown-item" href="index-5.html">Index 5</a></li>
-                                    <li><a class="dropdown-item" href="index-6.html">Index 6 (Video)</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Car Listing
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-                                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">List Layout</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="car-list-rightside.html">Right Sidebar</a></li>
-                                            <li><a class="dropdown-item" href="car-list-leftside.html">Left Sidebar</a></li>
-                                            <li><a class="dropdown-item" href="car-list-fullwidth.html">Fullwidth</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Grid Layout</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="car-grid-rightside.html">Right Sidebar</a></li>
-                                            <li><a class="dropdown-item" href="car-grid-leftside.html">Left Sidebar</a></li>
-                                            <li><a class="dropdown-item" href="car-grid-fullwidth.html">Fullwidth</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Car Details</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="car-details.html">Car Details 1</a></li>
-                                            <li><a class="dropdown-item" href="car-details-2.html">Car Details 2</a></li>
-                                            <li><a class="dropdown-item" href="car-details-3.html">Car Details 3</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown megamenu-li">
-                                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                <div class="dropdown-menu megamenu" aria-labelledby="dropdown01">
-                                    <div class="megamenu-area">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-lg-3">
-                                                <div class="megamenu-section">
-                                                    <h6 class="megamenu-title">Pages</h6>
-                                                    <a class="dropdown-item" href="car-comparison.html">Car Comparison</a>
-                                                    <a class="dropdown-item" href="search-brand.html">Car Brands</a>
-                                                    <a class="dropdown-item" href="car-list-rightside.html">Car List</a>
-                                                    <a class="dropdown-item" href="car-grid-rightside.html">Car Grid</a>
-                                                    <a class="dropdown-item" href="services-1.html">Services 1</a>
-                                                    <a class="dropdown-item" href="services-2.html">Services 2</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-3">
-                                                <div class="megamenu-section">
-                                                    <h6 class="megamenu-title">Pages</h6>
-                                                    <a class="dropdown-item" href="team-1.html">Team 1</a>
-                                                    <a class="dropdown-item" href="team-2.html">Team 2</a>
-                                                    <a class="dropdown-item" href="team-3.html">Team 3</a>
-                                                    <a class="dropdown-item" href="about-1.html">About 1</a>
-                                                    <a class="dropdown-item" href="about-2.html">About 2</a>
-                                                    <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-3">
-                                                <div class="megamenu-section">
-                                                    <h6 class="megamenu-title">Pages</h6>
-                                                    <a class="dropdown-item" href="gallery-3column.html">Gallery 3 column</a>
-                                                    <a class="dropdown-item" href="gallery-4column.html">Gallery 4 column</a>
-                                                    <a class="dropdown-item" href="pricing-tables-1.html">Pricing Tables 1</a>
-                                                    <a class="dropdown-item" href="pricing-tables-2.html">Pricing Tables 2</a>
-                                                    <a class="dropdown-item" href="faq-1.html">Faq 1</a>
-                                                    <a class="dropdown-item" href="faq-2.html">Faq 2</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-lg-3">
-                                                <div class="megamenu-section">
-                                                    <h6 class="megamenu-title">Pages</h6>
-                                                    <a class="dropdown-item" href="contact-1.html">Contact 1</a>
-                                                    <a class="dropdown-item" href="contact-2.html">Contact 2</a>
-                                                    <a class="dropdown-item" href="404.html">404</a>
-                                                    <a class="dropdown-item" href="login.html">Login</a>
-                                                    <a class="dropdown-item" href="signup.html">Register</a>
-                                                    <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Blog
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-                                    <li><a class="dropdown-item" href="blog-columns-2col.html">2 Columns</a></li>
-                                    <li><a class="dropdown-item" href="blog-columns-3col.html">3 Columns</a></li>
-                                    <li><a class="dropdown-item" href="blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Shop
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
-                                    <li><a class="dropdown-item" href="shop-list.html">Shop List</a></li>
-                                    <li><a class="dropdown-item" href="shop-cart.html">Shop Cart</a></li>
-                                    <li><a class="dropdown-item" href="shop-checkout.html">Shop Checkout</a></li>
-                                    <li><a class="dropdown-item" href="shop-single.html">Shop Single</a></li>
-                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
-                                    <li><a class="dropdown-item" href="signup.html">Register</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact-1.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </nav>
             </div>
         </div>
@@ -265,62 +246,243 @@
 
 
 <!-- Search area start -->
-<form method="POST" action="{% url 'predict_price' %}">
-    {% csrf_token %}
-    <label for="make">Make:</label>
-    <input type="text" id="make" name="make"><br>
+<div class="custom-form-container">
+    <form action="{% url 'predict_price' %}" method="POST">
+        {% csrf_token %}
 
-    <label for="yr_mfr">Year of Manufacture:</label>
-    <input type="number" id="yr_mfr" name="yr_mfr"><br>
+        <h2 class="custom-form-title">Predict Car Price</h2>
 
-    <label for="fuel_type">Fuel Type:</label>
-    <input type="text" id="fuel_type" name="fuel_type"><br>
+        <div class="custom-form-row">
+            <label for="make">Car Company</label>
+            <select id="make" name="make" class="custom-form-input">
+                <option value="maruti">Maruti Suzuki</option>
+                <option value="hyundai">Hyundai</option>
+                <option value="renault">Renault</option>
+                <option value="honda">Honda</option>
+                <option value="ford">Ford</option>
+                <option value="nissan">Nissan</option>
+                <option value="toyota">Toyota</option>
+                <option value="audi">Audi</option>
+                <option value="tata">Tata</option>
+                <option value="datsun">Datsun</option>
+                <option value="mahindra">Mahindra</option>
+                <option value="volkswagen">Volkswagen</option>
+                <option value="mitsubishi">Mitsubishi</option>
+                <option value="mercedes benz">Mercedes Benz</option>
+                <option value="chevrolet">Chevrolet</option>
+                <option value="kia">Kia</option>
+                <option value="bmw">BMW</option>
+                <option value="skoda">Skoda</option>
+                <option value="volvo">Volvo</option>
+                <option value="fiat">Fiat</option>
+                <option value="mg">MG</option>
+                <option value="isuzu">Isuzu</option>
+                <option value="ssangyong">Ssangyong</option>
+                <option value="jeep">Jeep</option>
+                <option value="mahindra renault">Mahindra Renault</option>
+                <option value="opel">Opel</option>
+            </select>
 
-    <label for="kms_run">Kilometers Run:</label>
-    <input type="number" id="kms_run" name="kms_run"><br>
+            <label for="year">Year of Manufacture:</label>
+            <input type="number" id="year" name="yr_mfr" class="custom-form-input" value="2023">
+        </div>
 
-    <label for="body_type">Body Type:</label>
-    <input type="text" id="body_type" name="body_type"><br>
+        <div class="custom-form-row">
+            <label for="fuel_type">Fuel Type:</label>
+            <select id="fuel_type" name="fuel_type" class="custom-form-input">
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="petrol & cng">Petrol & CNG</option>
+                <option value="electric">Electric</option>
+                <option value="petrol & lpg">Petrol & LPG</option>
+            </select>
 
-    <label for="car_rating">Car Rating:</label>
-    <input type="text" id="car_rating" name="car_rating"><br>
+            <label for="kms_run">Kilometers Run:</label>
+            <input type="number" id="kms_run" name="kms_run" class="custom-form-input">
+        </div>
 
-    <label for="transmission">Transmission:</label>
-    <input type="text" id="transmission" name="transmission"><br>
+        <div class="custom-form-row">
+            <label for="body_type">Body Type:</label>
+            <select id="body_type" name="body_type" class="custom-form-input">
+                <option value="sedan">Sedan</option>
+                <option value="hatchback">Hatchback</option>
+                <option value="suv">SUV</option>
+                <option value="luxury sedan">Luxury Sedan</option>
+                <option value="luxury suv">Luxury SUV</option>
 
-    <label for="model">Model:</label>
-    <input type="text" id="model" name="model"><br>
+            </select>
 
-    <label for="total_owners">Total Owners:</label>
-    <input type="number" id="total_owners" name="total_owners"><br>
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" class="custom-form-input" placeholder="Type model..." oninput="filterModels()">
+        <div class="dropdown-list" id="model-dropdown"></div>
 
-    <label for="registered_city">Registered City:</label>
-    <input type="text" id="registered_city" name="registered_city"><br>
+        </div>
 
-    <label for="registered_state">Registered State:</label>
-    <input type="text" id="registered_state" name="registered_state"><br>
+        <div class="custom-form-row">
+            <label for="car_rating">Car Rating:</label>
+            <select id="car_rating" name="car_rating" class="custom-form-input">
+                <option value="great">Great</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="overpriced">Overpriced</option>
+            </select>
 
-    <label for="warranty_avail">Warranty Available:</label>
-    <input type="checkbox" id="warranty_avail" name="warranty_avail"><br>
+            <label for="total_owners">Total Owners:</label>
+            <input type="number" id="total_owners" name="total_owners" class="custom-form-input">
+        </div>
 
-    <label for="variant">Variant:</label>
-    <input type="text" id="variant" name="variant"><br>
+        <div class="custom-form-row">
+            <label for="transmission">Transmission:</label>
+            <select id="transmission" name="transmission" class="custom-form-input">
+                <option value="automatic">Automatic</option>
+                <option value="manual">Manual</option>
+            </select>
 
-    <label for="fitness_certificate">Fitness Certificate:</label>
-    <input type="checkbox" id="fitness_certificate" name="fitness_certificate"><br>
+            <label for="registered_city">Registered City:</label>
+            <input type="text" id="registered_city" name="registered_city" class="custom-form-input">
+        </div>
 
-    <!-- Submit button for predicting price -->
-    <a href="{% url 'predict_price' %}">Predict</a>
-    <input type="submit" value="Predict">
+        <div class="custom-form-row">
+            <label for="registered_state">Registered State:</label>
+            <select id="registered_state" name="registered_state" class="custom-form-input">
+                <option value="delhi">Delhi</option>
+                <option value="uttar pradesh">Uttar Pradesh</option>
+                <option value="haryana">Haryana</option>
+                <option value="maharashtra">Maharashtra</option>
+                <option value="rajasthan">Rajasthan</option>
+                <option value="karnataka">Karnataka</option>
+                <option value="gujarat">Gujarat</option>
+                <option value="jharkhand">Jharkhand</option>
+                <option value="punjab">Punjab</option>
+                <option value="andhra pradesh">Andhra Pradesh</option>
+                <option value="chhattisgarh">Chhattisgarh</option>
+                <option value="telangana">Telangana</option>
+                <option value="west bengal">West Bengal</option>
+                <option value="tamil nadu">Tamil Nadu</option>
+                <option value="chandigarh">Chandigarh</option>
+                <option value="uttarakhand">Uttarakhand</option>
+            </select>
 
-    <!-- Alternative action button using formaction -->
+            <label for="variant">Variant:</label>
+            <div class="dropdown">
+                <input type="text" id="variant" name="variant" class="custom-form-input" placeholder="Type variant..." oninput="filterVariants()">
+                <div class="dropdown-list" id="variant-dropdown"></div>
+            </div>
+        </div>
 
-</form>
-<form method="POST" action="{% url 'alternative_action' %}">
-    {% csrf_token %}
-    <!-- alternative action fields -->
-    <button type="submit">Alternative Action</button>
-</form>
+        <div class="custom-form-row">
+            <label for="warranty_avail">Warranty Available:</label>
+            <input type="checkbox" id="warranty_avail" name="warranty_avail" class="custom-checkbox">
+
+            <label for="fitness_certificate">Fitness Certificate:</label>
+            <input type="checkbox" id="fitness_certificate" name="fitness_certificate" class="custom-checkbox">
+        </div>
+
+        <button type="submit" class="custom-submit-btn">Predict Price</button>
+    </form>
+</div>
+<!--<div class="form-container">-->
+<!--    <form method="POST" action="{% url 'predict_price' %}">-->
+<!--        {% csrf_token %}-->
+<!--        <h2 class="form-title">Predict Car Price</h2>-->
+
+<!--        <label for="make">Make:</label>-->
+<!--        <input type="text" id="make" name="make" class="form-input"><br>-->
+
+<!--        <label for="yr_mfr">Year of Manufacture:</label>-->
+<!--        <input type="number" id="yr_mfr" name="yr_mfr" class="form-input"><br>-->
+
+<!--        <label for="fuel_type">Fuel Type:</label>-->
+<!--        <input type="text" id="fuel_type" name="fuel_type" class="form-input"><br>-->
+
+<!--        <label for="kms_run">Kilometers Run:</label>-->
+<!--        <input type="number" id="kms_run" name="kms_run" class="form-input"><br>-->
+
+<!--        <label for="body_type">Body Type:</label>-->
+<!--        <input type="text" id="body_type" name="body_type" class="form-input"><br>-->
+
+<!--        <label for="car_rating">Car Rating:</label>-->
+<!--        <input type="text" id="car_rating" name="car_rating" class="form-input"><br>-->
+
+<!--        <label for="transmission">Transmission:</label>-->
+<!--        <input type="text" id="transmission" name="transmission" class="form-input"><br>-->
+
+<!--        <label for="model">Model:</label>-->
+<!--        <input type="text" id="model" name="model" class="form-input"><br>-->
+
+<!--        <label for="total_owners">Total Owners:</label>-->
+<!--        <input type="number" id="total_owners" name="total_owners" class="form-input"><br>-->
+
+<!--        <label for="registered_city">Registered City:</label>-->
+<!--        <input type="text" id="registered_city" name="registered_city" class="form-input"><br>-->
+
+<!--        <label for="registered_state">Registered State:</label>-->
+<!--        <input type="text" id="registered_state" name="registered_state" class="form-input"><br>-->
+
+<!--        <label for="warranty_avail">Warranty Available:</label>-->
+<!--        <input type="checkbox" id="warranty_avail" name="warranty_avail"><br>-->
+
+<!--        <label for="variant">Variant:</label>-->
+<!--        <input type="text" id="variant" name="variant" class="form-input"><br>-->
+
+<!--        <label for="fitness_certificate">Fitness Certificate:</label>-->
+<!--        <input type="checkbox" id="fitness_certificate" name="fitness_certificate"><br>-->
+
+<!--        <input type="submit" class="submit-btn" value="Predict Price">-->
+<!--    </form>-->
+<!--</div>-->
+<!--<form method="POST" action="{% url 'predict_price' %}">-->
+<!--    {% csrf_token %}-->
+<!--    <label for="make">Make:</label>-->
+<!--    <input type="text" id="make" name="make"><br>-->
+
+<!--    <label for="yr_mfr">Year of Manufacture:</label>-->
+<!--    <input type="number" id="yr_mfr" name="yr_mfr"><br>-->
+
+<!--    <label for="fuel_type">Fuel Type:</label>-->
+<!--    <input type="text" id="fuel_type" name="fuel_type"><br>-->
+
+<!--    <label for="kms_run">Kilometers Run:</label>-->
+<!--    <input type="number" id="kms_run" name="kms_run"><br>-->
+
+<!--    <label for="body_type">Body Type:</label>-->
+<!--    <input type="text" id="body_type" name="body_type"><br>-->
+
+<!--    <label for="car_rating">Car Rating:</label>-->
+<!--    <input type="text" id="car_rating" name="car_rating"><br>-->
+
+<!--    <label for="transmission">Transmission:</label>-->
+<!--    <input type="text" id="transmission" name="transmission"><br>-->
+
+<!--    <label for="model">Model:</label>-->
+<!--    <input type="text" id="model" name="model"><br>-->
+
+<!--    <label for="total_owners">Total Owners:</label>-->
+<!--    <input type="number" id="total_owners" name="total_owners"><br>-->
+
+<!--    <label for="registered_city">Registered City:</label>-->
+<!--    <input type="text" id="registered_city" name="registered_city"><br>-->
+
+<!--    <label for="registered_state">Registered State:</label>-->
+<!--    <input type="text" id="registered_state" name="registered_state"><br>-->
+
+<!--    <label for="warranty_avail">Warranty Available:</label>-->
+<!--    <input type="checkbox" id="warranty_avail" name="warranty_avail"><br>-->
+
+<!--    <label for="variant">Variant:</label>-->
+<!--    <input type="text" id="variant" name="variant"><br>-->
+
+<!--    <label for="fitness_certificate">Fitness Certificate:</label>-->
+<!--    <input type="checkbox" id="fitness_certificate" name="fitness_certificate"><br>-->
+
+<!--    &lt;!&ndash; Submit button for predicting price &ndash;&gt;-->
+
+<!--    <input type="submit">-->
+
+<!--    &lt;!&ndash; Alternative action button using formaction &ndash;&gt;-->
+
+<!--</form>-->
+
 
 
 
@@ -401,9 +563,6 @@
     </div>
 </div>
 <!-- Our-team-2 end -->
-
-<!-- Our services start -->
-{% load static %}
 
 <div class="our-services-4 content-area-8 overview-bgi" style="background-image: url({% static 'assets/img/services-bg-photo.jpg' %})">
     <div class="container">
@@ -863,6 +1022,386 @@
 <script src="{% static 'assets2/js/ie-emulation-modes-warning.js' %}"></script>
 <!-- Custom JS Script -->
 <script src="{% static 'assets2/js/app.js' %}"></script>
+
+<!--javascript for variant dropdown-->
+<script>
+    // List of vehicle variants
+    const variants = ['lxi opt', 'lxi', 'sports 1.2 vtvt', 'vdi', 'magna 1.2 vtvt',
+       'vxi (o) amt', 'asta 1.2', 'magna 1.4 crdi', 'rxl', 'sportz 1.2',
+       'sportz 1.4 crdi', '1.2 v mt i vtec', 'magna 1.2 kappa2',
+       's mt petrol', 'sportz 1.2 kappa2', 'd lite plus', 'vdi abs',
+       '1.2 s mt i vtec', 'era plus', 'fluidic 1.6 sx crdi', 'vxi bs iv',
+       'magna o 1.2', 'gls', 'vxi', 'vxi 1.2 bs iv', '1.5 trend tdci',
+       'vdi bs iv', 'xl petrol', 's 1.1 crdi', 'magna o 1.4 crdi',
+       'd 4d gd', 'gl plus', 'sportz 1.2 kappa vtvt',
+       'fluidic 1.6 crdi s', 'vxi cng', 'alpha ddis 190', 'zdi',
+       'ldi bs iv', 's 1.6 mt', 'sportz o 1.4 crdi', '1.2 smt i vtec',
+       '1.6 crdi sx plus auto', 'lxi cng', '1.5 emt i dtec',
+       '2.0 tdi quattro mt', '1.6 sx crdi', 'asta 1.4 crdi',
+       '1.5 exmt i dtec', 'sportz 1.4', 'd 4d j', '2.0 tdi',
+       '2.5 vx 7 str bs iv', 'rxz', 'rxt', 'vxi opt. mt',
+       'sportz (o) 1.2 at vtvt', 'sportz(o) 1.2 mt', '85 ps rxl opt',
+       '1.2 magna plus vtvt', 'xt 1.05 revotorq', '1.6 s', 'g',
+       'zxi smart hybrid', 't (o)', 'zxi', '1.2 i-vtec vx mt',
+       'zeta 1.2 k12', 'lxi 1.3', 'w8 fwd', 'comfortline 1.2l petrol',
+       'xt 1.2 revotron', 's8', '2.4 gx 7 str', 's10',
+       '1.6 sx plus petrol', '1.4 zxi duratorq', '2.4 mivec',
+       'fluidic 1.6 sx crdi opt', 'fluidic 1.4 crdi cx', 'highline 1.5',
+       'lxi 1.2 bs iv', '1.5titanium tdci', 'xv 110 diesel', 'vxi genus',
+       'highline diesel', 'gl', '2.0 tdi quattro', '1.6 sx at crdi',
+       '2.0 tdi premium plus', '3.0 at 4x2', '2.5 gx 7 str bs iv',
+       'lx bs iv', '1.0 t(o) at', 'zxi at', 't8 at', 'v mt petrol',
+       'lxi 1.0 l', 'era 1.1 irde', 'vx mt petrol', 's 1.1 crdi opt',
+       '1.6 crdi sx + at', 'zdi plus', '1.6 crdi sx', '1.4 crdi ex mt',
+       '1.5 titanium ti vct', 'fluidic 1.4 crdi', 'alpha shvs  mt',
+       'xz 2.0l kryotec', 'vx mt diesel', '1.8v at', 'vxi 1.3',
+       'magna 1.1 irde2', 'cla 200 cdi sport', '1.5 smt i dtec',
+       'alpha 1.3 ddis shvs', 'k4+ d 6 str', '1.5 e mt petrol', '7 str',
+       '40 tfsi premium', 'w4', 'vl at', 'sv mt petrol', '3.0 mt 4x2',
+       'gls cng', 'w6 4x2', '1.0 rxt opt', 'delta 1.2 k12', '1.0 rxt',
+       'xt twist', 'sportz 1.1 irde2', 'alpha 1.2 k12', 'crde 4x4 bs iv',
+       'ls diesel', '3.0 mt 4x4', 'vdi amt', 's11', 's6+ intell hybrid',
+       'xp', '1.2', '1.5 exi', 'lx tdi bs iii', 'fluidic 1.6 ex crdi',
+       'vdi elate limited edition', 'zxi 1.3', 'alpha 1.5 at vtvt shvs',
+       'magna 1.2 kappa vtvt', 'vxi amt', '1.2 e mt i vtec',
+       'era 1.2 vtvt', 'magna 1.2', 'd-4d vxd', 'sportz 1.2 vtvt',
+       'vxi plus', 'sx 1.2 opt', 'htx 1.5 diesel', 'zdi + amt',
+       'sx(o) crdi', 'highline1.2l petrol', '1.2 v mt', 'gd',
+       '2.5 gx 8 str bs iv', 'sigma 1.3', '1.2 sat i vtec',
+       'delta 1.3 ddis shvs', '320d', 'vdi+ shvs', 'hybrid',
+       'asta 1.2 kappa vtvt opt', 'titanium plus petrol at', 'magna plus',
+       '2.0 tdi s line', 'vdi plus', '1.5 titaniumtdci opt', 'w10 at fwd',
+       '35 tdi quattro', '2.5 vx 8 str bs iv', '1.6 sx (o) crdi',
+       'trendline 1.2l petrol', 'era plus (o)', 's5 2wd',
+       'vxi elate limited edition', '1.2 v at', '1.6 sx plus se',
+       '1.2 base i vtec', 'k10 vxi at', '1.8 g', 'fluidic 1.6 ex vtvt',
+       'highline petrol at', 'sportz1.2 crdi', 'vxi abs',
+       'xz 1.2 revotron', 'trendline 1.0 l petrol', '1.5 trend ti vct',
+       '1.2 v cvt i vtec', 'zx cvt petrol', 'rxt opt', 'sportz 1.2 o',
+       'vdi opt', 'fluidic 1.6 sx vtvt', '1.4 e plus crdi',
+       'vx (o) petrol', 'zdi+ shvs rs mt', 'ambiente 1.8 tsi', 's at',
+       'w10 at', 'zeta ddis 190', '1.6 sx at petrol', 'cross 1.4 gd',
+       'zdi plus dual tone', 'zdi amt', 'gt tsi 1.2 petrol at',
+       '1.5 tdci titanium plus', '5 str cng with ac plushtr',
+       '1.2 zxi duratec', 'he 1.8 j', 'elegance tdi 2.0 at', 'sle',
+       'sportz at 1.2 kappa vtvt', 'kinetic d4', 'zdi+ dual tone amt',
+       'e 220 cdi elegance', '2.0 crdi at', 'gls 1.6 abs',
+       'xl erlx euro iii', 'era', 'trendline diesel', 'lxi minor',
+       'magna 1.1 crdi', 'fluidic 1.6 crdi sx opt', 'w10',
+       'vlx 2wd airbag bs iv', 'sportz 1.4 crdi 6 speed bs iv',
+       'climber 1.0 at', 'zxi amt', 'sx at 1.2 opt',
+       '5 str with ac plushtr', 'lx', 't2', 'std', 'sportz 1.2 at kappa2',
+       'vx quadrajet', 'zxi 1.2 bs iv', 'rxt 1.0 easy-r  at',
+       'zxi opt amt', '1.0 rxl', 'twist xta', 'asta 1.2 o with sunroof',
+       'magna', 'vxi abs at', '8 str', 'rxt 1.0 easy-r at option',
+       'zxi abs', 'vxi opt', 'delta 1.2 k12 amt', 'zxi plus amt',
+       'k6 d 6 str', '1.8 gl', 'zxi opt', '1.2 sx', 'vxi+ (o) mt',
+       'rxl1.0 easy-r at', 'asta 1.2 at vtvt', 'asta at 1.2 kappa vtvt',
+       'rx l petrol', 'ls 1.0', 'magna o', 'asta 1.2 (o) vtvt',
+       '1.5 v i vtec', 'alpha 1.2 k12 dual tone', 's 1.2', '1.1 gvs',
+       'magna 1.2 at', 'v  limited', 'sportz 1.2 at', 'sportz (o) 1.4',
+       'comfortline 1.2l diesel', 'vxi regal limited edition',
+       'asta 1.2 (o)', 'ls petrol', '1.4 exi duratorq', '1.2 exi duratec',
+       'vxi (o)1.ol ags', 'delta 1.5 shvs vvt at', 'lt petrol',
+       '1.5 v cvt i-dtec', 'xi', 'xo erlx euro iii', 'highline petrol',
+       'vxi bs iii', 'zxi plus', '1.4 crdi asta (o)',
+       'rxl pack diesel 85', '1.2 sv petrol', 'vx  1.2', 'vdi shvs',
+       'highline plus dsg 1.5', 'rxz diesel 110', 'gt tsi',
+       '1.2 trend+ petrol', '1.5 v mt', '1.2 titanium duratec',
+       'active 1.3', 'gls lpg', 'zxi mt bs iv', '1.2 ls abs', 'j mt',
+       '1.4 sx', '1.5 titanium ti vct at', 'rxe petrol mt', '1.6 sx vtvt',
+       'rxl petrol 104', '1.5 titanium plus ti vct at', 'vxi (o)',
+       'zeta 1.3', 'active 1.2', 'highline1.2l diesel',
+       'asta 1.2 dual tone', 'lxi lpg', 'varicor 400 xta', 'k8 d 6 str',
+       'gt tdi 1.6 mt diesel', '1.6 zxi abs', 'dynamic 1.3',
+       '1.0l turbo gdi sx mt', 'vxi minor', '2.8 zx at 7 str',
+       'highline tdi at', 'w4 4x2', '1.6 sx vtvt at (o)', '4wd at',
+       'emotion 1.3', '2.5 v 8 str', 'sx 1.8 at',
+       'ambiente 2.0 tdi cr at', 'lt 1.0', '2.5 zx 7 str bs iv',
+       '1.4 titanium duratorq', 'aura 1.3 quadrajet', '5 seater',
+       '2.5 g4 8 str', '2.5 v 7str', 'ldi', '250 cdi avantgarde',
+       'fluidic 1.6 sx vtvt opt', 'zdi plus shvs', 'rxz amt 110 ps',
+       'xl cvt', '1.0 rxz', 'vx', '1.6 sx plus auto petrol',
+       'alpha 1.2 k12 amt', 'vxi 1.0', 's 1.2 opt', '1.0 s at',
+       '1.0 vxi (o)', 'fluidic 1.6 crdi sx opt at', '85 ps rxl',
+       'zeta 1.2 k12 amt', 'elegance 2.0 tdi cr at',
+       '1.0l turbo gdi sx(o) mt', '1.4 ls 8 str', 'zeta 1.2 k12 cvt',
+       '1.5 tdi at style plus', '35tdi', '1.4 clxi tdci',
+       '1.0 ecoboost titanium', 'd lite', '5 str', 't', 'cross 1.2 g',
+       'xe 1.2 revotron', 'zxi 1.2', 'ls 1.0 lpg', 'lx special edition',
+       'fluidic 1.6 vtvt s (o)  mt', 'lt opt petrol', 'climber 1.0', 'v',
+       'zxi+ bs iv', 'xm revotron', 'c8', 'v cvt', 'sle bs iv',
+       '1.1 sports amt', 'highline1.5l diesel', 'xza 1.2 revotron',
+       'power+ sle', 'm8 8 str', '1.6 tdi mt ambition plus', 'zdi shvs',
+       'xz+ 1.2 revotron', 'sharp dct petrol', 'xm 1.5', 'rxl amt 110 ps',
+       'xm 1.2', 'xv petrol', 'rxs cvt 106 ps', 'trendline 1.2l diesel',
+       'w11 (o)', 'gle', 'xza + 1.2 petrol a/t',
+       '1.0 ecoboost titanium sports(sunroof)', 'trendline 2.0l tdi',
+       'w10 at awd', 'pure 4x2', 'gt tdi', 'ambiente 2.0 tdi cr mt',
+       '1.8 tsi lk at', '1.4 exi tdci', 'd 4d g', 'elegance 1.6 tdi mt',
+       'xl p', 'alpha shvs', 'emotion pk 1.4', 's5', 'e20 t2',
+       'high line plus 1.0', 'titanium 1.2 ti-vct mt',
+       '1.4 gtx+ turbo gdi petrol at', '2.5 g1 bs iv', '2.5 g2 7 seater',
+       'l2', '1.5 sv i dtec', '320d highline', 'gls at', '2.5 g1',
+       'zdi+ shvs', '1.5 v opt. i vtec', 'd2 bs iv', '1.5 d2 bs iv',
+       'vxi abs air bag', 'vgt crdi sx abs', 'comfortline plus 1.0',
+       '1.2 vx at i vtec', '1.2 vx mt i vtec', 'fluidic 1.4 ex crdi',
+       'htk plus 1.5 diesel', '1.2 select i vtec', 'asta 1.2 vtvt',
+       'magna executive 1.2', '1.2 s (o) mt ivtec', 'delta ddis 190',
+       'alpha 1.3', 'vdi (o) shvs hybird', 's mt diesel', '85 ps rxe',
+       '1.4 s crdi', '1.6 tdi mt ambition', 'n6 mhawk', '1.5 i-dtec s mt',
+       'h2 1.8 e', 'zdi plus amt', 'w6 at', 'g at', 's6 plus',
+       'xe 85 ps deisel', 'elegance 1.6 mpfi at', 't6+',
+       'multijet 1.3 90 hp', 'gd exclusive', '1.5 s i vtec',
+       '1.6 e + vtvt', 'shvs vdi', 'e mt diesel',
+       'ambition 1.6 mpi mt plus', '250 cdi', '1.5 ambiente tdci',
+       'vx mt o diesel', '1.6 sx plus diesel', 'sx 1.1 crdi',
+       'd 4d gd sp', 't8', 'v mt diesel', 'sportz 1.1 crdi',
+       '1.5 vxmt i dtec', '1.4 s plus crdi', 'neotech 1.0 easyr',
+       'kraz at petrol', 'rxl diesel 110', '2.8 gx at 7 str', '2.4 mt',
+       'gxi', 'c 220 cdi avantgarde', 'w9', 'asta 1.4 crdi 6 speed',
+       'xt revotron', 'g sp', 'sv mt diesel', 'era 1.4 crdi', 'k2 6 str',
+       'sportz petrol', 'w4 petrol', 'fluidic 1.6 sx vtvt opt at',
+       'vdi glory edition', 'vx cvt petrol', 'd 4d vd', 'zx cvt',
+       'comfortline 2.0l tdi', 'alpha 1.5 mt vvt shvs', 'lxi cng 1.0 l',
+       '1.2 vxmt i vtec', 'ldi opt', 'tour s diesel',
+       '1.0 ecoboost titanium opt', '4*4 mt', '30 tdi premium',
+       's10 7 str', 'rx7', 'vlx 2wd bs iv', 'w10 fwd',
+       'rxl plus diesel 85', '2.4 vx 8 str', 'sv cvt petrol',
+       '5 str with ac plus htr', 'ltz', '110 ps rxz diesel plus',
+       '3.0 at 4x4', 'e 250 cdi classic', 'high 4x2 mt',
+       'fluidic 1.6 crdi sx at', 'i', 'vx dual tone', 'sigma 1.2 k12',
+       '2.0 tdi 174bhp prm plus', '1.8v mt', 'zeta shvs petrol',
+       'ambiente 1.2 mpi', '2.8 4x2 at', 'ambition 2.0 tdi 4x2',
+       'delta 1.3', 'magna 1.2 crdi', 'asta 1.1 (o) crdi', '1.3 lt 7 str',
+       'vgt crdi sx 1.5', '4x2 lx dicor 2.2 vtt', '2wd at gl diesel',
+       '1.6 sx mt', 'xo erlx euro ii', 'xg', 'c4', 'xg erlx euro iii',
+       'executive gle', 'zeta 1.4 vvt amt', 'aura quadrajet bs iv',
+       '520d', '2.4 vti l at', 'aqua safire bs iii', '1.2 emt i vtec',
+       '2.5 g4 7 str', 'asta 1.2 kappa vtvt', 'xl erlx euro ii',
+       '1.6 sxi abs', '1.2 s', 'sportz (o) 1.2', 'delta 1.2 k12 at',
+       'sx 1.2', 'xcite', 'g cvt', 'zeta 1.3 ddis shvs', 'asta 1.1 crdi',
+       'v at', '1.5 i-dtec vx mt', 'highline 1.2 tsi at', 'j cvt',
+       'xma 1.5', 'zxi abs amt', '1.8 tsi style at', 'w11 at', 'vd',
+       '2.0 tdi cr lk at', 'c220 cdi grand edition', '1.2 exmt i vtec',
+       '2.5 g3 8 str', 'revotron xt', 'highline 1.2',
+       'sx o mt 1.2 diesel', 'magna plus optional',
+       'lxi cng avance limited edition', 'k6+ d 6 str', 'cross 1.5 v',
+       'gtx + at petrol', 'sportz', 'trendline petrol',
+       'vxi musik edition', 'xl plus 85 ps deisel',
+       'fluidic 1.6 vtvt sx at', '1.2 s mt', 'k8 6 str', 'k6+ 6 str',
+       'vdi dual tone', 'vxi optional', '1.2 s cvt i vtec',
+       'xm rt 90 ps abs', '350 blue efficiency', 'trendline 1.6',
+       'era 1.2', 'highline 1.5l at (d)', 'w8(o)', '200 cgi avantgarde',
+       '1.0 turbo gdi sx+ at', '1.2 sx mt i vtec', '250 cdi elegance at',
+       'sdrive 20d', 'xza+ 1.5', '2.0 limited', '1.6 sx (o) crdi mt',
+       'elegance 1.8 tsi at', 'xl diesel', '2.0 longitude',
+       '1.5 elegance tdi mt', '2.8 4x2 mt', 'c 220 cdi classic',
+       'v mt sunroof', 'delta 1.6', 'touring sport diesel at',
+       '2.8 gx at 8 str', 'zdi shvs hybird', 'h4 abs bs iv',
+       'fluidic 1.4 vtvt', 'vxi smart hybrid', 'asta 1.2 kappa2',
+       '2.4 at i vtec', 'highline 1.6l petrol', 'lxi cng opt', '1.8 z3',
+       'ltz at', 'd 4d gl', 'e 250 cdi elegance', 'active 2.0 tdi 4x2',
+       'xv diesel', '520d 2.0', 'xdrive 20d', 'rxl 110 ps adventure',
+       '1.5 v i dtec', 's10 at', '1.6 sx (o) vtvt', 'slx bs iv',
+       'm8 7 str', 'ambition plus 1.2 tdi', '2wd at gls petrol',
+       '1.6 sx plus vtvt', 'aura abs safire bs iv', 'delta 1.4 vvt',
+       'limited (o) 2.0', '1.5 vtec plus', 'vxi cng anniversary edition',
+       's9', 'zxi smart hybrid at', '320d luxuryline', '2.4 at',
+       'xv d thp premium 110 ps', '2.8 4x4 at', 'e 1.0', 'dle 1.5 dci',
+       '110 ps rxz diesel opt', 'ex', 'dls', 'era 1.1 1rde2',
+       '1.6 sx (o) at crdi', 'comfortline 1.2', '1.2 sports plus vtvt',
+       '2.0 sport', '2.4 at 4wd avn', '2.0 limited 4*2', 'rs 1.0 petrol',
+       'power+ zlx', 'sport 1.3', '1.5 tdi mt elegance',
+       'comfortline diesel', 'e8 abs bs iv', '200 elegance', 's 1.8 mt',
+       'vxi 1.2l', '1.2  asta (o) cvt', 'zeta shvs', '2.0 2wd at',
+       'magna 1.1 lpg', 's2', 'xms quadrajet 90ps', 'gl plus lpg',
+       '1.5 sx mt i dtec', '1.2 s vtvt', '2.2 vx 4x2',
+       'vxi limited edition', 'zxi leather amt', 'comfortline tsi at',
+       'comfortline tdi at', 'comfortline 1.0', 'vd limited edition',
+       'limited 1.4 at', 'k4 6 str', 'xz 1.2 revotron opt',
+       '1.5 trend diesel', 'w7 fwd', 'fluidic 1.4 vtvt cx', 'rxz 110 4wd',
+       '1.2 lxi duratec', '2.5 g3', '4x2 lx', 'tour', '280 cdi elegance',
+       '2.8 tfsi technology', 'asta 1.1 crdi opt', 'le', '1.3 flair',
+       'asta 1.2 at with sunroof', '1.2 titanium', 'xe diesel',
+       'sharp hybird petrol mt', '2.4 zx 7 str', '1.6 sx vtvt (o)', 'xv',
+       '1.0 rxt opt at', 'vxi plus ags', 'vxi at', 'xv s', 'era plus lpg',
+       '2.4 gx 8 str', '2.4 vx 7 str', '1.5 trend+ tdci',
+       'magna plus blue drive', 'ambition 1.6 mpfi mt',
+       'style 1.6 mpi mt', 'elegance 1.2 mpi', '1.5 i-vtec v cvt',
+       'transform 1.6 vtvt', 'highline 1.0 petrol', '1.5 titanium',
+       'vgt crdi', '4x2 ex dicor bs iv', 'sportz o 1.2',
+       '1.2 sports plus vtvt cvt', 'ps diesel', 'zdi plus 1.5 diesel',
+       'comfortline 1.5l diesel', '1.5 ecosport titanium sports(sunroof)',
+       't 10 mt dual tone', 'ambition 1.6 tdi mt', '200 cdi sport',
+       '2.5 e', '7 seater', 'ls cr4 bs iv', 'vx d', '2.2 vx 4x4',
+       'exclusive', 'magna 1.2 at  vtvt', 'vxi deca', '1.2 vx at',
+       'alpha 1.4 vvt amt', '110 ps rxz 8 str', 'magna executive diesel',
+       'xl cvt (petrol)', '1.4 crdi s mt', '1.5 titanium sports edition',
+       'zdi +', 'sigma ddis 190', 'zlx special edition',
+       '1.5 tdi at ambition', '1.2 s crdi', '525d',
+       'emotion pack 1.3 90 hp', '1.6 base', 'a180 cdi style',
+       'h8 abs airbag bs iv', 'xe revotron', '1.0 climber opt amt',
+       'vxi plus amt', '1.0 lxi (o)', '1.2 fire',
+       'comfortline 1.0 petrol', '1.2 titanium petrol', '1.2 sv mt',
+       'titanium + 1.2 ti-vct', '1.5 trend', 'xms rt', 'asta petrol',
+       '200 cgi spotrs', 'sigma 1.3 ddis shvs', 'style 1.5 tdi at',
+       'lt diesel', 'xxi', 'emotion 1.3 multijet', 'sportz 1.1',
+       '1.3 ls 8 str', 'xza+ 1.2 rtn', 'dynamic 1.3 multijet', 'zlx',
+       'ambiente', 'elegance 1.8 tsi mt', 'titanium 1.5 tdci',
+       'trend 1.2 ti-vct', '85 ps rxe diesel adventure', 'e plus',
+       '1.1 magna mt', 'asta 1.1 mt', 'varicor 400 xma', '1.6', 'lt 1.6',
+       'rev 116', '1.4 base', 's 1.0', 'zeta 1.3 shvs',
+       '1.6 crdi sx(o) executive', '1.5 i-vtec s', 'era 1.2 kappa vtvt',
+       's mt', 'xv cvt', 's', '1.2 s i - vtech  alive edition mt',
+       '2.0 longitude (o)', 'lxi krest limited edition', '1.5 alpha shvs',
+       '200 cdi style', 'xz+ 1.2', 'delta shvs', '1.5 i- dtec v',
+       'sharp 2.0 diesel', 't6+ at', '1.6 sx (o)', 'xe', 'rxe petrol 104',
+       'sx 1.6 crdi', '35 tdi technology', 'summum d4', 'summum d3',
+       'lx tdi', '1.4 zxi tdci', 'lxi utsav limited addition',
+       'dlg dicor bs iii', '1.4 exi', '1.5 e2', 'ps 1.0', 'dlg bs iii',
+       'xz 1.05 revotorq', 'ldi o', 'comfortline 1.4 tsi mt',
+       'vlx airbag bs iv', '4wd', '1.2 ex mt i vtec', 'zeta 1.4 vvt',
+       'sport plus petrol', '1.2 trend petrol', '1.2 vx i-vtech',
+       '1.6 sx at', 't8 dual tone', '30 tdi quattro', 'rxl 85ps explore',
+       'zeta 1.5 shvs vvt mt', 'sle bs iii', 'rx 6', 'executive', 'xm rt',
+       '2.0 tdi 174bhp', '328i sportline', 'alpha 1.4 vvt',
+       '1.6 sx crdi dual tone', 'xt rt', 'power+ slx',
+       '1.2 i-vtec s mt edge edition', 'xz+ 1.5', '525d luxury',
+       '4x2 ex dicor 2.2 vtt', 'xe 1.05 revotorq', 'ambition 2.0 tdi cr',
+       'vgt crdi sx']
+
+    const variantInput = document.getElementById('variant');
+const dropdown = document.getElementById('variant-dropdown');
+
+// Function to filter variants based on input
+function filterVariants() {
+    const inputValue = variantInput.value.toLowerCase();
+    dropdown.innerHTML = '';  // Clear previous results
+
+    if (inputValue) {
+        const filteredVariants = variants.filter(variant =>
+            variant.toLowerCase().includes(inputValue)
+        );
+
+        // Display the filtered results
+        filteredVariants.forEach(variant => {
+            const optionDiv = document.createElement('div');
+            optionDiv.textContent = variant;
+            optionDiv.addEventListener('click', function () {
+                variantInput.value = variant;  // Set the input value when clicked
+                dropdown.classList.remove('show');  // Hide the dropdown
+            });
+            dropdown.appendChild(optionDiv);
+        });
+
+        // Only show the dropdown if there are results
+        if (filteredVariants.length > 0) {
+            dropdown.classList.add('show');
+        } else {
+            dropdown.classList.remove('show');
+        }
+    } else {
+        dropdown.classList.remove('show');
+    }
+}
+
+// Hide dropdown when the form is submitted
+document.querySelector('form').addEventListener('submit', function () {
+    dropdown.classList.remove('show');  // Ensure the dropdown is hidden during form submission
+});
+
+// Optional: Ensure that "Enter" doesn't select dropdown but submits the form
+variantInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        dropdown.classList.remove('show');  // Hide the dropdown on Enter keypress
+    }
+});
+
+    /// Hide dropdown when clicking outside
+document.addEventListener('click', function (event) {
+    // Ensure the dropdown is only hidden if clicking outside the input or dropdown
+    if (!event.target.closest('.dropdown') && !event.target.closest('#variant')) {
+        dropdown.classList.remove('show');
+    }
+});
+</script>
+
+<!--new javascript for model-->
+
+<script>
+    // List of vehicle variants
+    const variants = [
+        'lxi opt', 'lxi', 'sports 1.2 vtvt', 'vdi', 'magna 1.2 vtvt', 'vxi (o) amt',
+        'asta 1.2', 'magna 1.4 crdi', 'rxl', 'sportz 1.2', 'sportz 1.4 crdi', '1.2 v mt i vtec',
+        'magna 1.2 kappa2', 's mt petrol', 'sportz 1.2 kappa2', 'd lite plus', 'vdi abs',
+        '1.2 s mt i vtec', 'era plus', 'fluidic 1.6 sx crdi', 'vxi bs iv', 'magna o 1.2', 'gls',
+        'vxi', 'vxi 1.2 bs iv', '1.5 trend tdci', 'vdi bs iv', 'xl petrol', 's 1.1 crdi',
+        'magna o 1.4 crdi', 'd 4d gd', 'gl plus', 'sportz 1.2 kappa vtvt', 'fluidic 1.6 crdi s',
+        'vxi cng', 'alpha ddis 190', 'zdi', 'ldi bs iv', 's 1.6 mt', 'sportz o 1.4 crdi',
+        '1.2 smt i vtec', '1.6 crdi sx plus auto', 'lxi cng', '1.5 emt i dtec', '2.0 tdi quattro mt',
+        '1.6 sx crdi', 'asta 1.4 crdi', '1.5 exmt i dtec', 'sportz 1.4', 'd 4d j', '2.0 tdi',
+        '2.5 vx 7 str bs iv', 'rxz', 'rxt', 'vxi opt. mt', 'sportz (o) 1.2 at vtvt', 'sportz(o) 1.2 mt',
+        '85 ps rxl opt', '1.2 magna plus vtvt', 'xt 1.05 revotorq', '1.6 s', 'g', 'zxi smart hybrid',
+        't (o)', 'zxi', '1.2 i-vtec vx mt', 'zeta 1.2 k12', 'lxi 1.3', 'w8 fwd', 'comfortline 1.2l petrol',
+        'xt 1.2 revotron', 's8', '2.4 gx 7 str', 's10', '1.6 sx plus petrol', '1.4 zxi duratorq',
+        '2.4 mivec', 'fluidic 1.6 sx crdi opt', 'fluidic 1.4 crdi cx', 'highline 1.5', 'lxi 1.2 bs iv',
+        '1.5titanium tdci', 'xv 110 diesel', 'vxi genus', 'highline diesel', 'gl', '2.0 tdi quattro',
+        '1.6 sx at crdi', '2.0 tdi premium plus', '3.0 at 4x2', '2.5 gx 7 str bs iv', 'lx bs iv',
+        '1.0 t(o) at', 'zxi at', 't8 at', 'v mt petrol', 'lxi 1.0 l', 'era 1.1 irde', 'vx mt petrol',
+        's 1.1 crdi opt', '1.6 crdi sx + at', 'zdi plus', '1.6 crdi sx', '1.4 crdi ex mt',
+        '1.5 titanium ti vct', 'fluidic 1.4 crdi', 'alpha shvs  mt', 'xz 2.0l kryotec', 'vx mt diesel',
+        '1.8v at', 'vxi 1.3', 'magna 1.1 irde2', 'cla 200 cdi sport', '1.5 smt i dtec', 'alpha 1.3 ddis shvs',
+        'k4+ d 6 str', '1.5 e mt petrol', '7 str', '40 tfsi premium', 'w4', 'vl at', 'sv mt petrol',
+        '3.0 mt 4x2', 'gls cng', 'w6 4x2', '1.0 rxt opt', 'delta 1.2 k12', '1.0 rxt', 'xt twist',
+        'sportz 1.1 irde2', 'alpha 1.2 k12', 'crde 4x4 bs iv', 'ls diesel', '3.0 mt 4x4', 'vdi amt',
+        's11', 's6+ intell hybrid', 'xp', '1.2', '1.5 exi', 'lx tdi bs iii', 'fluidic 1.6 ex crdi',
+        'vdi elate limited edition', 'zxi 1.3', 'alpha 1.5 at vtvt shvs', 'magna 1.2 kappa vtvt', 'vxi amt',
+        '1.2 e mt i vtec', 'era 1.2 vtvt', 'magna 1.2', 'd-4d vxd', 'sportz 1.2 vtvt', 'vxi plus',
+        'sx 1.2 opt', 'htx 1.5 diesel', 'zdi + amt', 'sx(o) crdi', 'highline1.2l petrol', '1.2 v mt',
+        'gd', '2.5 gx 8 str bs iv', 'sigma 1.3', '1.2 sat i vtec', 'delta 1.3 ddis shvs', '320d',
+        'vdi+ shvs', 'hybrid', 'asta 1.2 kappa vtvt opt', 'titanium plus petrol at', 'magna plus',
+        '2.0 tdi s line', 'vdi plus', '1.5 titaniumtdci opt', 'w10 at fwd', '35 tdi quattro',
+        '2.5 vx 8 str bs iv', '1.6 sx (o) crdi', 'trendline 1.2l petrol', 'era plus (o)', 's5 2wd',
+        'vxi elate limited edition', '1.2 v at', '1.6 sx plus se', '1.2 base i vtec', 'k10 vxi at',
+        '1.8 g', 'fluidic 1.6 ex vtvt', 'highline petrol at', 'sportz1.2 crdi', 'vxi abs',
+        'xz 1.2 revotron', 'trendline 1.0 l petrol', '1.5 trend ti vct', '1.2 v cvt i vtec', 'zx cvt petrol',
+        'rxt opt', 'sportz 1.2 o', 'vdi opt', 'fluidic 1.6 sx vtvt', '1.4 e plus crdi', 'vx (o) petrol',
+        'zdi+ shvs rs mt', 'ambiente 1.8 tsi', 's at', 'w10 at', 'zeta ddis 190', '1.6 sx at petrol',
+        'cross 1.4 gd', 'zdi plus dual tone', 'zdi amt', 'gt tsi 1.2 petrol at', '1.5 tdci titanium plus',
+        '5 str cng with ac plushtr', '1.2 zxi duratec', 'he 1.8 j', 'elegance tdi 2.0 at', 'sle',
+        'sportz at 1.2 kappa vtvt', 'kinetic d4', 'zdi+ dual tone amt', 'e 220 cdi elegance', '2.0 crdi at',
+        'gls 1.6'
+    ];
+
+    function filterVariants() {
+        const input = document.getElementById("variant").value.toLowerCase();
+        const dropdown = document.getElementById("variant-dropdown");
+        dropdown.innerHTML = ""; // Clear the dropdown list
+
+        // Filter variants based on user input
+        const filteredVariants = variants.filter(variant => variant.toLowerCase().startsWith(input));
+
+        // Display filtered variants in the dropdown
+        filteredVariants.forEach(variant => {
+            const div = document.createElement("div");
+            div.textContent = variant;
+            div.onclick = () => {
+                document.getElementById("variant").value = variant;
+                dropdown.innerHTML = ""; // Close dropdown after selection
+            };
+            dropdown.appendChild(div);
+        });
+
+        // Show or hide the dropdown
+        dropdown.classList.toggle("show", filteredVariants.length > 0);
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (event) => {
+        const dropdown
+
+
 
 <!-- Google Tag Manager (noscript) -->
 <noscript>

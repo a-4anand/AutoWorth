@@ -92,10 +92,7 @@ $(function () {
             }
         });
 
-        $('form').on('submit', function(event) {
-            event.preventDefault();
-            return false;
-        });
+
     });
 
     // Page scroller initialization.

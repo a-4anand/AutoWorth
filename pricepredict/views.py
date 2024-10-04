@@ -1,15 +1,55 @@
-
+from django.shortcuts import render, redirect
 import pickle
 import pandas as pd
 from django.shortcuts import render,HttpResponse
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth import login,logout
+from .middlewares import auth, guest
+
+
 model_path = "pricepredict/autoworthmodel.pkl"
 model = pickle.load(open(model_path, 'rb'))
 
-
+from django.views.decorators.csrf import csrf_exempt
 
 # Load the dataset
 
 # Views
+@guest
+def register_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')  # Make sure 'index' exists in your urls.py
+    else:
+        initial_data = {'username': '', 'password1': '', 'password2': ""}
+        form = UserCreationForm(initial=initial_data)
+    return render(request, 'pricepredict/main/register.html', {'form': form})
+
+@guest
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('index')
+    else:
+        initial_data = {'username': '', 'password': ''}
+        form = AuthenticationForm(initial=initial_data)
+    return render(request, 'pricepredict/main/login.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+
+
+@auth
 def index(request):
     return render(request, 'pricepredict/index.html')
 
@@ -31,18 +71,20 @@ def index6(request):
     return render(request, 'pricepredict/main/index-6.html')
 
 
+import requests  # Add this import for making HTTP requests
+
 def fetch_news(request):
     api_key = 'e585602937ca4c43b23754b62f9276fa'
     url = f'https://newsapi.org/v2/everything?q=Indian%20Automobile&apiKey={api_key}'
 
     try:
-        response = request.get(url)
+        response = requests.get(url)  # Correct 'requests' instead of 'request'
         response.raise_for_status()
         news_data = response.json()  # Get the JSON response
         articles = news_data.get('articles', [])  # Extract the articles
-    except request.exceptions.RequestException as e:
+    except requests.exceptions.RequestException as e:  # Correct exception handling
         print(f"Error fetching news: {e}")
-        articles = []  # If error, return empty list
+        articles = []  # Return an empty list if there's an error
 
     return render(request, 'pricepredict/main/index-3.html', {'articles': articles})
 
@@ -85,10 +127,3 @@ def predict_price(request):
 
     # Fallback in case of a GET request or other issues
     return HttpResponse("Invalid request method.")
-def alternative_action(request):
-    if request.method == 'POST':
-        # Implement the logic for the alternative action here
-        return HttpResponse("Alternative action was triggered.")
-    else:
-        # If you want to handle GET requests, you can add that logic here
-        return HttpResponse("Alternative action only supports POST requests.")
