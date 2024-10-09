@@ -5,7 +5,7 @@ from django.shortcuts import render,HttpResponse
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
 from .middlewares import auth, guest
-
+import requests
 
 model_path = "pricepredict/autoworthmodel.pkl"
 model = pickle.load(open(model_path, 'rb'))
@@ -71,22 +71,30 @@ def index6(request):
     return render(request, 'pricepredict/main/index-6.html')
 
 
-import requests  # Add this import for making HTTP requests
+# Add this import for making HTTP requests
 
-def fetch_news(request):
-    api_key = 'e585602937ca4c43b23754b62f9276fa'
-    url = f'https://newsapi.org/v2/everything?q=Indian%20Automobile&apiKey={api_key}'
+def car_data(request):
+    url = "https://car-data.p.rapidapi.com/cars"
+    headers = {
+        "x-rapidapi-key": "508f05fba5msh3f6c33c245b61e4p1de7abjsn6bba0f23bf58",
+        "x-rapidapi-host": "car-data.p.rapidapi.com"
+    }
 
-    try:
-        response = requests.get(url)  # Correct 'requests' instead of 'request'
-        response.raise_for_status()
-        news_data = response.json()  # Get the JSON response
-        articles = news_data.get('articles', [])  # Extract the articles
-    except requests.exceptions.RequestException as e:  # Correct exception handling
-        print(f"Error fetching news: {e}")
-        articles = []  # Return an empty list if there's an error
+    # Parameters for the API request
+    querystring = {"limit": "10", "page": "0"}
 
-    return render(request, 'pricepredict/main/index-3.html', {'articles': articles})
+    # Make the API request
+    response = requests.get(url, headers=headers, params=querystring)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        car_data = response.json()
+    else:
+        car_data = []
+        print("Error fetching data from the car API.")
+
+    # Render the data in a new template
+    return render(request, 'car_data.html', {'car_data': car_data})
 
 
 def predict_price(request):

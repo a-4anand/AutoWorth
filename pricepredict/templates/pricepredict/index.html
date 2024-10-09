@@ -80,8 +80,14 @@
 <div class="pad-tb-100-50" id="demos">
     <div class="container">
         <div class="main-title">
-            <h5>= <span>Menu</span> =</h5>
-            <h1>Get Qoatation</h1>
+            <h2>
+                        {% if user.is_authenticated %}
+    <span class="navbar-text">Welcome - {{ user.username }}</span>
+{% else %}
+    <span class="navbar-text">Welcome, Guest</span>
+{% endif %}
+                  </h2>
+            <h5>Get Qoatation</h5>
             <p>Enter your car's details on the Prediction page, and our advanced algorithm will accurately estimate its market value using trusted data. </p>
         </div>
         <div class="row">

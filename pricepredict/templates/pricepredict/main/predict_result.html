@@ -1,22 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #ec0b0b;
+            background-image: url('https://images.pexels.com/photos/1383834/pexels-photo-1383834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            backdrop-filter: blur(5px);
+            margin: 0;
+            padding: 0;
+        }
 
+        .container {
+            width: 50%;
+            height: 80%;
+            margin: 40px auto;
+            margin-right: 500px;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay to make text readable */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
 
-<h3>Car Details</h3>
-<ul>
-    <li>Make: {{ car_details.make }}</li>
-    <li>Year of Manufacture: {{ car_details.yr_mfr }}</li>
-    <li>Fuel Type: {{ car_details.fuel_type }}</li>
-    <li>Kilometers Run: {{ car_details.kms_run }}</li>
-    <li>Body Type: {{ car_details.body_type }}</li>
-    <li>Car Rating: {{ car_details.car_rating }}</li>
-    <li>Transmission: {{ car_details.transmission }}</li>
-    <li>Model: {{ car_details.model }}</li>
-    <li>Total Owners: {{ car_details.total_owners }}</li>
-    <li>Registered City: {{ car_details.registered_city }}</li>
-    <li>Registered State: {{ car_details.registered_state }}</li>
-    <li>Warranty Available: {{ car_details.warranty_avail }}</li>
-    <li>Variant: {{ car_details.variant }}</li>
-    <li>Fitness Certificate: {{ car_details.fitness_certificate }}</li>
-</ul>
+        h2, h3 {
+            color: #ff4c4c; /* Dark red color */
+            text-decoration: #0dcdbd;
+            text-align: center;
+        }
 
+        .details-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-<h2>Predicted Price: {{ predicted_price }}</h2>
+        .details-item {
+            width: 48%; /* Each item takes half the width */
+            margin-left: 170px;
+            margin-bottom: 10px;
+            background: rgba(255, 76, 76, 0.2); /* Light red background */
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-item span {
+            font-weight: bold;
+        }
+
+        /* Add some spacing between the details and the predicted price */
+        .predicted-price {
+            text-align: center;
+            font-size: 24px;
+            color: #ffffff;
+            background: rgba(255, 76, 76, 0.9); /* Dark red box */
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Position the chatbot properly */
+        .tidio-chat-container {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+        }
+
+        /* Media query for mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            .details-item {
+                width: 100%; /* Full width on mobile */
+            }
+
+            .tidio-chat-container {
+                right: 10px;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Car Details</h3>
+        <div class="details-container">
+            <div class="details-item">Make: <span>{{ car_details.make }}</span></div>
+            <div class="details-item">Year of Manufacture: <span>{{ car_details.yr_mfr }}</span></div>
+            <div class="details-item">Fuel Type: <span>{{ car_details.fuel_type }}</span></div>
+            <div class="details-item">Kilometers Run: <span>{{ car_details.kms_run }}</span></div>
+            <div class="details-item">Body Type: <span>{{ car_details.body_type }}</span></div>
+            <div class="details-item">Car Rating: <span>{{ car_details.car_rating }}</span></div>
+            <div class="details-item">Transmission: <span>{{ car_details.transmission }}</span></div>
+            <div class="details-item">Model: <span>{{ car_details.model }}</span></div>
+            <div class="details-item">Total Owners: <span>{{ car_details.total_owners }}</span></div>
+            <div class="details-item">Registered City: <span>{{ car_details.registered_city }}</span></div>
+            <div class="details-item">Registered State: <span>{{ car_details.registered_state }}</span></div>
+            <div class="details-item">Warranty Available: <span>{{ car_details.warranty_avail }}</span></div>
+            <div class="details-item">Variant: <span>{{ car_details.variant }}</span></div>
+            <div class="details-item">Fitness Certificate: <span>{{ car_details.fitness_certificate }}</span></div>
+        </div>
+
+        <h2>Predicted Price</h2>
+        <div class="predicted-price">
+            ₹ {{ predicted_price }}
+        </div>
+    </div>
+
+    <!-- Chatbot Script -->
+    <div class="tidio-chat-container">
+        <script src="//code.tidio.co/6qmivw4lzlksfmpzlsyzxqjuupwto342.js" async></script>
+    </div>
+</body>
+</html>

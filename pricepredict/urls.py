@@ -11,8 +11,8 @@ urlpatterns = [
     path('index/main/index-2/', views.index2, name='index2'),  # View for index-2
     path('index/main/index-3/', views.index3, name='index3'),  # View for index-3
     path('index/main/index-6/', views.index6, name='index6'),  # View for index-6
-    path('index/main/news/', views.fetch_news, name='fetch_news'),  # Fetch Indian automobile news
     path('predict/', views.predict_price, name='predict_price'),  # Prediction of car price
+    path('car_data/', views.car_data, name='car_data')
 
 
 
