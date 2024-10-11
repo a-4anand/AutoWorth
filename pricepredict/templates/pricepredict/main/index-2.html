@@ -150,28 +150,7 @@
 </div>
 <!-- banner end -->
 
-<!-- Featured car start -->
 
-
-<!-- Featured car end -->
-<div class="car-info-container">
-    <h1 class="car-info-title">Car Information</h1>
-
-    {% if car_data %}
-        <ul class="car-info-list">
-            {% for car in car_data %}
-                <li class="car-info-item">
-                    <p><strong>Year:</strong> {{ car.year }}</p>
-                    <p><strong>Type:</strong> {{ car.type }}</p>
-                    <p><strong>Fuel Type:</strong> {{ car.fuel_type }}</p>
-                    <p><strong>Engine:</strong> {{ car.engine }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p class="car-info-message">No car data available at the moment.</p>
-    {% endif %}
-</div>
 
 <!-- Our Partner area end -->
 

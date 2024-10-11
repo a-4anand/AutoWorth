@@ -1,0 +1,5 @@
+<form method="POST" enctype="multipart/form-data">  <!-- Ensure enctype is correct -->
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Display the form fields -->
+    <button type="submit">Create Listing</button>
+</form>

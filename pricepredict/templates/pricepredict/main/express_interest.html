@@ -1,0 +1,7 @@
+<h2>Express Interest in {{ car_listing.make }} {{ car_listing.model }}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="message" rows="4" cols="50" placeholder="Write your message..."></textarea><br>
+    <button type="submit">Submit Interest</button>
+</form>

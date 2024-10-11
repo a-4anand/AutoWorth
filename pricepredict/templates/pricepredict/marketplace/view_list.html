@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h2>Car Marketplace</h2>
+<ul>
+    {% for listing in listings %}
+    <li>
+        <h3>{{ listing.car_name }} - {{ listing.car_model }}</h3>
+        <p>{{ listing.description }}</p>
+        <p>Price: {{ listing.price }}</p>
+        <img src="{{ listing.image.url }}" alt="{{ listing.car_name }}" width="200">
+        <p><a href="{% url 'express_interest' listing.id %}">Express Interest</a></p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

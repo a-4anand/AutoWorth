@@ -12,7 +12,12 @@ urlpatterns = [
     path('index/main/index-3/', views.index3, name='index3'),  # View for index-3
     path('index/main/index-6/', views.index6, name='index6'),  # View for index-6
     path('predict/', views.predict_price, name='predict_price'),  # Prediction of car price
-    path('car_data/', views.car_data, name='car_data')
+    path('express-interest/<int:listing_id>/', views.express_interest, name='express_interest'),#for marketplace
+    path('listings/<int:listing_id>/express_interest/', views.express_interest, name='express_interest'),
+    path('listings/', views.view_listings, name='view_listings'),
+    path('listings/create/', views.create_listing, name='create_listing'),
+
+    # You need to create this view for listing all vehicles
 
 
 
@@ -20,10 +25,6 @@ urlpatterns = [
 
 
 
-    # path('login/', views.login_view, name='login'),  # Add your login view as well
-    # path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    # path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    # Add more paths as needed
 
-    # Updated URL pattern
+
 

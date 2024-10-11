@@ -1,0 +1,18 @@
+<h2>Available Vehicle Listings</h2>
+<ul>
+    {% for vehicle in vehicle_list %}
+    <li>
+        <strong>{{ vehicle.make }} {{ vehicle.model }}</strong> - {{ vehicle.year }} <br>
+        Fuel Type: {{ vehicle.fuel_type }} <br>
+        Transmission: {{ vehicle.transmission }} <br>
+        KMs Run: {{ vehicle.kms_run }} <br>
+        Price: ₹{{ vehicle.price }} <br>
+        {% if vehicle.image %}
+            <img src="{{ vehicle.image.url }}" alt="Image of {{ vehicle.make }} {{ vehicle.model }}" style="width:200px;height:auto;">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+        <a href="{% url 'express_interest' vehicle.id %}">I'm Interested</a>
+    </li>
+    {% endfor %}
+</ul>

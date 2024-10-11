@@ -5,7 +5,12 @@ from django.shortcuts import render,HttpResponse
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,logout
 from .middlewares import auth, guest
-import requests
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import VehicleListing, UserInterest
+from .forms import VehicleListingForm
+
 
 model_path = "pricepredict/autoworthmodel.pkl"
 model = pickle.load(open(model_path, 'rb'))
@@ -73,28 +78,7 @@ def index6(request):
 
 # Add this import for making HTTP requests
 
-def car_data(request):
-    url = "https://car-data.p.rapidapi.com/cars"
-    headers = {
-        "x-rapidapi-key": "508f05fba5msh3f6c33c245b61e4p1de7abjsn6bba0f23bf58",
-        "x-rapidapi-host": "car-data.p.rapidapi.com"
-    }
 
-    # Parameters for the API request
-    querystring = {"limit": "10", "page": "0"}
-
-    # Make the API request
-    response = requests.get(url, headers=headers, params=querystring)
-
-    # Check if the request was successful
-    if response.status_code == 200:
-        car_data = response.json()
-    else:
-        car_data = []
-        print("Error fetching data from the car API.")
-
-    # Render the data in a new template
-    return render(request, 'car_data.html', {'car_data': car_data})
 
 
 def predict_price(request):
@@ -135,3 +119,39 @@ def predict_price(request):
 
     # Fallback in case of a GET request or other issues
     return HttpResponse("Invalid request method.")
+
+
+
+
+
+
+
+
+@auth
+def create_listing(request):
+    if request.method == 'POST':
+        form = VehicleListingForm(request.POST, request.FILES)  # Ensure request.FILES is used for file uploads
+        if form.is_valid():
+            car_listing = form.save(commit=False)
+            car_listing.owner = request.user
+            car_listing.save()
+            return redirect('view_listings')
+        else:
+            print(form.errors)  # This will print form errors to the console
+    else:
+        form = VehicleListingForm()
+    return render(request, 'pricepredict/main/add_listing.html', {'form': form})
+@auth
+def express_interest(request, listing_id):
+    car_listing = get_object_or_404(VehicleListing, id=listing_id)
+    if request.method == 'POST':
+        message = request.POST['message']
+        UserInterest.objects.create(user=request.user, car_listing=car_listing, message=message)
+        return redirect('view_listings')
+    return render(request, 'pricepredict/main/express_interest.html', {'car_listing': car_listing})
+
+
+
+def view_listings(request):
+    listings = VehicleListing.objects.all()
+    return render(request, 'pricepredict/main/view_listing.html', {'listings': listings})
