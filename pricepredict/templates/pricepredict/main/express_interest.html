@@ -1,7 +1,74 @@
-<h2>Express Interest in {{ car_listing.make }} {{ car_listing.model }}</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Interest - AutoWorth</title>
+    <style>
+        .interest-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1c1c1c;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            font-family: 'Roboto', sans-serif;
+        }
 
-<form method="POST">
-    {% csrf_token %}
-    <textarea name="message" rows="4" cols="50" placeholder="Write your message..."></textarea><br>
-    <button type="submit">Submit Interest</button>
-</form>
+        .interest-container h2 {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .interest-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .interest-form textarea:focus {
+            outline: none;
+            border-color: #f1c40f;
+        }
+
+        .interest-form button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #27ae60;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .interest-form button:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+<div class="interest-container">
+    <h2>Express Interest in {{ car_listing.make }} {{ car_listing.model }}</h2>
+
+    <form method="POST" class="interest-form">
+        {% csrf_token %}
+        <textarea name="message" rows="4" placeholder="Write your message..."></textarea><br>
+        <button type="submit">Submit Interest</button>
+    </form>
+</div>
+
+</body>
+</html>

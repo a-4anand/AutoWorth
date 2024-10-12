@@ -52,8 +52,20 @@ Version:    1.0.0
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: #fff;
+    /*background: #fff;*/
     color: #535353;
+
+    position: absolute;
+    text-align: center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    transition: .5s;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    background: rgba(90, 9, 9, 0.72);
+
 }
 
 .img-fluid {

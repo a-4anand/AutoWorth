@@ -203,10 +203,12 @@ html {
 
 .logo{
     text-align: left;
+
 }
 
 .logo img{
     margin-top: 10px;
+    height: 20px;
 }
 
 /** Demo item **/

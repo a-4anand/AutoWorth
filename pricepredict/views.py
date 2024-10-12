@@ -1,10 +1,14 @@
-from django.shortcuts import render, redirect
+
+from .middlewares import auth, guest
+
+
+from django.http import HttpResponse
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+
 import pickle
 import pandas as pd
-from django.shortcuts import render,HttpResponse
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.contrib.auth import login,logout
-from .middlewares import auth, guest
+
 
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -15,9 +19,7 @@ from .forms import VehicleListingForm
 model_path = "pricepredict/autoworthmodel.pkl"
 model = pickle.load(open(model_path, 'rb'))
 
-from django.views.decorators.csrf import csrf_exempt
 
-# Load the dataset
 
 # Views
 @guest
@@ -59,19 +61,19 @@ def index(request):
     return render(request, 'pricepredict/index.html')
 
 
+# @auth
+# def index2(request):
+#     return render(request, 'pricepredict/main/index-2.html')
 
-def index2(request):
-    return render(request, 'pricepredict/main/index-2.html')
 
-
-
+@auth
 def index3(request):
     return render(request, 'pricepredict/main/index-3.html')
 
-
+@auth
 def register(request):
     return render(request, 'pricepredict/main/register.html')
-
+@auth
 def index6(request):
     return render(request, 'pricepredict/main/index-6.html')
 
@@ -80,7 +82,7 @@ def index6(request):
 
 
 
-
+@auth
 def predict_price(request):
     if request.method == 'POST':
         try:
@@ -152,6 +154,25 @@ def express_interest(request, listing_id):
 
 
 
+@auth
 def view_listings(request):
-    listings = VehicleListing.objects.all()
-    return render(request, 'pricepredict/main/view_listing.html', {'listings': listings})
+    listings = VehicleListing.objects.all()  # Retrieves all vehicle listings from the database
+    return render(request, 'pricepredict/main/view_listing.html', {'vehicle_list': listings})
+
+
+from django.http import HttpResponseForbidden
+
+
+@auth
+def delete_listing(request, listing_id):
+    car_listing = get_object_or_404(VehicleListing, id=listing_id)
+
+    # Check if the logged-in user is the owner of the listing
+    if car_listing.owner != request.user:
+        return HttpResponseForbidden("You are not allowed to delete this listing.")
+
+    if request.method == 'POST':
+        car_listing.delete()  # Delete the listing
+        return redirect('view_listings')  # Redirect to the listings page after deletion
+
+    return render(request, 'pricepredict/main/delete_listing.html', {'car_listing': car_listing})
