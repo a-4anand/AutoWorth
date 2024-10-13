@@ -1,27 +1,14 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-    <!-- Google Tag Manager -->
-   <!-- Google Tag Manager -->
-<script>
-    (function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),
-            dl=l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WLMZXT6');
-</script>
-<!-- End Google Tag Manager -->
-
-<title>AutoWorth - A Car Resale Value Estimator WebSite</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
 
 <!-- External CSS libraries -->
 <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
@@ -45,130 +32,155 @@
 <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
 
 <!--    internal css-->
-
 <style>
-    body {
-         /* Light background for the whole page */
-        font-family: Arial, sans-serif; /* Font for the entire page */
-        margin: 0; /* Remove default margin */
-        padding: 0; /* Remove default padding */
-    }
+    /* Ensure there’s no margin/padding on the HTML and body elements */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure body takes the full viewport height */
+    font-family: Arial, sans-serif;
+}
 
-    .custom-form-container {
-        max-width: 1200px; /* Container width */
-        /*margin: auto; !* Center the container *!*/
-        background: linear-gradient(to right, #020202, #f50000);
-        margin-top: 50px;
-        margin-left: 90px;
-        padding: 40px; /* Increased padding for the container */
-       background-color: rgba(241, 5, 5, 0.5); /* Red color with 50% transparency */
+/* Set up the background image and overlay */
+body {
+    background: url("{% static 'assets/img/img-4.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(51 10 151 / 70%); /* Your color filter */
+    z-index: -1; /* Ensure it stays behind other content */
+}
+
+/* Center the form container absolutely */
+.custom-form-container {
+    width: 700px; /* Adjusted container width */
+    padding: 20px;
+    border-radius: 10px;
+ background: linear-gradient(to right, #8e44ad, #e74c3c);
 
 
-        border-radius: 15px; /* Rounded corners for container */
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    }
 
-    .custom-form-title {
-        text-align: center;
-        color: #f6f7f8; /* Darker color for title */
-        margin-bottom: 30px; /* Increased margin for title spacing */
-        font-size: 28px; /* Larger font size for title */
-        font-weight: bold; /* Bold font for emphasis */
-    }
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
-    .custom-form-row {
-        display: flex; /* Use flexbox for layout */
-        justify-content: space-between; /* Space between items */
-        margin-bottom: 20px; /* Bottom margin for rows */
-        gap: 20px; /* Gap between input columns */
-    }
+    position: absolute;
+    top: 50px; /* This moves it 50px down from the top */
+    left: 70%;
+    transform: translateX(-50%); /* Center the container horizontally */
+}
 
-    .custom-form-input {
-        flex: 1; /* Flexible input width */
-        padding: 15px; /* Increased padding for inputs */
-        border-radius: 10px; /* Rounded corners */
-        background-color: #f9f9f9; /* Light input background color */
-        color: #333; /* Darker text color */
-        transition: border-color 0.3s; /* Smooth border color transition */
-    }
+/* Rest of your form styles */
+.custom-form-title {
+    text-align: center;
+    color: #f6f7f8;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-    .custom-form-input:focus {
+.custom-form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+}
 
-        outline: none; /* Remove default outline */
-    }
+.custom-form-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 
-    .custom-checkbox {
-        transform: scale(1.2); /* Enlarge checkboxes */
-    }
+.custom-form-input:focus {
+    outline: none;
+    border-color: #bb202d;
+}
 
-    .custom-submit-btn {
-        width: 100%; /* Full width for button */
-        padding: 15px; /* Padding for button */
-        background-color: #bb202d; /* Blue background color */
-        border: none; /* Remove default border */
-        border-radius: 10px; /* Rounded corners */
-        color: #ffffff; /* White text color */
-        font-size: 18px; /* Font size for button */
-        font-weight: bold; /* Bold font for button */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.3s; /* Smooth background transition */
-    }
+.custom-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to right, #004d61, #00b4db);
 
-    .custom-submit-btn:hover {
-        background-color: #2980b9; /* Darker blue on hover */
-    }
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
 
-    label {
-        flex: 1; /* Flexible width for labels */
-        display: flex; /* Flexbox for label */
-        color: #fafcfb;
-        align-items: center; /* Center vertically */
-        justify-content: flex-start; /* Align left */
-        font-weight: bold; /* Bold font for labels */
-    }
+.custom-submit-btn:hover {
+    background-color: #2980b9;
+}
 
-    /* CSS for dropdown */
-    .dropdown {
-        position: relative;
-        flex: 1; /* Full width dropdown */
-    }
+label {
+    flex: 1;
+    display: flex;
+    color: #fafcfb;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: bold;
+}
 
-    .custom-form-input.dropdown-input {
-        padding: 12px; /* Padding for dropdown */
-        margin-top: 5px; /* Margin for spacing */
-        border: 2px solid #75000e; /* Consistent border color */
-        border-radius: 10px; /* Rounded corners */
-        background-color: #f9f9f9; /* Input background color */
-        color: #333; /* Text color */
-    }
+.custom-checkbox {
+    transform: scale(1.1);
+    margin-right: 5px;
+}
 
-    .dropdown-list {
-        display: none; /* Hidden by default */
-        position: absolute;
-        background-color: #ffffff; /* White background for dropdown */
-        border: 2px solid #e67e22; /* Border for dropdown */
-        border-radius: 10px; /* Rounded corners */
-        max-height: 200px; /* Maximum height for dropdown */
-        overflow-y: auto; /* Allow scrolling if content is too tall */
-        width: 100%; /* Ensure dropdown is full width */
-        z-index: 10; /* Ensure dropdown appears above other elements */
-    }
+.dropdown {
+    position: relative;
+    flex: 1;
+}
 
-    .dropdown-list div {
-        padding: 10px; /* Increased padding for dropdown items */
-        cursor: pointer; /* Pointer cursor on hover */
-        transition: background-color 0.2s; /* Smooth background transition */
-    }
+.custom-form-input.dropdown-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+}
 
-    .dropdown-list div:hover {
-        background-color: #f39c12; /* Change hover color to match theme */
-        color: #ffffff; /* Change text color on hover */
-    }
+.dropdown-list {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    border: 2px solid #e67e22;
+    border-radius: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 10;
+}
 
-    .dropdown-list.show {
-        display: block; /* Show dropdown when activated */
-    }
+.dropdown-list div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-list div:hover {
+    background-color: #f39c12;
+    color: #ffffff;
+}
+
+.dropdown-list.show {
+    display: block;
+}
+
 </style>
+
+
 
 
 </head>
@@ -180,10 +192,6 @@
 </div>
 
 {% load static %}
-
-
-
-
 
 
 <!-- Search area start -->
@@ -322,252 +330,6 @@
         <button type="submit" class="custom-submit-btn">Predict Price</button>
     </form>
 </div>
-
-
-<!-- Our services start -->
-
-<div class="our-services content-area-7 bg-grea">
-    <div class="container">
-        <div class="main-title">
-            <h1>We Are The Best</h1>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInLeft delay-04s">
-                <i class="flaticon-padlock"></i>
-                <h5>Highly Secured</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInUp delay-04s">
-                <i class="flaticon-agreement"></i>
-                <h5>Trusted Agents</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInDown delay-04s">
-                <i class="flaticon-badge"></i>
-                <h5>Get an Offer</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 services-info-3 wow fadeInRight delay-04s">
-                <i class="flaticon-customer-service"></i>
-                <h5>24/7 Customer Support</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Our services end -->
-
-<!-- Our-team-2 start -->
-<div class="our-team-2 content-area-2">
-    <div class="container">
-        <div class="main-title">
-            <h1>Our Team</h1>
-        </div>
-        <div class="row">
-            <!-- Example of a loop for dynamic content; remove if not using Django ORM -->
-            {% for member in team_members %}
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 wow fadeInLeft delay-04s">
-                <div class="team-2">
-                    <div class="team-photo">
-                        <a href="#">
-                            <img src="{% static member.image %}" alt="{{ member.alt_text }}" class="img-fluid">
-                        </a>
-                    </div>
-                    <div class="team-details">
-                        <h5><a href="#">{{ member.name }}</a></h5>
-                        <p>{{ member.position }}</p>
-                        <ul class="social-list clearfix">
-                            {% if member.facebook_url %}
-                                <li><a href="{{ member.facebook_url }}" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            {% endif %}
-                            {% if member.twitter_url %}
-                                <li><a href="{{ member.twitter_url }}" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            {% endif %}
-                            {% if member.instagram_url %}
-                                <li><a href="{{ member.instagram_url }}" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                            {% endif %}
-                            {% if member.linkedin_url %}
-                                <li><a href="{{ member.linkedin_url }}" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-<!-- Our-team-2 end -->
-
-<div class="our-services-4 content-area-8 overview-bgi" style="background-image: url({% static 'assets/img/services-bg-photo.jpg' %})">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 align-self-center">
-                <div class="services-info-4">
-                    <h3 class="mb-3">Our Services</h3>
-                    <p class="mb-3">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries but also the leap into electronic typesetting, remaining essentially unchanged.
-                    </p>
-                    <div class="clearfix mrg-btm-10"></div>
-                    <a href="#" class="btn btn-sm btn-color">Explore more</a>
-                    <a href="#" class="btn btn-sm btn-border">Purchase New</a>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 offset-xl-1 wow fadeInUp delay-04s">
-                <div class="big-car">
-                    <img src="{% static 'assets2/img/bb.png' %}" alt="bb" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- About us end -->
-
-<!-- Our Partner area end -->
-
-<!-- Footer start -->
-<footer class="footer">
-    <div class="container footer-inner">
-        <div class="row">
-            <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>Contact Us</h4>
-
-                    <ul class="contact-info">
-                        <li>
-                            Address: 20/F Green Road, Dhanmondi, Dhaka
-                        </li>
-                        <li>
-                            Email: <a href="mailto:themevessel.us@gmail.com">themevessel.us@gmail.com</a>
-                        </li>
-                        <li>
-                            Phone: <a href="tel:+0477-85x6-552">+0477 85X6 552</a>
-                        </li>
-                        <li>
-                            Fax: +0477 85X6 552
-                        </li>
-                    </ul>
-
-                    <ul class="social-list clearfix">
-                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-                        <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-item">
-                    <h4>
-                        Useful Links
-                    </h4>
-                    <ul class="links">
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>About us</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Service</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Car Listing</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Car Grid</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Contact Us</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Blog</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-angle-right"></i>Car Details</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-                <div class="footer-item clearfix">
-                    <h4>
-                        Gallery
-                    </h4>
-
-                    <ul class="gallery">
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-1.jpg' %}" alt="sub-car-1">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-5.jpg' %}" alt="sub-car-5">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-3.jpg' %}" alt="sub-car-3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-6.jpg' %}" alt="sub-car-6">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-7.jpg' %}" alt="sub-car-7">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-4.jpg' %}" alt="sub-car-4">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-2.jpg' %}" alt="sub-car-2">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{% static 'assets2/img/sub-car/sub-car-8.jpg' %}" alt="sub-car-8">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                <div class="footer-item clearfix">
-                    <h4>Subscribe</h4>
-                    <div class="Subscribe-box">
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
-                        <form action="#" method="GET">
-                            <p>
-                                <input type="text" class="form-contact" name="email" placeholder="Enter Address">
-                            </p>
-                            <p>
-                                <button type="submit" name="submitNewsletter" class="btn btn-block btn-color">
-                                    Subscribe
-                                </button>
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xl-12">
-                <p class="copy">&copy;  2022 <a href="http://themevessel.com/" target="_blank">Theme Vessel</a>. Trademarks and brands are the property of their respective owners.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Footer end -->
-
 
 
 <script src="{% static 'assets2/js/jquery-2.2.0.min.js' %}"></script>
@@ -974,5 +736,4 @@ document.addEventListener('click', function (event) {
   <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
           height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
-</body>
-</html>
+{% endblock %}

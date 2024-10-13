@@ -1,97 +1,67 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+
 {% load static %}
 
-<!DOCTYPE html>
-
-<html lang="zxx">
-<head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TAGID');</script>
-    <!-- End Google Tag Manager -->
-    <title>AutoWorth - Used Car Price Predictor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <!-- External CSS libraries -->
-    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets/fonts/font-awesome/css/font-awesome.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets/fonts/flaticon/font/flaticon.css' %}">
-    <!-- Added extra -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
-
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Custom Stylesheet -->
-   <link type="text/css" rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-</head>
-<body id="top1">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TAGID"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<div class="banner" id="top">
-    <div class="headar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="logo pull-left">
-                        <a href="#">
-                            <img src="{% static 'assets/img/logo-white.png' %}" alt="logo">
-                        </a>
+    <div class="banner" id="top">
+        <div class="headar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo pull-left">
+                            <a href="#"><img src="{% static 'assets/img/logo-white.png' %}" alt="logo"></a>
+                        </div>
+                        <div class="btn-section pull-right">
+                            <a href="main/logout_view/" class="btn-3"><i class="fa fa-sign-in-alt"></i>  Logout</a>
+                        </div>
                     </div>
-                    <div class="btn-section pull-right">
-                        <a href="main/logout_view/" class="btn-3"><i class="fa fa-sign-in-alt" ></i>  Logout</a>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>AutoWorth - Predict Worth of your Vehicle</h1>
+                        <div class="demo-hero-menu">
+                            <ul>
+                                <li>1st in India</li>
+                                <li>Get Quotation Without inspection</li>
+                                <li>Based on Data Science</li>
+                                <li>Highest Accuracy</li>
+                            </ul>
+                        </div>
+                        <a class="btn-2 btn-defaults" href="#demos"><span>Get Prediction</span> <i class="arrow"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="breadcrumb-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>AutoWorth - Predict Worth of your Vehicle</h1>
-                    <div class="demo-hero-menu">
-                        <ul>
-                            <li>1st in India</li>
-                            <li>Get Quatation Without inspection</li>
-                            <li>Based on Data Science</li>
-                            <li> Highest Accuracy</li>
-                        </ul>
-                    </div>
-                    <a class="btn-2 btn-defaults" href="#demos">
-                        <span>Get Prediction</span> <i class="arrow"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="pad-tb-100-50" id="demos">
     <div class="container">
         <div class="main-title">
             <h2>
-                        {% if user.is_authenticated %}
-    <span class="navbar-text">Welcome - {{ user.username }}</span>
-{% else %}
-    <span class="navbar-text">Welcome, Guest</span>
-{% endif %}
-                  </h2>
-            <h5>Get Qoatation</h5>
-            <p>Enter your car's details on the Prediction page, and our advanced algorithm will accurately estimate its market value using trusted data. </p>
+                {% if user.is_authenticated %}
+                <span class="navbar-text">Welcome - {{ user.username }}</span>
+                {% else %}
+                <span class="navbar-text">Welcome, Guest</span>
+                {% endif %}
+            </h2>
+            <h5>Get Quotation</h5>
+            <p>Enter your car's details on the Prediction page, and our advanced algorithm will accurately estimate its market value using trusted data.</p>
         </div>
         <div class="row">
-
+            <!-- Listing Cards -->
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="demo-item">
                     <a href="main/listings/" class="line">
@@ -99,19 +69,16 @@
                             <img src="{% static 'assets/img/demo-2.png' %}" alt="img" class="hh">
                             <div class="demo-item-content"></div>
                             <div class="demo-item-inner">
-                                <a href="main/index-2/" class="icon">
-                                    <i class="flaticon-arrow-pointing-to-right"></i>
-                                </a>
+                                <a href="main/index-2/" class="icon"><i class="flaticon-arrow-pointing-to-right"></i></a>
                             </div>
                         </div>
                     </a>
                     <a href="main/listings/">
-                        <h4>
-                            Featured Car <i class="flaticon-arrow-pointing-to-right"></i>
-                        </h4>
+                        <h4>Buy/Sell Car <i class="flaticon-arrow-pointing-to-right"></i></h4>
                     </a>
                 </div>
             </div>
+            <!-- Repeat for other items... -->
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="demo-item">
                     <a href="main/index-3/" class="line">
@@ -158,24 +125,4 @@
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="logo2">
-                    <a href="#"><img src="{% static 'assets/img/logo-white.png' %}" alt="logo"></a>
-                </div>
-                <p class="copy">© 2024 <a href="#">AutoWorth ,</a> Trademarks and brands are the property of their respective owners.</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- External JS libraries -->
-<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-<script src="{% static 'assets/js/popper.min.js' %}"></script>
-<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-<!-- Custom JS Script -->
-<script src="{% static 'assets/js/app.js' %}"></script>
-</body>
-</html>
+{% endblock %}

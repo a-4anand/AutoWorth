@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TAGID');</script>
+    <!-- End Google Tag Manager -->
+    <title>{% block title %}AutoWorth{% endblock %} - Used Car Price Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- External CSS libraries -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/fonts/font-awesome/css/font-awesome.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/fonts/flaticon/font/flaticon.css' %}">
+    <!-- Custom Stylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body id="top1">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TAGID"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Header and Banner -->
+
+
+    <!-- Content Area -->
+    <div class="content">
+        {% block content %}
+        <!-- The specific content for each page will go here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo2">
+                        <a href="#"><img src="{% static 'assets/img/logo-white.png' %}" alt="logo"></a>
+                    </div>
+                    <p class="copy">© 2024 <a href="#">AutoWorth ,</a> Trademarks and brands are the property of their respective owners.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- External JS libraries -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

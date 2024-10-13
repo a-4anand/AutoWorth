@@ -1,13 +1,32 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+
+{% block content %}
+
 {% load static %}
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Listings - AutoWorth</title>
     <style>
+        body {
+    background: url("{% static 'assets/img/img-4.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(51 10 151 / 70%); /* Your color filter */
+    z-index: -1; /* Ensure it stays behind other content */
+}
         .vehicle-listing-container {
             width: 100%;
             margin: 0 auto;
@@ -106,99 +125,6 @@
     </style>
 
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WLMZXT6');</script>
-    <!-- End Google Tag Manager -->
-    <title>AutoWorth - Car resale value predictor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <!-- External CSS libraries -->
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/magnific-popup.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/jquery.selectBox.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/rangeslider.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/animate.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
-
-    <!-- Favicon icon -->
-    <link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
-
-    <!-- Google fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7COswald:200,300,400,500,600%7CRoboto:100,300,400,400i,500,700">
-
-    <!-- Custom Stylesheet -->
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
-
-
-<!--    style for news api-->
-
-
-</head>
-<body>
-<div class="banner" id="banner">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner banner-max-height banner-opt">
-            <div class="carousel-item active">
-                <img class="d-block w-100 h-100" src="{% static 'assets2/img/banner/img-3.jpg' %}" alt="banner-slider-2">
-
-                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
-                    <div class="carousel-content container">
-                        <div id="typed-strings">
-                            <p>AutoWorth: AI-Powered Car Resale Value Predictions, Buy & Sell Seamlessly</p>
-                        </div>
-                        <h2 class="typed-text">&nbsp;<span id="typed"></span></h2>
-<!--                        <p>AutoWorth is your one-stop platform for predicting the resale value of your car with AI precision. Whether you're buying or selling, get accurate insights to make informed decisions and effortlessly manage your vehicle transactions all in one place. </p>-->
-                        <a href="#vehicle-listing-container" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
-
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-               <img class="d-block w-100 h-100" src="{% static 'assets2/img/banner/img-4.jpg' %}" alt="banner-slider-2">
-                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
-                    <div class="carousel-content container">
-                        <div id="typed-strings2">
-                            <p>Best Place to buy a car</p>
-                        </div>
-                        <h1 class="typed-text">&nbsp;<span id="typed2"></span></h1>
-                        <p>.</p>
-                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
-                        <a href="#" class="btn btn-md btn-border" data-animation="animated fadeInUp delay-05s">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100 h-100" src="{% static 'assets2/img/banner/img-2.jpg' %}" alt="banner-slider-2">
-
-                <div class="carousel-caption banner-slider-inner d-flex h-100 text-center">
-                    <div class="carousel-content container">
-                        <div id="typed-strings3">
-                            <p>Best Place For Sell Car</p>
-                        </div>
-                        <h1 class="typed-text">&nbsp;<span id="typed3"></span></h1>
-                        <p><p>AutoWorth is your one-stop platform for predicting the resale value of your car with AI precision. Whether you're buying or selling, get accurate insights to make informed decisions and effortlessly manage your vehicle transactions all in one place. </p></p>
-                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
-                        <a href="#" class="btn btn-md btn-border" data-animation="animated fadeInUp delay-05s">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="slider-mover-left" aria-hidden="true"><i class="fa fa-angle-left"></i></span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="slider-mover-right" aria-hidden="true"><i class="fa fa-angle-right"></i></span>
-        </a>
-    </div>
-</div>
-
 <div class="vehicle-listing-container" id="vehicle-listing-container">
    <div class="text-center">
     <a href="create/" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Create an Ad</a>
@@ -218,6 +144,7 @@
                 <p><strong>Transmission:</strong> {{ vehicle.transmission }}</p>
                 <p><strong>KMs Run:</strong> {{ vehicle.kms_run }}</p>
                 <p><strong>Price:</strong> ₹{{ vehicle.price }}</p>
+                <p>Posted by: {{vehicle.owner}}</p>
 
                 <div class="vehicle-actions">
                     <a href="{% url 'express_interest' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
@@ -234,32 +161,5 @@
 </div>
 
 
-<!-- External JS libraries -->
-<script src="{% static 'assets2/js/jquery-2.2.0.min.js' %}"></script>
-<script src="{% static 'assets2/js/popper.min.js' %}"></script>
-<script src="{% static 'assets2/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.selectBox.js' %}"></script>
-<script src="{% static 'assets2/js/rangeslider.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.filterizr.js' %}"></script>
-<script src="{% static 'assets2/js/wow.min.js' %}"></script>
-<script src="{% static 'assets2/js/backstretch.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.countdown.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.scrollUp.js' %}"></script>
-<script src="{% static 'assets2/js/typed.min.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.mb.YTPlayer.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
-<script src="{% static 'assets2/js/ie-emulation-modes-warning.js' %}"></script>
-<!-- Custom JS Script -->
-<script src="{% static 'assets2/js/app.js' %}"></script>
 
-<!--script added for news api-->
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-</body>
-</html>
+{% endblock %}

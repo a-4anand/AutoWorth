@@ -294,7 +294,7 @@ html {
 }
 
 .demo-item:hover h4{
-    color: #ff214f;
+    color: rgb(51 10 151 / 70%);
 }
 
 .demo-item:hover .thumb-photo img {
@@ -375,7 +375,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(90, 9, 9, 0.6);
+    background: rgb(51 10 151 / 70%);
 }
 
 .banner .breadcrumb-area {
@@ -438,7 +438,7 @@ a {
 }
 
 .footer{
-    background-color: #402020;
+    background-color: rgb(51 10 151 / 70%)0;
     padding: 100px 0;
     text-align: center;
 }

@@ -23,13 +23,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    # path('auth/', include('auth_app.urls', namespace='auth_app')),  # Example namespace
-    # path('', lambda request: redirect('auth_app:register')),  # Redirect root URL to register page
+
     path('', include('pricepredict.urls')),  # Include
     path('admin/', admin.site.urls),
-    # path('', RedirectView.as_view(url='/accounts/register/')),  # Redirect to the registration page
-    # path('accounts/', include('accounts.urls')),  # Include URLs from the accounts app
-    # path('index/',include('pricepredict.urls')),  # Add this line
 
 ]
 
