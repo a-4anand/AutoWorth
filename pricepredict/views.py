@@ -176,3 +176,20 @@ def delete_listing(request, listing_id):
         return redirect('view_listings')  # Redirect to the listings page after deletion
 
     return render(request, 'pricepredict/main/delete_listing.html', {'car_listing': car_listing})
+
+
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
+
+def send_test_email(request):
+    subject = 'Test Email'
+    message = 'This is a test to ensure your email settings work.'
+    from_email = 'AutoWorth Support <ad3810242@gmail.com>'
+    recipient_list = ['anand.dubey@msds.christuniversity.in']  # Replace with your own email
+
+    try:
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        return HttpResponse('Test email sent successfully.')
+    except Exception as e:
+        return HttpResponse(f'Error sending email: {str(e)}')

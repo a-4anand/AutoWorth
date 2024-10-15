@@ -1,39 +1,37 @@
+{%load static%}
 
+<!DOCTYPE html>
+<html lang="en">
 
-{% extends 'base.html' %}
-
-{% block title %}Home{% endblock %}
-
-
-
-{% block content %}
-
-{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Listings</title>
 
     <style>
         body {
-    background: url("{% static 'assets/img/img-4.jpg' %}") no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-}
+            background: url("{% static 'assets/img/img-4.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
 
-body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgb(51 10 151 / 70%); /* Your color filter */
-    z-index: -1; /* Ensure it stays behind other content */
-}
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(51 10 151 / 70%);
+            z-index: -1;
+        }
+
         .vehicle-listing-container {
             width: 100%;
             margin: 0 auto;
             padding: 20px;
             background-color: #1c1c1c;
             color: #fff;
-
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
@@ -122,44 +120,74 @@ body::before {
             font-size: 1.2rem;
             font-style: italic;
         }
+
+        /* Additional styles for header and footer */
+        header {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #1c1c1c;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
+</head>
 
+<body>
 
-<div class="vehicle-listing-container" id="vehicle-listing-container">
-   <div class="text-center">
-    <a href="create/" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Create an Ad</a>
-</div> <ul class="vehicle-list">
-        {% for vehicle in vehicle_list %}
-        <li class="vehicle-item">
-            <div class="vehicle-image">
-                {% if vehicle.image %}
+    <header>
+        <h1>Welcome to Vehicle Listings</h1>
+    </header>
+
+    <div class="vehicle-listing-container" id="vehicle-listing-container">
+        <h2>Available Vehicles</h2>
+        <div class="text-center">
+            <a href="create/" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Create an Ad</a>
+        </div>
+        <ul class="vehicle-list">
+            {% for vehicle in vehicle_list %}
+            <li class="vehicle-item">
+                <div class="vehicle-image">
+                    {% if vehicle.image %}
                     <img src="{{ vehicle.image.url }}" alt="Image of {{ vehicle.make }} {{ vehicle.model }}">
-                {% else %}
+                    {% else %}
                     <p>No image available</p>
-                {% endif %}
-            </div>
-            <div class="vehicle-details">
-                <h3>{{ vehicle.make }} {{ vehicle.model }} - {{ vehicle.year }}</h3>
-                <p><strong>Fuel Type:</strong> {{ vehicle.fuel_type }}</p>
-                <p><strong>Transmission:</strong> {{ vehicle.transmission }}</p>
-                <p><strong>KMs Run:</strong> {{ vehicle.kms_run }}</p>
-                <p><strong>Price:</strong> ₹{{ vehicle.price }}</p>
-                <p>Posted by: {{vehicle.owner}}</p>
-
-                <div class="vehicle-actions">
-                    <a href="{% url 'express_interest' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
-                    {% if vehicle.owner == request.user %}
-                        <a href="{% url 'delete_listing' vehicle.id %}" class="btn delete-btn">Delete</a>
                     {% endif %}
                 </div>
-            </div>
-        </li>
-        {% empty %}
+                <div class="vehicle-details">
+                    <h3>{{ vehicle.make }} {{ vehicle.model }} - {{ vehicle.year }}</h3>
+                    <p><strong>Fuel Type:</strong> {{ vehicle.fuel_type }}</p>
+                    <p><strong>Transmission:</strong> {{ vehicle.transmission }}</p>
+                    <p><strong>KMs Run:</strong> {{ vehicle.kms_run }}</p>
+                    <p><strong>Price:</strong> ₹{{ vehicle.price }}</p>
+                    <p>Posted by: {{ vehicle.owner }}</p>
+
+                    <div class="vehicle-actions">
+                        <a href="{% url 'express_interest' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
+                        {% if vehicle.owner == request.user %}
+                        <a href="{% url 'delete_listing' vehicle.id %}" class="btn delete-btn">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+            {% empty %}
             <li class="no-listings">No vehicle listings available.</li>
-        {% endfor %}
-    </ul>
-</div>
+            {% endfor %}
+        </ul>
+    </div>
 
+    <footer>
+        <p>&copy; 2024 Vehicle Listings. All rights reserved.</p>
+    </footer>
 
+</body>
 
-{% endblock %}
+</html>

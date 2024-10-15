@@ -152,13 +152,13 @@ html {
     -webkit-appearance: none;
     border: none;
     outline: none !important;
-    background: #ff214f;
+    border-radius: 5px;
+    background: rgba(252, 1, 8, 0.7);
     color: #ffffff;
     font-size: 16px;
     font-weight: 500;
     text-transform: capitalize;
     padding: 12px 25px 11px;
-    border-radius: 0;
     transition: all 0.3s linear;
     z-index: 1;
     overflow: hidden;
@@ -174,7 +174,7 @@ html {
 }
 
 .btn-3:hover {
-    color: #ff214f;
+    color: rgb(51 10 151 / 70%);
 }
 
 .btn-3:hover:after {
@@ -255,7 +255,7 @@ html {
     bottom: 0;
     left: 0;
     opacity: 0;
-    background: rgba(90, 9, 9, 0.72);
+    background: rgb(51 10 151 / 70%);
 }
 
 .demo-item:hover .demo-item-inner {
@@ -282,7 +282,7 @@ html {
     font-size: 30px;
     padding: 21px 20px 11px;
     border: solid 2px #ff214f;
-    background: #ff214f;
+    background: rgb(51 10 151 / 70%);
     line-height: normal;
     border-radius: 100%;
 }
@@ -290,7 +290,7 @@ html {
 .demo-item .icon i:hover{
     border: solid 2px #fff;
     background: #fff;
-    color: #ff214f;
+    color: rgb(51 10 151 / 70%);
 }
 
 .demo-item:hover h4{
@@ -438,7 +438,7 @@ a {
 }
 
 .footer{
-    background-color: rgb(51 10 151 / 70%)0;
+    background-color: rgb(51 10 151);
     padding: 100px 0;
     text-align: center;
 }
