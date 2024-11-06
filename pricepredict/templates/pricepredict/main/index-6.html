@@ -22,6 +22,23 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
+    <style>
+        #bgndVideo {
+            filter: blur(50px);
+
+}
+.pattern-overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 2, 2, 0.7); /* Optional overlay */
+}
+
+    </style>
+
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
@@ -50,11 +67,19 @@
             <div class="carousel-item active">
                 <div class="carousel-caption banner-slider-inner d-flex h-100 text-left">
                     <div class="carousel-content container">
-                        <h1>We love make things amazing and simple</h1>
+                        <h1>About Us</h1>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias
+                            At AutoWorth, we are committed to transforming the way you evaluate and understand the worth of used vehicles. Leveraging cutting-edge machine learning algorithms and comprehensive data analysis, our platform delivers accurate and reliable price predictions for cars based on real-time market trends and historical data.
+
+Our mission is to empower users with the knowledge and tools they need to make informed decisions when buying or selling used vehicles. By simplifying the process and providing transparent insights, we aim to bring confidence and clarity to every car transaction.
+
+Whether you are a first-time buyer, a seasoned seller, or a car enthusiast looking to explore the market, AutoWorth is here to provide personalized and data-driven predictions, tailored to your unique needs. Our easy-to-use platform takes into account various factors such as vehicle make, model, year of manufacture, mileage, and more to give you an accurate estimate of a car’s value.
+
+At AutoWorth, we believe in innovation, transparency, and customer satisfaction. Our team is continuously working to improve our algorithms and expand our offerings, ensuring that our users have access to the best possible information to make the right decisions.
+
+Join us in revolutionizing the used vehicle market, one prediction at a time.
                         </p>
-                        <a href="#" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
+                        <a href= "{% url 'index' %}" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
                     </div>
                 </div>
             </div>

@@ -163,7 +163,7 @@ html {
     z-index: 1;
     overflow: hidden;
     float: right;
-    margin-top: 15px;
+    margin-top: -60px;
 }
 
 .btn-3 i::before {
@@ -274,24 +274,7 @@ html {
     transform: translateY(-50%);
 }
 
-.demo-item .icon i{
-    width: 70px!important;
-    height: 70px!important;
-    text-align: center;
-    color: #fff;
-    font-size: 30px;
-    padding: 21px 20px 11px;
-    border: solid 2px #ff214f;
-    background: rgb(51 10 151 / 70%);
-    line-height: normal;
-    border-radius: 100%;
-}
 
-.demo-item .icon i:hover{
-    border: solid 2px #fff;
-    background: #fff;
-    color: rgb(51 10 151 / 70%);
-}
 
 .demo-item:hover h4{
     color: rgb(51 10 151 / 70%);
@@ -375,7 +358,12 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(51 10 151 / 70%);
+    background: linear-gradient(to right, rgba(63, 9, 178, 0.7), rgba(0, 0, 0, 0.7));
+    /* Additional styles */
+    color: white; /* Text color for contrast */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+
 }
 
 .banner .breadcrumb-area {
@@ -438,7 +426,7 @@ a {
 }
 
 .footer{
-    background-color: rgb(51 10 151);
+    background-color: rgb(35, 6, 107);
     padding: 100px 0;
     text-align: center;
 }

@@ -1,142 +1,147 @@
-{%load static%}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Listings</title>
-
+    <title>Vehicle Listings Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url("{% static 'assets/img/img-4.jpg' %}") no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgb(51 10 151 / 70%);
-            z-index: -1;
-        }
-
-        .vehicle-listing-container {
-            width: 100%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #1c1c1c;
-            color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .vehicle-listing-container h2 {
-            text-align: center;
-            color: #e74c3c;
-            font-size: 2rem;
-            margin-bottom: 20px;
             font-family: 'Roboto', sans-serif;
-        }
-
-        .vehicle-list {
-            list-style: none;
+            background-color: #f4f4f4;
+            margin: 0;
             padding: 0;
         }
 
-        .vehicle-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #2c2c2c;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        .vehicle-item:hover {
-            background-color: #333;
-        }
-
-        .vehicle-image img {
-            width: 200px;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .vehicle-details {
-            flex: 1;
-            padding-left: 20px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .vehicle-details h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #f1c40f;
-        }
-
-        .vehicle-details p {
-            margin: 5px 0;
-            font-size: 1.1rem;
-        }
-
-        .vehicle-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .btn {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .interest-btn {
-            background-color: #27ae60;
-        }
-
-        .delete-btn {
-            background-color: #e74c3c;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .no-listings {
-            text-align: center;
-            color: #e74c3c;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-
-        /* Additional styles for header and footer */
         header {
-            background-color: #1c1c1c;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
+            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
 
         footer {
-            background-color: #1c1c1c;
-            color: #fff;
-            padding: 10px 0;
+            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+            color: white;
             text-align: center;
+            padding: 10px 0;
             position: relative;
             bottom: 0;
             width: 100%;
+        }
+
+        .vehicle-listing-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .vehicle-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+            list-style: none;
+        }
+
+        .vehicle-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 1 1 calc(50% - 20px); /* Two items per row */
+            max-width: calc(50% - 20px); /* Ensure the max width is half the container minus margin */
+            box-sizing: border-box;
+        }
+
+        .vehicle-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .vehicle-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .vehicle-title {
+            font-size: 1.75rem;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .details {
+            font-size: 1rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .show-more-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+        }
+
+        .show-more-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+
+            transition: opacity 0.3s;
+        }
+
+        .interest-btn {
+            background-color: #28a745;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .interest-btn:hover,
+        .delete-btn:hover {
+            opacity: 0.8;
+        }
+
+        .additional-details {
+            margin-top: 10px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .vehicle-item {
+                flex: 1 1 100%; /* Full width on smaller screens */
+            }
         }
     </style>
 </head>
@@ -144,31 +149,48 @@
 <body>
 
     <header>
-        <h1>Welcome to Vehicle Listings</h1>
+        <h1>Vehicle Listings Marketplace</h1>
+        <nav>
+            <a href="{% url 'index' %}" class="btn">Home</a>
+            <a href="{% url 'index3' %}" class="btn">About Us</a>
+            <a href="{% url 'logout' %}" class="btn">Logout</a>
+            <a href="create/" class="btn">Create an Ad</a>
+        </nav>
     </header>
 
-    <div class="vehicle-listing-container" id="vehicle-listing-container">
-        <h2>Available Vehicles</h2>
-        <div class="text-center">
-            <a href="create/" class="btn btn-md btns-black" data-animation="animated fadeInUp delay-05s">Create an Ad</a>
-        </div>
+    <div class="vehicle-listing-container">
+        <h2 class="text-center">Available Vehicles</h2>
         <ul class="vehicle-list">
             {% for vehicle in vehicle_list %}
-            <li class="vehicle-item">
+            <li class="vehicle-item card">
                 <div class="vehicle-image">
                     {% if vehicle.image %}
-                    <img src="{{ vehicle.image.url }}" alt="Image of {{ vehicle.make }} {{ vehicle.model }}">
+                    <img src="{{ vehicle.image.url }}" alt="Image of {{ vehicle.make }} {{ vehicle.model }}" class="img-responsive">
                     {% else %}
                     <p>No image available</p>
                     {% endif %}
                 </div>
                 <div class="vehicle-details">
-                    <h3>{{ vehicle.make }} {{ vehicle.model }} - {{ vehicle.year }}</h3>
-                    <p><strong>Fuel Type:</strong> {{ vehicle.fuel_type }}</p>
-                    <p><strong>Transmission:</strong> {{ vehicle.transmission }}</p>
-                    <p><strong>KMs Run:</strong> {{ vehicle.kms_run }}</p>
-                    <p><strong>Price:</strong> ₹{{ vehicle.price }}</p>
-                    <p>Posted by: {{ vehicle.owner }}</p>
+                    <h3 class="vehicle-title">{{ vehicle.make }} {{ vehicle.model }} - {{ vehicle.year }}</h3>
+                    <p><strong>Fuel Type:</strong> <i class="fas fa-gas-pump"></i> {{ vehicle.fuel_type }}</p>
+                    <p><strong>Transmission:</strong> <i class="fas fa-cogs"></i> {{ vehicle.transmission }}</p>
+                    <p><strong>KMs Run:</strong> <i class="fas fa-tachometer-alt"></i> {{ vehicle.kms_run }}</p>
+                    <p><strong>Price:</strong> <span class="price">₹{{ vehicle.price }}</span></p>
+                    <p><strong>Posted by:</strong> {{ vehicle.owner }}</p>
+
+                    <div class="additional-details">
+                        <p><strong>Car Rating:</strong> {{ vehicle.car_rating }}</p>
+                        <p><strong>Body Type:</strong> {{ vehicle.body_type }}</p>
+                        <p><strong>Total Owners:</strong> {{ vehicle.total_owners }}</p>
+                        <p><strong>Registered City:</strong> {{ vehicle.registered_city }}</p>
+                        <p><strong>Registered State:</strong> {{ vehicle.registered_state }}</p>
+                        <p><strong>Variant:</strong> {{ vehicle.variant }}</p>
+                        <p><strong>Warranty Available:</strong> {{ vehicle.warranty_avail }}</p>
+                        <p><strong>Fitness Certificate:</strong> {{ vehicle.fitness_certificate }}</p>
+                        <p><strong>Description:</strong> {{ vehicle.description }}</p>
+                    </div>
+
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More</button>
 
                     <div class="vehicle-actions">
                         <a href="{% url 'express_interest' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
@@ -185,9 +207,21 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Vehicle Listings. All rights reserved.</p>
+        <p>&copy; 2024 Vehicle Listings Marketplace. All rights reserved.</p>
     </footer>
 
+    <script>
+        function toggleDetails(button) {
+            const additionalDetails = button.previousElementSibling;
+            if (additionalDetails.style.display === "none" || additionalDetails.style.display === "") {
+                additionalDetails.style.display = "block";
+                button.textContent = "Show Less";
+            } else {
+                additionalDetails.style.display = "none";
+                button.textContent = "Show More";
+            }
+        }
+    </script>
 </body>
 
 </html>
