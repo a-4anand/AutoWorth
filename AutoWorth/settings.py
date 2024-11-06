@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-_0h3!wm0$4s!628i50z*(-^0e1jjf%@dwu6w$mze++8c^xkt&r"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = Falsepip install django
 
 ALLOWED_HOSTS = ['*']
 
