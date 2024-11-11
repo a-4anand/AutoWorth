@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Listings Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        footer {
+            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .bike-listing-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .bike-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0;
+            list-style: none;
+        }
+
+        .bike-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex: 1 1 calc(50% - 20px);
+            max-width: calc(50% - 20px);
+            box-sizing: border-box;
+        }
+
+        .bike-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .bike-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .bike-title {
+            font-size: 1.75rem;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .details {
+            font-size: 1rem;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .show-more-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px;
+        }
+
+        .show-more-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            transition: opacity 0.3s;
+        }
+
+        .interest-btn {
+            background-color: #28a745;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .interest-btn:hover,
+        .delete-btn:hover {
+            opacity: 0.8;
+        }
+
+        .additional-details {
+            margin-top: 10px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .bike-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Bike Listings Marketplace</h1>
+        <nav>
+            <a href="{% url 'index' %}" class="btn">Home</a>
+            <a href="{% url 'about' %}" class="btn">About Us</a>
+            <a href="{% url 'logout' %}" class="btn">Logout</a>
+            <a href="create/" class="btn">Create an Ad</a>
+        </nav>
+    </header>
+
+    <div class="bike-listing-container">
+        <h2 class="text-center">Available Bikes</h2>
+        <ul class="bike-list">
+            {% for bike in bike_list %}
+            <li class="bike-item card">
+                <div class="bike-image">
+                    {% if bike.image %}
+                    <img src="{{ bike.image.url }}" alt="Image of {{ bike.make }} {{ bike.model }}" class="img-responsive">
+                    {% else %}
+                    <p>No image available</p>
+                    {% endif %}
+                </div>
+                <div class="bike-details">
+                    <h3 class="bike-title">{{ bike.make }} {{ bike.model }} - {{ bike.year }}</h3>
+                    <p><strong>Engine Type:</strong> {{ bike.engine_type }}</p>
+                    <p><strong>Transmission:</strong> {{ bike.transmission }}</p>
+                    <p><strong>KMs Run:</strong> {{ bike.kms_run }}</p>
+                    <p><strong>Price:</strong> <span class="price">₹{{ bike.price }}</span></p>
+                    <p><strong>Posted by:</strong> {{ bike.owner }}</p>
+
+                    <div class="additional-details">
+                        <p><strong>Condition:</strong> {{ bike.condition }}</p>
+                        <p><strong>Fuel Type:</strong> {{ bike.fuel_type }}</p>
+                        <p><strong>Color:</strong> {{ bike.color }}</p>
+                        <p><strong>City:</strong> {{ bike.city }}</p>
+                        <p><strong>Description:</strong> {{ bike.description }}</p>
+                    </div>
+
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More</button>
+
+                    <div class="bike-actions">
+                        <a href="{% url 'express_interest' bike.id %}" class="btn interest-btn">I'm Interested</a>
+                        {% if bike.owner == request.user %}
+                        <a href="{% url 'delete_listing' bike.id %}" class="btn delete-btn">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+            {% empty %}
+            <li class="no-listings">No bike listings available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Bike Listings Marketplace. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDetails(button) {
+            const additionalDetails = button.previousElementSibling;
+            if (additionalDetails.style.display === "none" || additionalDetails.style.display === "") {
+                additionalDetails.style.display = "block";
+                button.textContent = "Show Less";
+            } else {
+                additionalDetails.style.display = "none";
+                button.textContent = "Show More";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -33,97 +33,71 @@
 
 <!--    internal css-->
 <style>
-    /* Ensure there’s no margin/padding on the HTML and body elements */
-/*html, body {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    height: 100%; !* Ensure body takes the full viewport height *!*/
-/*    font-family: Arial, sans-serif;*/
-/*}*/
 
-/*!* Set up the background image and overlay *!*/
-/*body {*/
-/*    background: url("{% static 'assets/img/img-4.jpg' %}") no-repeat center center fixed;*/
-/*    background-size: cover;*/
-/*    position: relative;*/
-/*}*/
-
-/*body::before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    background: rgb(51 10 151 / 70%); !* Your color filter *!*/
-/*    z-index: -1; !* Ensure it stays behind other content *!*/
-/*}*/
 
 /* Center the form container absolutely */
 .custom-form-container {
-    width: 700px; /* Adjusted container width */
+    width: 700px;
     padding: 20px;
-    border-radius: 10px;
- background: linear-gradient(to right, #8e44ad, #e74c3c);
-
-
-
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.8); /* Dark transparent background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Darker shadow */
     position: absolute;
-    top: 100px; /* This moves it 50px down from the top */
+    top: 100px;
     left: 70%;
-    transform: translateX(-50%); /* Center the container horizontally */
+    transform: translateX(-50%);
 }
 
-/* Rest of your form styles */
 .custom-form-title {
     text-align: center;
     color: #f6f7f8;
     margin-bottom: 20px;
     font-size: 22px;
     font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .custom-form-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    gap: 10px;
+    margin-bottom: 15px;
+    gap: 15px;
 }
 
 .custom-form-input {
     flex: 1;
-    padding: 8px;
+    padding: 10px;
     border-radius: 8px;
     background-color: #f9f9f9;
     color: #333;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    transition: border-color 0.3s ease;
 }
 
 .custom-form-input:focus {
     outline: none;
-    border-color: #bb202d;
+    border-color: #c0392b;
 }
 
 .custom-submit-btn {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: linear-gradient(to right, #004d61, #00b4db);
-
     border: none;
     border-radius: 10px;
     color: #ffffff;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .custom-submit-btn:hover {
-    background-color: #2980b9;
+    background: #2980b9;
+    transform: scale(1.02);
 }
+
 
 label {
     flex: 1;
@@ -177,16 +151,46 @@ label {
 .dropdown-list.show {
     display: block;
 }
+footer {
+            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
 </style>
 
  <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    /* Background image */
+    background: url('https://images.pexels.com/photos/627678/pexels-photo-627678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+    background-size: cover;
+
+    /* Apply blur using an overlay */
+
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Inherit background to retain blur */
+    background-size: cover;
+    filter: blur(5px); /* Blur effect */
+    z-index: -1; /* Keep the overlay behind other content */
+}
+
 
         header {
             background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
@@ -197,47 +201,8 @@ label {
             align-items: center;
         }
 
-        footer {
-            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
 
-        .vehicle-listing-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
 
-        .vehicle-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0;
-            list-style: none;
-        }
-
-        .vehicle-item {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            flex: 1 1 calc(50% - 20px); /* Two items per row */
-            max-width: calc(50% - 20px); /* Ensure the max width is half the container minus margin */
-            box-sizing: border-box;
-        }
-
-        .vehicle-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
 
         .vehicle-image img {
             width: 100%;
@@ -245,39 +210,7 @@ label {
             border-radius: 12px 12px 0 0;
         }
 
-        .vehicle-title {
-            font-size: 1.75rem;
-            color: #333;
-            margin: 15px 0;
-        }
 
-        .price {
-            color: #e74c3c;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .details {
-            font-size: 1rem;
-            color: #666;
-            margin: 5px 0;
-        }
-
-        .show-more-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-            margin-top: 10px;
-        }
-
-        .show-more-btn:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
-        }
 
         .btn {
             display: inline-block;
@@ -290,32 +223,11 @@ label {
             transition: opacity 0.3s;
         }
 
-        .interest-btn {
-            background-color: #28a745;
-        }
 
-        .delete-btn {
-            background-color: #dc3545;
-        }
 
-        .interest-btn:hover,
-        .delete-btn:hover {
-            opacity: 0.8;
-        }
 
-        .additional-details {
-            margin-top: 10px;
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 6px;
-            display: none;
-        }
 
-        @media (max-width: 768px) {
-            .vehicle-item {
-                flex: 1 1 100%; /* Full width on smaller screens */
-            }
-        }
+
     </style>
 
 
@@ -325,12 +237,14 @@ label {
 <body id="top">
 
 <header>
-        <h1>Vehicle Listings Marketplace</h1>
+        <h1>AutoWorth</h1>
         <nav>
             <a href="{% url 'index' %}" class="btn">Home</a>
             <a href="{% url 'index6' %}" class="btn">About Us</a>
             <a href="{% url 'logout' %}" class="btn">Logout</a>
             <a href="{% url 'create_listing' %}" class="btn">Create an Ad</a>
+
+
         </nav>
     </header>
 
@@ -339,6 +253,9 @@ label {
 </div>
 
 {% load static %}
+
+
+
 
 
 <!-- Search area start -->
@@ -476,6 +393,9 @@ label {
 
         <button type="submit" class="custom-submit-btn">Predict Price</button>
     </form>
+     <footer>
+        <p>&copy; 2024 Vehicle Listings Marketplace. All rights reserved.</p>
+    </footer>
 </div>
 
 

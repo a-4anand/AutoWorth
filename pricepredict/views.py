@@ -8,12 +8,17 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 import pickle
 import pandas as pd
+from django.shortcuts import render
+from django.http import HttpResponse
+import pickle
 
 
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import VehicleListing, UserInterest
 from .forms import VehicleListingForm
+
+# views.py
 
 
 model_path = "pricepredict/autoworthmodel.pkl"
@@ -152,7 +157,10 @@ def express_interest(request, listing_id):
         return redirect('view_listings')
     return render(request, 'pricepredict/main/express_interest.html', {'car_listing': car_listing})
 
+@auth
 
+def bike_listings(request):
+    return render(request, 'pricepredict/main/bike_listing.html')
 
 @auth
 def view_listings(request):
@@ -193,3 +201,93 @@ def send_test_email(request):
         return HttpResponse('Test email sent successfully.')
     except Exception as e:
         return HttpResponse(f'Error sending email: {str(e)}')
+
+
+
+
+
+
+
+
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
+from .models import VehicleListing  # Ensure this is your car listing model
+
+
+def express_interest(request, listing_id):
+    car_listing = get_object_or_404(VehicleListing, id=listing_id)  # Retrieve car listing based on car_id
+
+    if request.method == "POST":
+        message = request.POST.get("message", "")
+
+        # Prepare email details
+        subject = f"Interest in Car Listing: {car_listing.make} {car_listing.model}"
+        from_email = "AutoWorth Support <ad3810242@gmail.com>"  # You can keep the sender as your default email
+        recipient_list = ["ad3810242@gmail.com"]  # Your email address
+
+        # Compose email message
+        email_message = f"""
+        {request.user.username}  has expressed interest in the {car_listing.make} {car_listing.model}  listed by {car_listing.owner}  on AutoWorth:
+        
+        Message from the user:
+        {message}
+        """
+
+        try:
+            # Send the email to your email address
+            send_mail(subject, email_message, from_email, recipient_list, fail_silently=False)
+            return HttpResponse("Thank you! Your interest has been submitted.")
+        except Exception as e:
+            return HttpResponse("There was an error sending your interest. Please try again later.")
+
+    return render(request, "pricepredict/main/express_interest.html", {"car_listing": car_listing})
+
+
+
+# added for bike price prediction by anand dubey @ 9 nov 2024
+import numpy as np
+import joblib
+from django.shortcuts import render
+from .forms import BikePriceForm
+
+# Load the model and encoders once at the top of the file
+model1 = joblib.load('models/bike_price_model.pkl')
+le_bike_name = joblib.load('models/le_bike_name.pkl')
+le_city = joblib.load('models/le_city.pkl')
+le_owner = joblib.load('models/le_owner.pkl')
+le_brand = joblib.load('models/le_brand.pkl')
+
+def predict_bike_price(request):
+    result = None
+
+    if request.method == 'POST':
+        form = BikePriceForm(request.POST)
+        if form.is_valid():
+            # Get data from the form
+            bike_name = form.cleaned_data['bike_name']
+            city = form.cleaned_data['city']
+            kms_driven = form.cleaned_data['kms_driven']
+            owner = form.cleaned_data['owner']
+            age = form.cleaned_data['age']
+            power = form.cleaned_data['power']
+            brand = form.cleaned_data['brand']
+
+            # Encode inputs
+            bike_name_encoded = le_bike_name.transform([bike_name])[0] if bike_name in le_bike_name.classes_ else -1
+            city_encoded = le_city.transform([city])[0] if city in le_city.classes_ else -1
+            owner_encoded = le_owner.transform([owner])[0] if owner in le_owner.classes_ else -1
+            brand_encoded = le_brand.transform([brand])[0] if brand in le_brand.classes_ else -1
+
+            # Handle unknown categories
+            if -1 in (bike_name_encoded, city_encoded, owner_encoded, brand_encoded):
+                result = "Error: Some input values are not recognized. Please check your input."
+            else:
+                # Prepare data for prediction
+                input_data = np.array([[bike_name_encoded, city_encoded, kms_driven, owner_encoded, age, power, brand_encoded]])
+                predicted_price = model1.predict(input_data)
+                result = f"The predicted price of the bike is: {predicted_price[0]:.2f}"
+    else:
+        form = BikePriceForm()
+
+    return render(request, 'pricepredict/main/predict_bike_price.html', {'form': form, 'result': result})

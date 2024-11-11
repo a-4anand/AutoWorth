@@ -19,6 +19,9 @@ urlpatterns = [
     path('index/main/listings/create/', views.create_listing, name='create_listing'),
     path('delete_listing/<int:listing_id>/', views.delete_listing, name='delete_listing'),
     path('send-test-email/', views.send_test_email, name='send_test_email'),
+    path('index/main/predict_bike_price/', views.predict_bike_price, name='predict_bike_price'),
+    path('index/main/bike-listings/', views.bike_listings, name='bike_listings'),
+
 
     # Password reset URLs
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='pricepredict/password/password_reset.html'),

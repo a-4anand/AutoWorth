@@ -6,88 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Price Prediction Result</title>
     <style>
+        /* Body Style */
         body {
-            font-family: Arial, sans-serif;
-            color: #ec0b0b;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
             background-image: url('https://images.pexels.com/photos/1383834/pexels-photo-1383834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            backdrop-filter: blur(5px);
             margin: 0;
             padding: 0;
         }
 
+        /* Container for all content */
         .container {
-            width: 50%;
-            height: 80%;
-            margin: 40px auto;
-            margin-right: 500px;
-            background: rgba(0, 0, 0, 0.7); /* Dark overlay to make text readable */
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 60%;
+            max-width: 1000px;
+            margin: 20px ;
+
+            background: rgba(0, 0, 0, 0.8); /* Dark overlay for contrast */
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .container:hover {
+            transform: translateY(-5px); /* Subtle hover effect */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Heading Styles */
         h2, h3 {
-            color: #ff4c4c; /* Dark red color */
-            text-decoration: #0dcdbd;
-            text-align: center;
+            color: #f04d4d; /* Red accents */
+            text-align: left;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
+        h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        /* Details Container */
         .details-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two items per row */
+            gap: 10px;
+            margin-bottom: 30px;
+            align-items: stretch; /* Ensure all items align vertically */
         }
 
         .details-item {
-            width: 48%; /* Each item takes half the width */
-            margin-left: 170px;
-            margin-bottom: 10px;
-            background: rgba(255, 76, 76, 0.2); /* Light red background */
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            border-radius: 10px;
+            padding: 15px 20px; /* Consistent padding for symmetry */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            height: 100%; /* Ensures all boxes have the same height */
+            display: flex; /* Align content within the box */
+            justify-content: space-between; /* Align content evenly */
+            align-items: center;
         }
 
         .details-item span {
             font-weight: bold;
+            color: #fff;
         }
 
-        /* Add some spacing between the details and the predicted price */
+        /* Predicted Price Styling */
         .predicted-price {
+            font-size: 1.8rem;
             text-align: center;
-            font-size: 24px;
-            color: #ffffff;
-            background: rgba(255, 76, 76, 0.9); /* Dark red box */
-            padding: 15px;
+            background: rgba(240, 77, 77, 0.9);
+            color: #fff;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            font-weight: 700;
         }
 
-        /* Position the chatbot properly */
-        .tidio-chat-container {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 9999;
-        }
-
-        /* Media query for mobile responsiveness */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 width: 90%;
-                margin: 20px auto;
+                padding: 20px;
+            }
+
+            .details-container {
+                grid-template-columns: 1fr; /* Stack items vertically on smaller screens */
+            }
+
+            h2, h3 {
+                font-size: 1.5rem; /* Adjust heading size on small screens */
             }
 
             .details-item {
-                width: 100%; /* Full width on mobile */
+                font-size: 1rem; /* Adjust text size on smaller screens */
+                padding: 15px;
             }
 
-            .tidio-chat-container {
-                right: 10px;
-                bottom: 10px;
+            .predicted-price {
+                font-size: 1.6rem; /* Adjust price text size */
             }
         }
     </style>
