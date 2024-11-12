@@ -34,13 +34,13 @@
             width: 100%;
         }
 
-        .bike-listing-container {
+        .vehicle-listing-container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
         }
 
-        .bike-list {
+        .vehicle-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -48,7 +48,7 @@
             list-style: none;
         }
 
-        .bike-item {
+        .vehicle-item {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -56,23 +56,23 @@
             padding: 20px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
-            flex: 1 1 calc(50% - 20px);
-            max-width: calc(50% - 20px);
+            flex: 1 1 calc(50% - 20px); /* Two items per row */
+            max-width: calc(50% - 20px); /* Ensure the max width is half the container minus margin */
             box-sizing: border-box;
         }
 
-        .bike-item:hover {
+        .vehicle-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .bike-image img {
+        .vehicle-image img {
             width: 100%;
             height: auto;
             border-radius: 12px 12px 0 0;
         }
 
-        .bike-title {
+        .vehicle-title {
             font-size: 1.75rem;
             color: #333;
             margin: 15px 0;
@@ -138,8 +138,8 @@
         }
 
         @media (max-width: 768px) {
-            .bike-item {
-                flex: 1 1 100%;
+            .vehicle-item {
+                flex: 1 1 100%; /* Full width on smaller screens */
             }
         }
     </style>
@@ -151,58 +151,60 @@
         <h1>Bike Listings Marketplace</h1>
         <nav>
             <a href="{% url 'index' %}" class="btn">Home</a>
-            <a href="{% url 'about' %}" class="btn">About Us</a>
+            <a href="{% url 'index3' %}" class="btn">About Us</a>
             <a href="{% url 'logout' %}" class="btn">Logout</a>
-            <a href="create/" class="btn">Create an Ad</a>
+            <a href="{% url 'add_bike' %}" class="btn">Create an Ad</a>
         </nav>
     </header>
 
-    <div class="bike-listing-container">
+    <div class="vehicle-listing-container">
         <h2 class="text-center">Available Bikes</h2>
-        <ul class="bike-list">
-            {% for bike in bike_list %}
-            <li class="bike-item card">
-                <div class="bike-image">
-                    {% if bike.image %}
-                    <img src="{{ bike.image.url }}" alt="Image of {{ bike.make }} {{ bike.model }}" class="img-responsive">
+        <ul class="vehicle-list">
+            {% for vehicle in vehicle_list %}
+            <li class="vehicle-item card">
+                <div class="vehicle-image">
+                    {% if vehicle.image %}
+                    <img src="{{ vehicle.image.url }}" alt="Image of {{ vehicle.company }} {{ vehicle.model }}" class="img-responsive">
                     {% else %}
                     <p>No image available</p>
                     {% endif %}
                 </div>
-                <div class="bike-details">
-                    <h3 class="bike-title">{{ bike.make }} {{ bike.model }} - {{ bike.year }}</h3>
-                    <p><strong>Engine Type:</strong> {{ bike.engine_type }}</p>
-                    <p><strong>Transmission:</strong> {{ bike.transmission }}</p>
-                    <p><strong>KMs Run:</strong> {{ bike.kms_run }}</p>
-                    <p><strong>Price:</strong> <span class="price">₹{{ bike.price }}</span></p>
-                    <p><strong>Posted by:</strong> {{ bike.owner }}</p>
+                <div class="vehicle-details">
+                    <h3 class="vehicle-title">{{ vehicle.company }} {{ vehicle.model }} - {{ vehicle.year }}</h3>
+                    <p><strong>Fuel Type:</strong> <i class="fas fa-gas-pump"></i> {{ vehicle.fuel_type }}</p>
+                    <p><strong>Transmission:</strong> <i class="fas fa-cogs"></i> {{ vehicle.transmission }}</p>
+                    <p><strong>KMs Run:</strong> <i class="fas fa-tachometer-alt"></i> {{ vehicle.kms_run }}</p>
+                    <p><strong>Price:</strong> <span class="price">₹{{ vehicle.price }}</span></p>
+                    <p><strong>Posted by:</strong> {{ vehicle.owner }}</p>
 
                     <div class="additional-details">
-                        <p><strong>Condition:</strong> {{ bike.condition }}</p>
-                        <p><strong>Fuel Type:</strong> {{ bike.fuel_type }}</p>
-                        <p><strong>Color:</strong> {{ bike.color }}</p>
-                        <p><strong>City:</strong> {{ bike.city }}</p>
-                        <p><strong>Description:</strong> {{ bike.description }}</p>
+                        <p><strong>Bike Rating:</strong> {{ vehicle.bike_rating }}</p>
+                        <p><strong>Total Owners:</strong> {{ vehicle.total_owners }}</p>
+                        <p><strong>Registered City:</strong> {{ vehicle.registered_city }}</p>
+                        <p><strong>Registered State:</strong> {{ vehicle.registered_state }}</p>
+                        <p><strong>Warranty Available:</strong> {{ vehicle.warranty_avail }}</p>
+                        <p><strong>Fitness Certificate:</strong> {{ vehicle.fitness_certificate }}</p>
+                        <p><strong>Description:</strong> {{ vehicle.description }}</p>
                     </div>
 
                     <button class="show-more-btn" onclick="toggleDetails(this)">Show More</button>
 
-                    <div class="bike-actions">
-                        <a href="{% url 'express_interest' bike.id %}" class="btn interest-btn">I'm Interested</a>
-                        {% if bike.owner == request.user %}
-                        <a href="{% url 'delete_listing' bike.id %}" class="btn delete-btn">Delete</a>
+                    <div class="vehicle-actions">
+                        <a href="{% url 'express_interest' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
+                        {% if vehicle.owner == request.user %}
+                        <a href="{% url 'delete_bike' vehicle.id %}" class="btn delete-btn">Delete</a>
                         {% endif %}
                     </div>
                 </div>
             </li>
             {% empty %}
-            <li class="no-listings">No bike listings available.</li>
+            <li class="no-listings">No vehicle listings available.</li>
             {% endfor %}
         </ul>
     </div>
 
     <footer>
-        <p>&copy; 2024 Bike Listings Marketplace. All rights reserved.</p>
+        <p>&copy; 2024 AutoWorth. All rights reserved.</p>
     </footer>
 
     <script>

@@ -1,7 +1,8 @@
-
+import json
 from .middlewares import auth, guest
-
-
+from django.conf import settings
+from django.http import JsonResponse
+import random
 from django.http import HttpResponse
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -11,6 +12,8 @@ import pandas as pd
 from django.shortcuts import render
 from django.http import HttpResponse
 import pickle
+from .models import BikeListing
+from .forms import BikeListingForm
 
 
 
@@ -24,22 +27,104 @@ from .forms import VehicleListingForm
 model_path = "pricepredict/autoworthmodel.pkl"
 model = pickle.load(open(model_path, 'rb'))
 
+def generate_otp():
+    return str(random.randint(100000, 999999))
 
+# Helper function to send OTP email
+def send_otp_email(email, otp):
+    subject = "Your OTP for AutoWorth Registration"
+    message = f"Your OTP is: {otp}. Please enter this code to complete your registration."
+    send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [email])
 
 # Views
+
 @guest
+ # Assuming this is your OTP sending utility
+
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        # Get data from the registration form
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+
+        if not email:
+            return render(request, 'pricepredict/main/register.html', {
+                "error": "Email is required"
+            })
+
+        # Generate OTP and send it via email
+        otp = random.randint(100000, 999999)
+        send_otp_email(email, otp)
+
+        # Store the OTP and email in the session
+        request.session['otp'] = otp
+        request.session['email'] = email
+        request.session['username'] = username
+        request.session['password1'] = password1
+        request.session['password2'] = password2
+
+        # Redirect to OTP verification page
+        return redirect('otp_verify')
+
+    # Initial form load for GET request
+    form = UserCreationForm()
+    return render(request, 'pricepredict/main/register.html', {
+        "form": form
+    })
+
+@guest
+def otp_verify_view(request):
+    if request.method == 'POST':
+        # Get OTP entered by the user
+        otp_entered = request.POST.get('otp')
+        stored_otp = request.session.get('otp')
+
+        if not otp_entered:
+            return render(request, 'pricepredict/main/otp_verify.html', {
+                "error": "OTP is required"
+            })
+
+        # Validate OTP
+        if otp_entered != str(stored_otp):
+            return render(request, 'pricepredict/main/otp_verify.html', {
+                "error": "Invalid OTP. Please try again."
+            })
+
+        # OTP is correct, so create the user
+        email = request.session.get('email')
+        username = request.session.get('username')
+        password1 = request.session.get('password1')
+        password2 = request.session.get('password2')
+
+        # Create the user
+        form = UserCreationForm({
+            'username': username,
+            'email': email,
+            'password1': password1,
+            'password2': password2
+        })
+
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')  # Make sure 'index' exists in your urls.py
-    else:
-        initial_data = {'username': '', 'password1': '', 'password2': ""}
-        form = UserCreationForm(initial=initial_data)
-    return render(request, 'pricepredict/main/register.html', {'form': form})
 
+            # Clear OTP and session data
+            request.session.pop('otp', None)
+            request.session.pop('email', None)
+            request.session.pop('username', None)
+            request.session.pop('password1', None)
+            request.session.pop('password2', None)
+
+            return redirect('index')  # Redirect to home page or dashboard
+
+        return render(request, 'pricepredict/main/otp_verify.html', {
+            "error": "There was an issue with your registration."
+        })
+
+    # Show OTP form
+    return render(request, 'pricepredict/main/otp_verify.html')
 @guest
 def login_view(request):
     if request.method == 'POST':
@@ -160,7 +245,7 @@ def express_interest(request, listing_id):
 @auth
 
 def bike_listings(request):
-    return render(request, 'pricepredict/main/bike_listing.html')
+    return render(request, 'pricepredict/main/bike-listing.html')
 
 @auth
 def view_listings(request):
@@ -216,31 +301,48 @@ from .models import VehicleListing  # Ensure this is your car listing model
 
 
 def express_interest(request, listing_id):
-    car_listing = get_object_or_404(VehicleListing, id=listing_id)  # Retrieve car listing based on car_id
+    # Retrieve car listing based on listing_id
+    car_listing = get_object_or_404(VehicleListing, id=listing_id)
 
     if request.method == "POST":
-        message = request.POST.get("message", "")
+        # Check if the user is authenticated before accessing user information
+        if not request.user.is_authenticated:
+            return HttpResponse("You must be logged in to express interest in this car.")
+
+        # Get the message from the form (empty string if not provided)
+        message = request.POST.get("message", "").strip()
+
+        # If no message is provided, you can either raise an error or proceed without it
+        if not message:
+            return HttpResponse("Please provide a message expressing your interest.")
 
         # Prepare email details
         subject = f"Interest in Car Listing: {car_listing.make} {car_listing.model}"
-        from_email = "AutoWorth Support <ad3810242@gmail.com>"  # You can keep the sender as your default email
+        from_email = "AutoWorth Support <ad3810242@gmail.com>"  # Sender email address
         recipient_list = ["ad3810242@gmail.com"]  # Your email address
 
         # Compose email message
         email_message = f"""
-        {request.user.username}  has expressed interest in the {car_listing.make} {car_listing.model}  listed by {car_listing.owner}  on AutoWorth:
-        
+        Hello,
+
+        {request.user.username} has expressed interest in the {car_listing.make} {car_listing.model} listed by {car_listing.owner} on AutoWorth. 
+        Please contact the owner at {car_listing.phone_no}.
+
         Message from the user:
         {message}
+
+        Best regards,
+        AutoWorth Team
         """
 
         try:
-            # Send the email to your email address
+            # Send the email
             send_mail(subject, email_message, from_email, recipient_list, fail_silently=False)
             return HttpResponse("Thank you! Your interest has been submitted.")
         except Exception as e:
-            return HttpResponse("There was an error sending your interest. Please try again later.")
+            return HttpResponse(f"There was an error sending your interest. Please try again later. Error: {str(e)}")
 
+    # Render the page if the request method is GET or the form is not submitted
     return render(request, "pricepredict/main/express_interest.html", {"car_listing": car_listing})
 
 
@@ -291,3 +393,43 @@ def predict_bike_price(request):
         form = BikePriceForm()
 
     return render(request, 'pricepredict/main/predict_bike_price.html', {'form': form, 'result': result})
+
+
+# bike marketplace
+
+
+
+@auth
+
+def bike_listing(request):
+    vehicles = BikeListing.objects.all()  # Fetch all bike listings
+    return render(request, 'pricepredict/main/bike-listing.html', {'vehicle_list': vehicles})
+
+#
+#
+def add_bike(request):
+    if request.method == 'POST':
+        form = BikeListingForm(request.POST, request.FILES)
+        if form.is_valid():
+            bike_listing = form.save(commit=False)
+            bike_listing.owner = request.user
+            bike_listing.save()
+            # Save the new listing with the owner being the current logged-in user
+            form.save()
+            return redirect('bike_listing')
+    else:
+        form = BikeListingForm()
+    return render(request, 'pricepredict/main/add_bike.html', {'form': form})
+
+def delete_bike(request, listing_id):
+    bike_listing = get_object_or_404(BikeListing, id=listing_id)
+
+    # Ensure only the owner can delete the listing
+    if bike_listing.owner != request.user:
+        return HttpResponseForbidden("You are not allowed to delete this listing.")
+
+    if request.method == 'POST':
+        bike_listing.delete()  # Delete the listing
+        return redirect('bike_listing')  # Redirect after deletion
+
+    return render(request, 'pricepredict/main/delete_listing.html', {'bike_listing': bike_listing})

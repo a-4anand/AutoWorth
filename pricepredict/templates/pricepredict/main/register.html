@@ -1,129 +1,91 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WLMZXT6');</script>
     <!-- End Google Tag Manager -->
-    <title>Car Shop - Car Dealer HTML Template</title>
+    <title>Register - AutoWorth</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    
+
     <!-- CSS Libraries -->
     <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/magnific-popup.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/jquery.selectBox.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/rangeslider.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/animate.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/css/jquery.mCustomScrollbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/flaticon/font/flaticon.css' %}">
-    
-    <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="{% static 'assets2/img/favicon.ico' %}" type="image/x-icon">
-    
-    <!-- Google Fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7COswald:200,300,400,500,600%7CRoboto:100,300,400,400i,500,700">
-    
-    <!-- Custom Stylesheet -->
     <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" id="style_sheet" href="{% static 'assets2/css/skins/default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets2/fonts/font-awesome/css/font-awesome.min.css' %}">
 </head>
 <body id="top">
 
-<!-- Page Loader -->
-<div class="page_loader"></div>
-
-<!-- Register start -->
 <div class="login-1">
     <div class="container-fluid">
         <div class="row login-box">
             <div class="col-lg-6 bg-color-15 pad-0 none-992 bg-img">
                 <div class="info clearfix">
                     <h1>Welcome to <a href="#">AUTOWORTH</a></h1>
-
                 </div>
             </div>
             <div class="col-lg-6 align-self-center pad-0 form-section">
                 <div class="form-inner">
-                    <a href="#" class="logo">
-<!--                        <img src="{% static 'assets2/img/logos/logo-white.png' %}" alt="logo">-->
-                    </a>
                     <h3>Create an Account</h3>
+
+                    <!-- Login Button -->
+
+
+                    <!-- Registration form -->
                     <form method="POST" action="{% url 'register' %}">
                         {% csrf_token %}
+
+                        <!-- Username -->
                         <div class="form-group">
-    <label for="{{ form.username.id_for_label }}">Username:</label>
-    <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}"
-           class="form-control" value="{{ form.username.value }}" />
-    {% if form.username.errors %}
-        <span class="text-danger">{{ form.username.errors }}</span>
-    {% endif %}
-</div>
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" class="form-control" value="{{ form.username.value }}" />
+                            {% if form.username.errors %}
+                                <span class="text-danger">{{ form.username.errors }}</span>
+                            {% endif %}
+                        </div>
 
-<div class="form-group">
-    <label for="{{ form.password1.id_for_label }}">Password:</label>
-    <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}"
-           class="form-control" value="{{ form.password1.value }}" />
-    {% if form.password1.errors %}
-        <span class="text-danger">{{ form.password1.errors }}</span>
-    {% endif %}
-</div>
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="form-control" required />
+                        </div>
 
-<div class="form-group">
-    <label for="{{ form.password2.id_for_label }}">Re-Type Password:</label>
-    <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}"
-           class="form-control" value="{{ form.password2.value }}" />
-    {% if form.password2.errors %}
-        <span class="text-danger">{{ form.password2.errors }}</span>
-    {% endif %}
-</div>
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="{{ form.password1.id_for_label }}">Password:</label>
+                            <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" class="form-control" value="{{ form.password1.value }}" />
+                            {% if form.password1.errors %}
+                                <span class="text-danger">{{ form.password1.errors }}</span>
+                            {% endif %}
+                        </div>
 
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="{{ form.password2.id_for_label }}">Re-Type Password:</label>
+                            <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" class="form-control" value="{{ form.password2.value }}" />
+                            {% if form.password2.errors %}
+                                <span class="text-danger">{{ form.password2.errors }}</span>
+                            {% endif %}
+                        </div>
 
                         <button type="submit" class="btn btn-dark">Submit</button>
+                        <a href="{% url 'login' %}" class="btn btn-outline-dark">Login</a>
 
-                        <a href="{% url 'login' %}" class="btn btn-default">Login</a>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Register end -->
 
 <!-- External JS libraries -->
 <script src="{% static 'assets2/js/jquery-2.2.0.min.js' %}"></script>
-<script src="{% static 'assets2/js/popper.min.js' %}"></script>
 <script src="{% static 'assets2/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.selectBox.js' %}"></script>
-<script src="{% static 'assets2/js/rangeslider.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.filterizr.js' %}"></script>
-<script src="{% static 'assets2/js/wow.min.js' %}"></script>
-<script src="{% static 'assets2/js/backstretch.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.countdown.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.scrollUp.js' %}"></script>
-<script src="{% static 'assets2/js/typed.min.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.mb.YTPlayer.js' %}"></script>
-<script src="{% static 'assets2/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
-<script src="{% static 'assets2/js/ie-emulation-modes-warning.js' %}"></script>
-<!-- Custom JS -->
-<script src="{% static 'assets2/js/app.js' %}"></script>
-
-<!-- Google API -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
-
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 </body>
 </html>

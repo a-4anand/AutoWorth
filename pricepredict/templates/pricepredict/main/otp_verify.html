@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - AutoWorth</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
+    <style>
+        /* Additional custom styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 450px;
+            padding: 50px 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 80px;
+        }
+
+        .container h3 {
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            height: 45px;
+            font-size: 16px;
+            box-shadow: none;
+        }
+
+        .btn-dark {
+            background-color: #1a1a1a;
+            color: white;
+            width: 100%;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .btn-dark:hover {
+            background-color: #333;
+        }
+
+        .btn-register {
+            background-color: #007bff;
+            color: white;
+            border-radius: 25px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .btn-register:hover {
+            background-color: #0056b3;
+        }
+
+        .alert {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .text-muted {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 12px;
+            color: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h3>Verify OTP</h3>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'otp_verify' %}">
+            {% csrf_token %}
+
+            <!-- OTP -->
+            <div class="form-group">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" id="otp" name="otp" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-dark">Verify OTP</button>
+        </form>
+
+        <div class="text-muted">
+            <p>If you did not receive the OTP, check your spam folder or <a href="#">resend OTP</a>.</p>
+        </div>
+
+        <!-- Register Button -->
+        <a href="{% url 'register' %}" class="btn btn-register">Go to Register Page</a>
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 AutoWorth. All rights reserved.</p>
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'assets2/js/jquery-2.2.0.min.js' %}"></script>
+    <script src="{% static 'assets2/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

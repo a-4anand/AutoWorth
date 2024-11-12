@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Express Interest - AutoWorth</title>
+
     <style>
         /* Main container styling */
         .interest-container {
@@ -73,6 +74,9 @@
 
 <div class="interest-container">
     <h2>Express Interest in {{ car_listing.make }} {{ car_listing.model }}</h2>
+    <p>
+        Please provide your phone number along with your interest message in the message box, happy buying 🙂
+    </p>
 
     <form method="POST" action="{% url 'express_interest' car_listing.id %}" class="interest-form">
         {% csrf_token %}

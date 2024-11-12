@@ -24,6 +24,7 @@ class BodyType(models.TextChoices):
 
 class VehicleListing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    phone_no = models.IntegerField(max_length=11)
     make = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     year = models.IntegerField()
@@ -79,3 +80,37 @@ class UserInterest(models.Model):
 
     def __str__(self):
         return f"Interest by {self.user.username} in {self.car_listing.make} {self.car_listing.model}"
+
+
+class BikeListing(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    phone_no = models.CharField(max_length=11)  # Changed to CharField to handle formatting
+    company = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+    engine_capacity = models.IntegerField(max_length=4)
+    year = models.IntegerField()
+    kms_run = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField()
+    image = models.ImageField(upload_to='vehicle_images/', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class BikeRating(models.TextChoices):
+        GREAT = 'great', 'Great'
+        GOOD = 'good', 'Good'
+        FAIR = 'fair', 'Fair'
+        OVERPRICED = 'overpriced', 'Overpriced'
+
+    total_owners = models.IntegerField()
+    registered_city = models.CharField(max_length=100)
+    registered_state = models.CharField(max_length=100)
+    warranty_avail = models.BooleanField(default=False)
+    fitness_certificate = models.BooleanField(default=False)
+    bike_rating = models.CharField(
+        max_length=15,
+        choices=BikeRating.choices,
+        default=BikeRating.GOOD,
+    )
+
+    def __str__(self):
+        return f"{self.company} {self.model} - {self.year}"

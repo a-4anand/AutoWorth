@@ -6,6 +6,8 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 
     path('', views.register_view, name='register'),  # User registration form
+    path('listings/bikes/', views.bike_listing, name='bike_listing'),
+
     path('index/', views.index, name='index'),  # Home/index view
     path('login/', views.login_view, name='login'),  # Login form
     path('index/main/logout_view/',views.logout_view,name='logout'),
@@ -21,6 +23,9 @@ urlpatterns = [
     path('send-test-email/', views.send_test_email, name='send_test_email'),
     path('index/main/predict_bike_price/', views.predict_bike_price, name='predict_bike_price'),
     path('index/main/bike-listings/', views.bike_listings, name='bike_listings'),
+    path('verify-otp/', views.otp_verify_view, name='otp_verify'),
+    path('index/main/listings/create/create/', views.add_bike, name='add_bike'),
+    path('delete_bike/<int:listing_id>/', views.delete_bike, name='delete_bike'),
 
 
     # Password reset URLs
