@@ -24,7 +24,7 @@ class BodyType(models.TextChoices):
 
 class VehicleListing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    phone_no = models.IntegerField(max_length=11)
+    phone_no = models.CharField(max_length=11)
     make = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     year = models.IntegerField()
@@ -87,7 +87,7 @@ class BikeListing(models.Model):
     phone_no = models.CharField(max_length=11)  # Changed to CharField to handle formatting
     company = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
-    engine_capacity = models.IntegerField(max_length=4)
+    engine_capacity = models.CharField(max_length=4)
     year = models.IntegerField()
     kms_run = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)

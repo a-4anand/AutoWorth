@@ -52,6 +52,7 @@ AUTHENTICATION_BACKENDS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -87,15 +88,23 @@ WSGI_APPLICATION = "AutoWorth.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "autoworth",
+#         "USER": "postgres",
+#         "PASSWORD": "1234",
+#         "HOST": "localhost"
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "autoworth",
-        "USER": "postgres",
-        "PASSWORD": "1234",
-        "HOST": "localhost"
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -175,3 +184,6 @@ DEFAULT_FROM_EMAIL = 'AutoWorth Support <ad3810242@gmail.com>'
 # settings.py
 
 
+
+# WhiteNoise-specific settings
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
