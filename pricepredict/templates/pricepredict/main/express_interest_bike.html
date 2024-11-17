@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Interest - AutoWorth</title>
+
+    <style>
+        /* Main container styling */
+        .interest-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(28, 28, 28, 0.9); /* Dark, semi-transparent */
+            color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Title styling */
+        .interest-container h2 {
+            text-align: center;
+            color: #f39c12;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* Textarea styling */
+        .interest-form textarea {
+            width: 100%;
+            padding: 0px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            background-color: #333;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        .interest-form textarea:focus {
+            outline: none;
+            border-color: #f39c12;
+        }
+
+        /* Button styling */
+        .interest-form button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #16a085, #27ae60);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .interest-form button:hover {
+            background: linear-gradient(to right, #1abc9c, #2ecc71);
+            transform: scale(1.02);
+        }
+
+        .interest-form button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+<div class="interest-container">
+    <h2>Express Interest in {{ bike_listing.company }} {{ bike_listing.model }}</h2>
+    <p>
+        Please provide your phone number along with your interest message in the message box, happy buying 🙂
+    </p>
+
+    <form method="POST" action="{% url 'express_interest_bike' bike_listing.id %}" class="interest-form">
+        {% csrf_token %}
+        <textarea name="message" rows="6" placeholder="Write your message..."></textarea>
+        <button type="submit">Submit Interest</button>
+    </form>
+</div>
+
+</body>
+</html>

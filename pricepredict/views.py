@@ -433,3 +433,49 @@ def delete_bike(request, listing_id):
         return redirect('bike_listing')  # Redirect after deletion
 
     return render(request, 'pricepredict/main/delete_listing.html', {'bike_listing': bike_listing})
+
+
+def express_interest_bike(request, listing_id):
+    # Retrieve car listing based on listing_id
+    bike_listing = get_object_or_404(BikeListing, id=listing_id)
+
+    if request.method == "POST":
+        # Check if the user is authenticated before accessing user information
+        if not request.user.is_authenticated:
+            return HttpResponse("You must be logged in to express interest in this car.")
+
+        # Get the message from the form (empty string if not provided)
+        message = request.POST.get("message", "").strip()
+
+        # If no message is provided, you can either raise an error or proceed without it
+        if not message:
+            return HttpResponse("Please provide a message expressing your interest.")
+
+        # Prepare email details
+        subject = f"Interest in Car Listing: {bike_listing.company} {bike_listing.model}"
+        from_email = "AutoWorth Support <ad3810242@gmail.com>"  # Sender email address
+        recipient_list = ["ad3810242@gmail.com"]  # Your email address
+
+        # Compose email message
+        email_message = f"""
+        Hello,
+
+        {request.user.username} has expressed interest in the {bike_listing.company} {bike_listing.model} listed by {bike_listing.owner} on AutoWorth. 
+        Please contact the owner at {bike_listing.phone_no}.
+
+        Message from the user:
+        {message}
+
+        Best regards,
+        AutoWorth Team
+        """
+
+        try:
+            # Send the email
+            send_mail(subject, email_message, from_email, recipient_list, fail_silently=False)
+            return HttpResponse("Thank you! Your interest has been submitted.")
+        except Exception as e:
+            return HttpResponse(f"There was an error sending your interest. Please try again later. Error: {str(e)}")
+
+    # Render the page if the request method is GET or the form is not submitted
+    return render(request, "pricepredict/main/express_interest_bike.html", {"bike_listing": bike_listing})

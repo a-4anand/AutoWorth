@@ -190,7 +190,7 @@
                     <button class="show-more-btn" onclick="toggleDetails(this)">Show More</button>
 
                     <div class="vehicle-actions">
-                        <a href="{% url 'express_interest' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
+                        <a href="{% url 'express_interest_bike' vehicle.id %}" class="btn interest-btn">I'm Interested</a>
                         {% if vehicle.owner == request.user %}
                         <a href="{% url 'delete_bike' vehicle.id %}" class="btn delete-btn">Delete</a>
                         {% endif %}
