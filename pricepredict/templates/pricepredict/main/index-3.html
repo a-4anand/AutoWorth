@@ -1,14 +1,14 @@
 
-
-{% extends 'base.html' %}
-
-{% block title %}Home{% endblock %}
-
-
-
-{% block content %}
-
 {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head><!-- End Google Tag Manager -->
+    <title>Register - AutoWorth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
 
 <!-- External CSS libraries -->
 <link type="text/css" rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
@@ -34,163 +34,37 @@
 <!--    internal css-->
 <style>
 
-
-/* Center the form container absolutely */
-.custom-form-container {
-    width: 700px;
-    padding: 20px;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.8); /* Dark transparent background */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Darker shadow */
-    position: absolute;
-    top: 100px;
-    left: 70%;
-    transform: translateX(-50%);
-}
-
-.custom-form-title {
-    text-align: center;
-    color: #f6f7f8;
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.custom-form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    gap: 15px;
-}
-
-.custom-form-input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    color: #333;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-.custom-form-input:focus {
-    outline: none;
-    border-color: #c0392b;
-}
-
-.custom-submit-btn {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(to right, #004d61, #00b4db);
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.custom-submit-btn:hover {
-    background: #2980b9;
-    transform: scale(1.02);
-}
-
-
-label {
-    flex: 1;
-    display: flex;
-    color: #fafcfb;
-    align-items: center;
-    justify-content: flex-start;
-    font-weight: bold;
-}
-
-.custom-checkbox {
-    transform: scale(1.1);
-    margin-right: 5px;
-}
-
-.dropdown {
-    position: relative;
-    flex: 1;
-}
-
-.custom-form-input.dropdown-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-.dropdown-list {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    border: 2px solid #e67e22;
-    border-radius: 10px;
-    max-height: 150px;
-    overflow-y: auto;
-    width: 100%;
-    z-index: 10;
-}
-
-.dropdown-list div {
-    padding: 8px;
-    cursor: pointer;
-}
-
-.dropdown-list div:hover {
-    background-color: #f39c12;
-    color: #ffffff;
-}
-
-.dropdown-list.show {
-    display: block;
-}
-footer {
-            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
-            color: white;
-            text-align: center;
-            padding: 10px 0;
+        /* General page setup */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
             position: relative;
-            bottom: 0;
-            width: 100%;
+            background: url('https://wallpapers.com/images/hd/black-car-4k-wnfjwxcbybpwbs08.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
-</style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+        }
 
- <style>
-        body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    position: relative;
-
-    /* Background image */
-    background: url('https://images.pexels.com/photos/627678/pexels-photo-627678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
-    background-size: cover;
-
-    /* Apply blur using an overlay */
-
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: inherit; /* Inherit background to retain blur */
-    background-size: cover;
-    filter: blur(5px); /* Blur effect */
-    z-index: -1; /* Keep the overlay behind other content */
-}
-
+        nav a {
+                color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+        }
 
         header {
             background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
@@ -201,34 +75,146 @@ body::before {
             align-items: center;
         }
 
-
-
-
         .vehicle-image img {
             width: 100%;
             height: auto;
             border-radius: 12px 12px 0 0;
         }
 
+        /* Responsive form container */
+       .custom-form-container {
+        width: 60%;
+            max-width: 1000px;
+            margin: 20px ;
+
+            background: rgba(0, 0, 0, 0.8); /* Dark overlay for contrast */
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
 
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: white;
 
-            transition: opacity 0.3s;
+        .custom-form-title {
+            text-align: center;
+            color: #f6f7f8;
+            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
+        .custom-form-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
 
+        .custom-form-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            color: #333;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            margin-bottom: 10px;
+        }
 
+        .custom-form-input:focus {
+            outline: none;
+            border-color: #c0392b;
+        }
 
+        .custom-submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #004d61, #00b4db);
+            border: none;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
 
+        .custom-submit-btn:hover {
+            background: #2980b9;
+            transform: scale(1.02);
+        }
 
+        label {
+            flex: 1;
+            display: flex;
+            color: #fafcfb;
+            align-items: center;
+            justify-content: flex-start;
+            font-weight: bold;
+        }
+
+        .dropdown {
+        position: relative;
+        width:55%;
+    }
+
+    .dropdown-list {
+        display: none; /* Default is hidden */
+        position: absolute;
+        top: 100%; /* Position below the input */
+        left: 0;
+        width: 90%;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+    }
+
+    .dropdown-list.show {
+        display: block; /* Show when class 'show' is added */
+    }
+
+    .dropdown-list div {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .dropdown-list div:hover {
+        background-color: #f0f0f0;
+
+        /* Media query for mobile responsiveness */
+        @media (max-width: 768px) {
+            .custom-form-row {
+                flex-direction: column;
+            }
+
+            .custom-form-input {
+                width: 100%;
+            }
+
+            .custom-form-container {
+                width: 90%;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .vehicle-image img {
+                width: 100%;
+                height: auto;
+            }
+        }}
     </style>
+
 
 
 </head>
@@ -252,7 +238,7 @@ body::before {
 
 </div>
 
-{% load static %}
+
 
 
 
@@ -724,83 +710,9 @@ document.addEventListener('click', function (event) {
 
 <!--new javascript for model-->
 
-<script>
-    // List of vehicle variants
-    const variants = [
-        'lxi opt', 'lxi', 'sports 1.2 vtvt', 'vdi', 'magna 1.2 vtvt', 'vxi (o) amt',
-        'asta 1.2', 'magna 1.4 crdi', 'rxl', 'sportz 1.2', 'sportz 1.4 crdi', '1.2 v mt i vtec',
-        'magna 1.2 kappa2', 's mt petrol', 'sportz 1.2 kappa2', 'd lite plus', 'vdi abs',
-        '1.2 s mt i vtec', 'era plus', 'fluidic 1.6 sx crdi', 'vxi bs iv', 'magna o 1.2', 'gls',
-        'vxi', 'vxi 1.2 bs iv', '1.5 trend tdci', 'vdi bs iv', 'xl petrol', 's 1.1 crdi',
-        'magna o 1.4 crdi', 'd 4d gd', 'gl plus', 'sportz 1.2 kappa vtvt', 'fluidic 1.6 crdi s',
-        'vxi cng', 'alpha ddis 190', 'zdi', 'ldi bs iv', 's 1.6 mt', 'sportz o 1.4 crdi',
-        '1.2 smt i vtec', '1.6 crdi sx plus auto', 'lxi cng', '1.5 emt i dtec', '2.0 tdi quattro mt',
-        '1.6 sx crdi', 'asta 1.4 crdi', '1.5 exmt i dtec', 'sportz 1.4', 'd 4d j', '2.0 tdi',
-        '2.5 vx 7 str bs iv', 'rxz', 'rxt', 'vxi opt. mt', 'sportz (o) 1.2 at vtvt', 'sportz(o) 1.2 mt',
-        '85 ps rxl opt', '1.2 magna plus vtvt', 'xt 1.05 revotorq', '1.6 s', 'g', 'zxi smart hybrid',
-        't (o)', 'zxi', '1.2 i-vtec vx mt', 'zeta 1.2 k12', 'lxi 1.3', 'w8 fwd', 'comfortline 1.2l petrol',
-        'xt 1.2 revotron', 's8', '2.4 gx 7 str', 's10', '1.6 sx plus petrol', '1.4 zxi duratorq',
-        '2.4 mivec', 'fluidic 1.6 sx crdi opt', 'fluidic 1.4 crdi cx', 'highline 1.5', 'lxi 1.2 bs iv',
-        '1.5titanium tdci', 'xv 110 diesel', 'vxi genus', 'highline diesel', 'gl', '2.0 tdi quattro',
-        '1.6 sx at crdi', '2.0 tdi premium plus', '3.0 at 4x2', '2.5 gx 7 str bs iv', 'lx bs iv',
-        '1.0 t(o) at', 'zxi at', 't8 at', 'v mt petrol', 'lxi 1.0 l', 'era 1.1 irde', 'vx mt petrol',
-        's 1.1 crdi opt', '1.6 crdi sx + at', 'zdi plus', '1.6 crdi sx', '1.4 crdi ex mt',
-        '1.5 titanium ti vct', 'fluidic 1.4 crdi', 'alpha shvs  mt', 'xz 2.0l kryotec', 'vx mt diesel',
-        '1.8v at', 'vxi 1.3', 'magna 1.1 irde2', 'cla 200 cdi sport', '1.5 smt i dtec', 'alpha 1.3 ddis shvs',
-        'k4+ d 6 str', '1.5 e mt petrol', '7 str', '40 tfsi premium', 'w4', 'vl at', 'sv mt petrol',
-        '3.0 mt 4x2', 'gls cng', 'w6 4x2', '1.0 rxt opt', 'delta 1.2 k12', '1.0 rxt', 'xt twist',
-        'sportz 1.1 irde2', 'alpha 1.2 k12', 'crde 4x4 bs iv', 'ls diesel', '3.0 mt 4x4', 'vdi amt',
-        's11', 's6+ intell hybrid', 'xp', '1.2', '1.5 exi', 'lx tdi bs iii', 'fluidic 1.6 ex crdi',
-        'vdi elate limited edition', 'zxi 1.3', 'alpha 1.5 at vtvt shvs', 'magna 1.2 kappa vtvt', 'vxi amt',
-        '1.2 e mt i vtec', 'era 1.2 vtvt', 'magna 1.2', 'd-4d vxd', 'sportz 1.2 vtvt', 'vxi plus',
-        'sx 1.2 opt', 'htx 1.5 diesel', 'zdi + amt', 'sx(o) crdi', 'highline1.2l petrol', '1.2 v mt',
-        'gd', '2.5 gx 8 str bs iv', 'sigma 1.3', '1.2 sat i vtec', 'delta 1.3 ddis shvs', '320d',
-        'vdi+ shvs', 'hybrid', 'asta 1.2 kappa vtvt opt', 'titanium plus petrol at', 'magna plus',
-        '2.0 tdi s line', 'vdi plus', '1.5 titaniumtdci opt', 'w10 at fwd', '35 tdi quattro',
-        '2.5 vx 8 str bs iv', '1.6 sx (o) crdi', 'trendline 1.2l petrol', 'era plus (o)', 's5 2wd',
-        'vxi elate limited edition', '1.2 v at', '1.6 sx plus se', '1.2 base i vtec', 'k10 vxi at',
-        '1.8 g', 'fluidic 1.6 ex vtvt', 'highline petrol at', 'sportz1.2 crdi', 'vxi abs',
-        'xz 1.2 revotron', 'trendline 1.0 l petrol', '1.5 trend ti vct', '1.2 v cvt i vtec', 'zx cvt petrol',
-        'rxt opt', 'sportz 1.2 o', 'vdi opt', 'fluidic 1.6 sx vtvt', '1.4 e plus crdi', 'vx (o) petrol',
-        'zdi+ shvs rs mt', 'ambiente 1.8 tsi', 's at', 'w10 at', 'zeta ddis 190', '1.6 sx at petrol',
-        'cross 1.4 gd', 'zdi plus dual tone', 'zdi amt', 'gt tsi 1.2 petrol at', '1.5 tdci titanium plus',
-        '5 str cng with ac plushtr', '1.2 zxi duratec', 'he 1.8 j', 'elegance tdi 2.0 at', 'sle',
-        'sportz at 1.2 kappa vtvt', 'kinetic d4', 'zdi+ dual tone amt', 'e 220 cdi elegance', '2.0 crdi at',
-        'gls 1.6'
-    ];
-
-    function filterVariants() {
-        const input = document.getElementById("variant").value.toLowerCase();
-        const dropdown = document.getElementById("variant-dropdown");
-        dropdown.innerHTML = ""; // Clear the dropdown list
-
-        // Filter variants based on user input
-        const filteredVariants = variants.filter(variant => variant.toLowerCase().startsWith(input));
-
-        // Display filtered variants in the dropdown
-        filteredVariants.forEach(variant => {
-            const div = document.createElement("div");
-            div.textContent = variant;
-            div.onclick = () => {
-                document.getElementById("variant").value = variant;
-                dropdown.innerHTML = ""; // Close dropdown after selection
-            };
-            dropdown.appendChild(div);
-        });
-
-        // Show or hide the dropdown
-        dropdown.classList.toggle("show", filteredVariants.length > 0);
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener("click", (event) => {
-        const dropdown
-
-
 
 <!-- Google Tag Manager (noscript) -->
 <noscript>
   <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLMZXT6"
           height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>
-{% endblock %}

@@ -80,7 +80,7 @@ ul {
 }
 
 a {
-    color: #b00000;
+    color: #030303;
     text-decoration: none;
 }
 
@@ -3757,7 +3757,9 @@ table {
     justify-content: center;
     align-items: center;
     padding: 15px 0;
-    background: #fff7f7;
+   background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+
+
     z-index: 999;
 }
 
@@ -3767,6 +3769,7 @@ table {
     margin: 0 auto;
     text-align: center;
     background: #fff;
+    border-radius: 15px;
     padding: 50px;
     overflow: hidden;
     -webkit-transition: all 0.5s;
@@ -3786,21 +3789,32 @@ table {
     align-items: center;
     padding: 15px 50px;
     background: #fff;
-    background: url(../img/car-12.jpg) top left repeat;
+    background: url(../img/bike-car.jpg) top left repeat;
     z-index: 999;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.brand-name {
+    font-size: 4rem; /* Adjust this value to make AUTOWORTH bigger */
+    font-weight: bold; /* Makes the text bold */
+    letter-spacing: 2px; /* Optional: adds space between letters */
+    color: #ffffff; /* Optional: set the color to white or any color you prefer */
+    text-transform: uppercase; /* Optional: makes the text all uppercase */
+    font-family: 'Arial', sans-serif; /* Optional: change to your preferred font */
+}
+
+
 .login-1 .bg-img:before {
     position: absolute;
     content: '';
     top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(51, 45, 45, 0.55);
+    z-index: -1; /* Keeps it below the text *
 }
 
 .login-1 .info {
