@@ -55,7 +55,7 @@
 <!--                    </a>-->
                     <h3>Login</h3>
                     <form method="POST" action="{% url 'login' %}">
-            {% csrf_token %}
+                        {% csrf_token %}
             <div class="form-group">
                 <label for="{{ form.username.id_for_label}}">Username:</label>
                 <input type="text" name="{{ form.username.name }}" class="form-control" value="{{ form.username.value}}" />
