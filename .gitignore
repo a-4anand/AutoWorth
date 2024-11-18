@@ -1,0 +1,11 @@
+# Ignore the local database
+db.sqlite3
+
+# Ignore media folder where user-uploaded files might be stored
+/media/
+
+# Ignore logs
+*.log
+
+# Ignore .env or configuration files that might contain sensitive information
+.env

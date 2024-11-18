@@ -245,7 +245,8 @@ def express_interest(request, listing_id):
 @auth
 
 def bike_listings(request):
-    return render(request, 'pricepredict/main/bike-listing.html')
+    vehicles = BikeListing.objects.all()  # Fetch all bike listings
+    return render(request, 'pricepredict/main/bike-listing.html', {'vehicle_list': vehicles})
 
 @auth
 def view_listings(request):
