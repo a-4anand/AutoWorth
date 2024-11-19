@@ -1,26 +1,22 @@
-import json
+
 from .middlewares import auth, guest
 from django.conf import settings
-from django.http import JsonResponse
 import random
-from django.http import HttpResponse
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-
-import pickle
 import pandas as pd
-from django.shortcuts import render
-from django.http import HttpResponse
 import pickle
 from .models import BikeListing
 from .forms import BikeListingForm
-
-
-
+# added for bike price prediction by anand dubey @ 9 nov 2024
+import numpy as np
+import joblib
+from .forms import BikePriceForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import VehicleListing, UserInterest
+from .models import VehicleListing, UserInterest,UserInterest_bike
 from .forms import VehicleListingForm
-
+from django.core.mail import send_mail
+from django.http import HttpResponse
 # views.py
 
 
@@ -235,11 +231,53 @@ def create_listing(request):
     return render(request, 'pricepredict/main/add_listing.html', {'form': form})
 @auth
 def express_interest(request, listing_id):
+    # Retrieve the car listing based on listing_id
     car_listing = get_object_or_404(VehicleListing, id=listing_id)
+
     if request.method == 'POST':
-        message = request.POST['message']
+        # Check if the user is authenticated before accessing user information
+        if not request.user.is_authenticated:
+            return HttpResponse("You must be logged in to express interest in this car.")
+
+        # Get the message from the form (empty string if not provided)
+        message = request.POST.get('message', '').strip()
+
+        # If no message is provided, return an error message
+        if not message:
+            return HttpResponse("Please provide a message expressing your interest.")
+
+        # Save the user's interest in the database
         UserInterest.objects.create(user=request.user, car_listing=car_listing, message=message)
-        return redirect('view_listings')
+
+        # Prepare email details
+        subject = f"Interest in Car Listing: {car_listing.make} {car_listing.model}"
+        from_email = "AutoWorth Support <ad3810242@gmail.com>"  # Sender email address
+        recipient_list = ["ad3810242@gmail.com"]  # The car owner's email address
+
+        # Compose email message
+        email_message = f"""
+        Hello,
+
+        {request.user.username} has expressed interest in the {car_listing.make} {car_listing.model} listed by {car_listing.owner} on AutoWorth. 
+        Please contact the owner at:
+        Phone: {car_listing.phone_no}
+ 
+
+        Message from the user:
+        {message}
+
+        Best regards,
+        AutoWorth Team
+        """
+
+        try:
+            # Send the email
+            send_mail(subject, email_message, from_email, recipient_list, fail_silently=False)
+            return HttpResponse("Thank you! Your interest has been submitted.")
+        except Exception as e:
+            return HttpResponse(f"There was an error sending your interest. Please try again later. Error: {str(e)}")
+
+    # Render the page if the request method is GET or the form is not submitted
     return render(request, 'pricepredict/main/express_interest.html', {'car_listing': car_listing})
 
 @auth
@@ -272,9 +310,6 @@ def delete_listing(request, listing_id):
     return render(request, 'pricepredict/main/delete_listing.html', {'car_listing': car_listing})
 
 
-from django.core.mail import send_mail
-from django.http import HttpResponse
-
 
 def send_test_email(request):
     subject = 'Test Email'
@@ -290,69 +325,6 @@ def send_test_email(request):
 
 
 
-
-
-
-
-
-from django.core.mail import send_mail
-from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from .models import VehicleListing  # Ensure this is your car listing model
-
-
-def express_interest(request, listing_id):
-    # Retrieve car listing based on listing_id
-    car_listing = get_object_or_404(VehicleListing, id=listing_id)
-
-    if request.method == "POST":
-        # Check if the user is authenticated before accessing user information
-        if not request.user.is_authenticated:
-            return HttpResponse("You must be logged in to express interest in this car.")
-
-        # Get the message from the form (empty string if not provided)
-        message = request.POST.get("message", "").strip()
-
-        # If no message is provided, you can either raise an error or proceed without it
-        if not message:
-            return HttpResponse("Please provide a message expressing your interest.")
-
-        # Prepare email details
-        subject = f"Interest in Car Listing: {car_listing.make} {car_listing.model}"
-        from_email = "AutoWorth Support <ad3810242@gmail.com>"  # Sender email address
-        recipient_list = ["ad3810242@gmail.com"]  # Your email address
-
-        # Compose email message
-        email_message = f"""
-        Hello,
-
-        {request.user.username} has expressed interest in the {car_listing.make} {car_listing.model} listed by {car_listing.owner} on AutoWorth. 
-        Please contact the owner at {car_listing.phone_no}.
-
-        Message from the user:
-        {message}
-
-        Best regards,
-        AutoWorth Team
-        """
-
-        try:
-            # Send the email
-            send_mail(subject, email_message, from_email, recipient_list, fail_silently=False)
-            return HttpResponse("Thank you! Your interest has been submitted.")
-        except Exception as e:
-            return HttpResponse(f"There was an error sending your interest. Please try again later. Error: {str(e)}")
-
-    # Render the page if the request method is GET or the form is not submitted
-    return render(request, "pricepredict/main/express_interest.html", {"car_listing": car_listing})
-
-
-
-# added for bike price prediction by anand dubey @ 9 nov 2024
-import numpy as np
-import joblib
-from django.shortcuts import render
-from .forms import BikePriceForm
 
 # Load the model and encoders once at the top of the file
 model1 = joblib.load('models/bike_price_model.pkl')
@@ -436,33 +408,39 @@ def delete_bike(request, listing_id):
     return render(request, 'pricepredict/main/delete_listing.html', {'bike_listing': bike_listing})
 
 
+
 def express_interest_bike(request, listing_id):
-    # Retrieve car listing based on listing_id
+    # Retrieve bike listing based on listing_id
     bike_listing = get_object_or_404(BikeListing, id=listing_id)
 
     if request.method == "POST":
         # Check if the user is authenticated before accessing user information
         if not request.user.is_authenticated:
-            return HttpResponse("You must be logged in to express interest in this car.")
+            return HttpResponse("You must be logged in to express interest in this bike.")
 
         # Get the message from the form (empty string if not provided)
         message = request.POST.get("message", "").strip()
 
-        # If no message is provided, you can either raise an error or proceed without it
+        # If no message is provided, return an error message
         if not message:
             return HttpResponse("Please provide a message expressing your interest.")
 
+        # Save the user's interest in the database
+        UserInterest_bike.objects.create(user=request.user, bike_listing=bike_listing, message=message)
+
         # Prepare email details
-        subject = f"Interest in Car Listing: {bike_listing.company} {bike_listing.model}"
+        subject = f"Interest in Bike Listing: {bike_listing.company} {bike_listing.model}"
         from_email = "AutoWorth Support <ad3810242@gmail.com>"  # Sender email address
-        recipient_list = ["ad3810242@gmail.com"]  # Your email address
+        recipient_list = ["ad3810242@gmail.com"]  # The bike owner's email address
 
         # Compose email message
         email_message = f"""
         Hello,
 
         {request.user.username} has expressed interest in the {bike_listing.company} {bike_listing.model} listed by {bike_listing.owner} on AutoWorth. 
-        Please contact the owner at {bike_listing.phone_no}.
+        Please contact the owner at:
+        Phone: {bike_listing.phone_no}
+      
 
         Message from the user:
         {message}

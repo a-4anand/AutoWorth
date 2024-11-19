@@ -80,7 +80,14 @@ class UserInterest(models.Model):
 
     def __str__(self):
         return f"Interest by {self.user.username} in {self.car_listing.make} {self.car_listing.model}"
+class UserInterest_bike(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    bike_listing = models.ForeignKey('BikeListing', related_name='interests', on_delete=models.CASCADE)
+    message = models.TextField()
+    interest_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Interest by {self.user.username} in {self.bike_listing.company} {self.bike_listing.model}"
 
 class BikeListing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
