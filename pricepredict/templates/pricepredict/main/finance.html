@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Vehicle Finance Prediction{% endblock %}
+
+{% block content %}
+    <div class="vehicle-finance-container">
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo pull-left">
+                            <a href="{% url 'index' %}"><img src="{% static 'assets/img/logo-white.png' %}" alt="logo"></a>
+                        </div>
+                        <div class="btn-section pull-right">
+                            <a href="{% url 'logout' %}" class="btn-3"><i class="fa fa-sign-in-alt"></i>  Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vehicle Finance Prediction Content -->
+        <div class="vehicle-finance-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1 class="page-title">Vehicle Finance Prediction</h1>
+                        <p class="subheading">We are working on it! This page will be live soon, allowing you to predict your vehicle financing options.</p>
+                    </div>
+                </div>
+
+                <!-- Information Section -->
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h3>What is Vehicle Finance Prediction?</h3>
+                            <p>Our vehicle finance prediction tool will help you estimate the financing options for your vehicle based on various parameters. The tool uses data science to provide you with the most accurate predictions based on your inputs.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="info-box">
+                            <h3>How It Works</h3>
+                            <p>Input your vehicle details, and we will provide you with the best financing options available. Stay tuned for the launch of this feature!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo Section -->
+                <div class="demo-cta text-center">
+                    <h3>This Feature is Coming Soon!</h3>
+                    <p>Stay tuned for the official launch of Vehicle Finance Prediction. We are currently developing this feature to serve you better!</p>
+                    <a href="#" class="btn-cta">Notify Me When Live</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Page Background */
+        .vehicle-finance-container {
+            background: linear-gradient(to right, rgba(63, 9, 178, 0.9), rgba(0, 0, 0, 0.9));
+            color: white;
+            min-height: 100vh;
+            padding-top: 50px;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        .header {
+            padding: 20px 0;
+        }
+
+        .header .logo img {
+            max-width: 180px;
+        }
+
+        .btn-3 {
+            background-color: #3f09b2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-3:hover {
+            background-color: #2a068b;
+            transform: translateY(-2px);
+        }
+
+        .vehicle-finance-content {
+            padding: 70px 0;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #f8a100;
+        }
+
+        .subheading {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .info-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-box h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #f8a100;
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .demo-cta {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
+        }
+
+        .demo-cta h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #f8a100;
+        }
+
+        .btn-cta {
+            background-color: #f8a100;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: #e08900;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .vehicle-finance-container {
+                padding-top: 30px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .info-box {
+                padding: 30px;
+            }
+
+            .subheading {
+                font-size: 1.1rem;
+                max-width: 90%;
+            }
+
+            .btn-cta {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+
+{% endblock %}

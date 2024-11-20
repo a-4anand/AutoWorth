@@ -26,6 +26,7 @@ urlpatterns = [
     path('verify-otp/', views.otp_verify_view, name='otp_verify'),
     path('index/main/listings/create/create/', views.add_bike, name='add_bike'),
     path('delete_bike/<int:listing_id>/', views.delete_bike, name='delete_bike'),
+    path('index/main/vehicle-financing/', views.finance, name='finance'),
 
 
     # Password reset URLs

@@ -458,3 +458,10 @@ def express_interest_bike(request, listing_id):
 
     # Render the page if the request method is GET or the form is not submitted
     return render(request, "pricepredict/main/express_interest_bike.html", {"bike_listing": bike_listing})
+
+
+
+#finance prediction page
+
+def finance(request):
+    return render(request, "pricepredict/main/finance.html")
