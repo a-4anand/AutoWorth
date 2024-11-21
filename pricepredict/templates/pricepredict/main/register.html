@@ -43,7 +43,7 @@
                         <!-- Username -->
                         <div class="form-group">
                             <label for="{{ form.username.id_for_label }}">Username:</label>
-                            <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" class="form-control" value="{{ form.username.value }}" />
+                            <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" class="form-control"  />
                             {% if form.username.errors %}
                                 <span class="text-danger">{{ form.username.errors }}</span>
                             {% endif %}
@@ -58,7 +58,7 @@
                         <!-- Password -->
                         <div class="form-group">
                             <label for="{{ form.password1.id_for_label }}">Password:</label>
-                            <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" class="form-control" value="{{ form.password1.value }}" />
+                            <input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" class="form-control" />
                             {% if form.password1.errors %}
                                 <span class="text-danger">{{ form.password1.errors }}</span>
                             {% endif %}
@@ -67,7 +67,7 @@
                         <!-- Confirm Password -->
                         <div class="form-group">
                             <label for="{{ form.password2.id_for_label }}">Re-Type Password:</label>
-                            <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" class="form-control" value="{{ form.password2.value }}" />
+                            <input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" class="form-control"  />
                             {% if form.password2.errors %}
                                 <span class="text-danger">{{ form.password2.errors }}</span>
                             {% endif %}
