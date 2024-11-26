@@ -33,189 +33,156 @@
 
 <!--    internal css-->
 <style>
-
-        /* General page setup */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            background: url('https://wallpapers.com/images/hd/black-car-4k-wnfjwxcbybpwbs08.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            background-size: cover;
-            filter: blur(5px);
-            z-index: -1;
-        }
-
-        nav a {
-                color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 1em;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-        }
-
-        header {
-            background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
-            color: white;
-            padding: 15px 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .vehicle-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px 12px 0 0;
-        }
-
-        /* Responsive form container */
-       .custom-form-container {
-        width: 60%;
-            max-width: 1000px;
-            margin: 20px ;
-
-            background: rgba(0, 0, 0, 0.8); /* Dark overlay for contrast */
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-
-
-        .custom-form-title {
-            text-align: center;
-            color: #f6f7f8;
-            margin-bottom: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .custom-form-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .custom-form-input {
-            flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            color: #333;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-            margin-bottom: 10px;
-        }
-
-        .custom-form-input:focus {
-            outline: none;
-            border-color: #c0392b;
-        }
-
-        .custom-submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #004d61, #00b4db);
-            border: none;
-            border-radius: 10px;
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .custom-submit-btn:hover {
-            background: #2980b9;
-            transform: scale(1.02);
-        }
-
-        label {
-            flex: 1;
-            display: flex;
-            color: #fafcfb;
-            align-items: center;
-            justify-content: flex-start;
-            font-weight: bold;
-        }
-
-        .dropdown {
+    /* General page setup */
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
         position: relative;
-        width:55%;
+        background: url('https://wallpapers.com/images/hd/black-car-4k-wnfjwxcbybpwbs08.jpg') no-repeat center center fixed;
+        background-size: cover;
     }
 
-    .dropdown-list {
-        display: none; /* Default is hidden */
-        position: absolute;
-        top: 100%; /* Position below the input */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        background-size: cover;
+        filter: blur(5px);
+        z-index: -1;
+    }
+
+    /* Header */
+    header {
+        background: linear-gradient(to right, rgba(63, 9, 178), rgba(0, 0, 0));
+        color: white;
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    header nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        padding: 8px 15px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: background 0.3s ease;
+    }
+
+    header nav a:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Form Container */
+    .custom-form-container {
         width: 90%;
-        background-color: #ffffff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        max-height: 200px;
-        overflow-y: auto;
-        z-index: 1000;
+        max-width: 600px;
+        margin: 50px auto;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        color: white;
     }
 
-    .dropdown-list.show {
-        display: block; /* Show when class 'show' is added */
+    /* Form Title */
+    .custom-form-title {
+        text-align: center;
+        color:#c0392b;
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 20px;
     }
 
-    .dropdown-list div {
+    /* Form Row */
+    .custom-form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .custom-form-row > div {
+        flex: 1 1 calc(50% - 10px);
+        min-width: 250px;
+    }
+
+    /* Align Label and Input */
+    .custom-form-row label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .custom-form-input {
+        width: 100%;
         padding: 10px;
-        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background: #f4f4f4;
+        color: #333;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
     }
 
-    .dropdown-list div:hover {
-        background-color: #f0f0f0;
+    .custom-form-input:focus {
+        outline: none;
+        border-color: #c0392b;
+        background: #fff;
+    }
 
-        /* Media query for mobile responsiveness */
-        @media (max-width: 768px) {
-            .custom-form-row {
-                flex-direction: column;
-            }
+    /* Submit Button */
+    .custom-submit-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-            .custom-form-input {
-                width: 100%;
-            }
+    .custom-submit-btn:hover {
+        background: #c0392b;
+        transform: scale(1.02);
+    }
 
-            .custom-form-container {
-                width: 90%;
-            }
+    /* Footer */
+    footer {
+        text-align: center;
+        color: white;
+        margin-top: 20px;
+        font-size: 12px;
+    }
 
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding: 10px;
-            }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .custom-form-row {
+            flex-direction: column;
+        }
 
-            .vehicle-image img {
-                width: 100%;
-                height: auto;
-            }
-        }}
-    </style>
-
-
+        .custom-form-container {
+            padding: 20px;
+        }
+    }
+</style>
 
 </head>
 
@@ -282,7 +249,7 @@
                 <option value="opel">Opel</option>
             </select>
 
-            <label for="year">Year of Manufacture:</label>
+            <label for="year">Year of Registration:</label>
             <input type="number" id="year" name="yr_mfr" class="custom-form-input" value="2023">
         </div>
 
@@ -311,19 +278,17 @@
 
             </select>
 
-            <label for="model">Model:</label>
-            <input type="text" id="model" name="model" class="custom-form-input" placeholder="Type model..." oninput="filterModels()">
-        <div class="dropdown-list" id="model-dropdown"></div>
+
 
         </div>
 
         <div class="custom-form-row">
             <label for="car_rating">Car Rating:</label>
             <select id="car_rating" name="car_rating" class="custom-form-input">
-                <option value="great">Great</option>
+                <option value="great">Like New</option>
                 <option value="good">Good</option>
-                <option value="fair">Fair</option>
-                <option value="overpriced">Overpriced</option>
+                <option value="fair">Very Good</option>
+                <option value="overpriced">Average</option>
             </select>
 
             <label for="total_owners">Total Owners:</label>
@@ -337,8 +302,6 @@
                 <option value="manual">Manual</option>
             </select>
 
-            <label for="registered_city">Registered City:</label>
-            <input type="text" id="registered_city" name="registered_city" class="custom-form-input">
         </div>
 
         <div class="custom-form-row">
@@ -362,12 +325,27 @@
                 <option value="uttarakhand">Uttarakhand</option>
             </select>
 
-            <label for="variant">Variant:</label>
-            <div class="dropdown">
-                <input type="text" id="variant" name="variant" class="custom-form-input" placeholder="Type variant..." oninput="filterVariants()">
-                <div class="dropdown-list" id="variant-dropdown"></div>
-            </div>
-        </div>
+            <!-- Variant Field -->
+<div class="dropdown">
+    <label for="variant">Variant:</label>
+    <input type="text" id="variant" name="variant" class="custom-form-input" placeholder="Type variant..." oninput="filterVariants()">
+    <div class="dropdown-list" id="variant-dropdown"></div>
+</div>
+
+<!-- Model Field -->
+<div class="dropdown">
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" class="custom-form-input" placeholder="Type model..." oninput="filterModels()">
+    <div class="dropdown-list" id="model-dropdown"></div>
+</div>
+
+<!-- City Field -->
+<div class="dropdown">
+    <label for="registered_city">Registered City:</label>
+    <input type="text" id="registered_city" name="registered_city" class="custom-form-input" placeholder="Type city..." oninput="filterCities()">
+    <div class="dropdown-list" id="registered_city-dropdown"></div>
+</div>
+
 
         <div class="custom-form-row">
             <label for="warranty_avail">Warranty Available:</label>
@@ -706,6 +684,201 @@ document.addEventListener('click', function (event) {
         dropdown.classList.remove('show');
     }
 });
+</script>
+<script>
+    // List of vehicle models
+    const models = ['swift', 'alto 800', 'grand i10', 'alto k10', 'ritz', 'i20',
+       'elite i20', 'kwid', 'i10', 'brio', 'city', 'eon', 'verna', 'alto',
+       'santro xing', 'swift dzire', 'ecosport', 'sunny', 'xcent',
+       'etios liva', 'celerio', 'baleno', 'new elantra', 'amaze', 'creta',
+       'wagon r 1.0', 'q3', 'vitara brezza', 'corolla altis', 'innova',
+       'scala', 'dzire', 'duster', 'tiago', 'ertiga', 'redi go', 'wr-v',
+       'xuv500', 'sx4', 'polo', 'zen estilo', 'scorpio', 'innova crysta',
+       'figo', 'outlander', 'ameo', 'terrano', 'etios', 'vento', 'a6',
+       'fortuner', 'tuv300', 'new  wagon-r', 'xl6', 'harrier', 'civic',
+       'cla class', 'ciaz', 'kuv100', 'eeco', 'a3', 'nano', 'thar',
+       'beat', 'aveo u va', 'indica vista', 'seltos', 'venue', 'jazz',
+       's cross', '3 series', 'camry', 'fiesta', 'a4', 'wagon r stingray',
+       'laura', 'corolla', 'superb', 'esteem', 'bolero', 's60', 'e class',
+       'sonata transform', 'accent', 'wagon r', 'e 20', 'omni e',
+       'a star', 'ignis', 'i20 active', 'pulse', 'spark', 'mobilio',
+       'getz prime', 'grand i10 nios', 'cross polo', 'triber',
+       'figo aspire', 'grand punto', 'micra', 'sail uva', 'yaris',
+       'captur', 'wagon r duo', 'hexa', 'santa fe', 'omni', 'c class',
+       'tigor', 'octavia', 'enjoy', 'rapid', 'fiesta classic', 'go',
+       'bolt', 'quanto', 'glanza', 'new santro', 'marazzo', 'hector',
+       'nexon ', 'jetta', 'aria', 'zen', 'linea', 'reva', 'freestyle',
+       'go plus', 'santro', 'xylo', 'verito', 's presso', 'nuvosport',
+       'punto evo', 'ml class', 'accord', 'city zx', 'xuv 3oo',
+       'd-max v cross', 'rexton', 'cruze', 'mu-7', 'fabia', 'yeti',
+       'safari', 'tucson new', '5 series', 'aura', 'zest', 'cls class',
+       'x1', 'compass', 'prius', 'x3', 'manza', 'crv', 'logan',
+       'sumo gold', 'indica v2', 'celerio x', 'safari storme', 'ikon',
+       'new figo', 'micra active', 'br-v', 'gla class', 'maxximo ',
+       'indigo ecs', 'zs ev', 'lodgy', 'kicks', 'a class', 'punto pure ',
+       'astra', 'optra magnum', 'evalia', 'xc60', 'indigo cs', 'fluence',
+       'indica ev2'];
+
+    const modelInput = document.getElementById('model');
+    const modelDropdown = document.getElementById('model-dropdown');
+
+    // Function to filter models based on input
+    function filterModels() {
+        const inputValue = modelInput.value.toLowerCase();
+        modelDropdown.innerHTML = ''; // Clear previous results
+
+        if (inputValue) {
+            const filteredModels = models.filter(model =>
+                model.toLowerCase().includes(inputValue)
+            );
+
+            // Display the filtered results
+            filteredModels.forEach(model => {
+                const optionDiv = document.createElement('div');
+                optionDiv.textContent = model;
+                optionDiv.addEventListener('click', function () {
+                    modelInput.value = model; // Set the input value when clicked
+                    modelDropdown.classList.remove('show'); // Hide the dropdown
+                });
+                modelDropdown.appendChild(optionDiv);
+            });
+
+            // Only show the dropdown if there are results
+            if (filteredModels.length > 0) {
+                modelDropdown.classList.add('show');
+            } else {
+                modelDropdown.classList.remove('show');
+            }
+        } else {
+            modelDropdown.classList.remove('show');
+        }
+    }
+
+    // Hide dropdown when the form is submitted
+    document.querySelector('form').addEventListener('submit', function () {
+        modelDropdown.classList.remove('show'); // Ensure the dropdown is hidden during form submission
+    });
+
+    // Optional: Ensure that "Enter" doesn't select dropdown but submits the form
+    modelInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            modelDropdown.classList.remove('show'); // Hide the dropdown on Enter keypress
+        }
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+        // Ensure the dropdown is only hidden if clicking outside the input or dropdown
+        if (!event.target.closest('.dropdown') && !event.target.closest('#model')) {
+            modelDropdown.classList.remove('show');
+        }
+    });
+</script>
+
+<script>
+    // List of registered cities
+    const cities = ['delhi', 'noida', 'agra', 'new delhi', 'gurgaon', 'ghaziabad',
+       'panchkula', 'meerut', 'faridabad', 'goutam  budd  nagar',
+       'bareilly', 'bulandshahr', 'jhajjar', 'auraiya', 'raebarely',
+       'sonipat', 'navi mumbai', 'mathura', 'hathras', 'kanpur',
+       'lucknow', 'bulandshahar', 'badaun', 'yamunanagar', 'palwal',
+       'sohana', 'bhiwani', 'karnal', 'rewari', 'ambala', 'rohtak',
+       'mahendragarh', 'aligarh', 'chandigarh', 'gorakhpur',
+       'bahadurgarh', 'bawal', 'sonepat', 'jhalawar', 'delhi west',
+       'mumbai west', 'charkhi dadri', 'pali', 'hisar',
+       'banglore-cafe dly', 'bengaluru', 'bangalore south',
+       'bangalore central', 'mysore', 'chikamagalur', 'electronic city',
+       'bangalore k r puram', 'chickballapur', 'kolar', 'devanahalli',
+       'gulbarga', 'tumkur', 'belgaum', 'ullal', 'dharward', 'dharwad',
+       'mangalore', 'karwar', 'sagar', 'madikeri', 'udupi', 'bidadi',
+       'chikmagalur', 'bangaloresouth', 'saharanpur', 'meham', 'kaithal',
+       'surat', 'rothak', 'ranchi', 'jalandhar', 'panipat', 'rangareddy',
+       'rampur', 'mumbai', 'panvel', 'mumbai east', 'thane', 'dombivali',
+       'vasai', 'virar', 'airoli', 'navimumbai', 'badlapur', 'kalyan',
+       'pen', 'pune', 'nerul', 'vashi', 'ambernath', 'nalasopara',
+       'nashik', 'nagpur', 'thane (w)', 'mira road', 'ulhasnagar',
+       'bhayander', 'sanpada', 'ratnagiri', 'raigarh', 'mumbai atc',
+       'palghar', 'shriwardhan', 'bhiwandi', 'alibag', 'kharghar',
+       'belapur', 'kalamboli', 'wada', 'goregaon', 'mahad', 'kalwan',
+       'satara', 'jalgaon', 'yavatmal', 'solapur', 'kolhapur',
+       'chandrapur', 'aurangabad', 'malvani', 'baramati', 'osmanabad',
+       'sindhudurg', 'latur', 'ahmednagar', 'karad', 'khopoli',
+       'amravati', 'shrirampur', 'beed', 'raipur', 'hyderabad',
+       'ananthapur', '#NAME?', 'proddatur', 'vijayawada', 'srikakulam',
+       'ravulapalam', 'guntur', 'vishakapatnam', 'vishakhapatanam',
+       'east godavari', 'visakhapatnam', 'bhimavaram', 'kurnool',
+       'tirupati', 'eluru', 'kakinada', 'tadepalligudem', 'dantewada',
+       'rajahmundry', 'kolkata', 'chennai', 'chennai west',
+       'chennai south', 'vellore', 'chengalpattu', 'tiruchirappalli',
+       'ranipet', 'tiruvananamalai', 'sivagangai', 'kanchipuram',
+       'arantangi', 'tiruvannamalai', 'tiruvallur', 'pudukkottai',
+       'karaikudi', 'salem', 'thanjavur', 'sholinganallur', 'trichy',
+       'madurai', 'madurantakam', 'tirupattur', 'tiruppur', 'hosur',
+       'neyveli', 'cheyyar', 'sriperumbudur', 'virudhunagar', 'howrah',
+       'kolkatta south', 'barasat', 'balurghat', 'kharagpur', 'ahmedabad',
+       'gandhinagar', 'ahmedabad east', 'gandhi nagar', 'vadodara',
+       'jamnagar', 'valsad', 'palanpur', 'rajkot', 'himatnagar',
+       'bhavnagar', 'patan', 'navsari', 'mehsana', 'khambhalia', 'nadiad',
+       'anand', 'bavla', 'bardoli', 'bharuch', 'bhuj', 'rajpipala',
+       'dahod', 'botad', 'surendranagar', 'mahesana', 'muzaffarnagar',
+       'allahabad', 'dehardun', 'muzafarnagar', 'kashipur', 'etawah',
+       'faizabad', 'gonda', 'bahraich', 'sultanpur', 'haridwar',
+       'sitapur', 'hardoi', 'pratapgarh'];
+
+    const cityInput = document.getElementById('registered_city');
+    const cityDropdown = document.getElementById('registered_city-dropdown');
+
+    // Function to filter cities based on input
+    function filterCities() {
+        const inputValue = cityInput.value.toLowerCase();
+        cityDropdown.innerHTML = ''; // Clear previous results
+
+        if (inputValue) {
+            const filteredCities = cities.filter(city =>
+                city.toLowerCase().includes(inputValue)
+            );
+
+            // Display the filtered results
+            filteredCities.forEach(city => {
+                const optionDiv = document.createElement('div');
+                optionDiv.textContent = city;
+                optionDiv.addEventListener('click', function () {
+                    cityInput.value = city; // Set the input value when clicked
+                    cityDropdown.classList.remove('show'); // Hide the dropdown
+                });
+                cityDropdown.appendChild(optionDiv);
+            });
+
+            // Only show the dropdown if there are results
+            if (filteredCities.length > 0) {
+                cityDropdown.classList.add('show');
+            } else {
+                cityDropdown.classList.remove('show');
+            }
+        } else {
+            cityDropdown.classList.remove('show');
+        }
+    }
+
+    // Hide dropdown when the form is submitted
+    document.querySelector('form').addEventListener('submit', function () {
+        cityDropdown.classList.remove('show'); // Ensure the dropdown is hidden during form submission
+    });
+
+    // Optional: Ensure that "Enter" doesn't select dropdown but submits the form
+    cityInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            cityDropdown.classList.remove('show'); // Hide the dropdown on Enter keypress
+        }
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function (event) {
+        // Ensure the dropdown is only hidden if clicking outside the input or dropdown
+        if (!event.target.closest('.dropdown') && !event.target.closest('#registered_city')) {
+            cityDropdown.classList.remove('show');
+        }
+    });
 </script>
 
 <!--new javascript for model-->
